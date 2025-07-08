@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Help Center – TCFV Resources</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
+
+  <!-- Header -->
+  <header class="bg-[#624B78] text-white py-8 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="font-baskerville text-4xl mb-2">Help Center</h1>
+      <p class="opacity-90">Find quick answers to common questions about safety, legal rights, and using our resources.</p>
+    </div>
+  </header>
+
+  <!-- Search bar -->
+  <main class="max-w-5xl mx-auto p-4 space-y-6">
+    <input
+      id="faq-search"
+      type="search"
+      placeholder="Search FAQs…"
+      class="w-full p-3 rounded-xl border border-[#AC95C1]"
+    />
+
+    <!-- FAQ list container -->
+    <div id="faq-list" class="space-y-4"></div>
+  </main>
+
+  <!-- FAQ script -->
+  <script>
+    async function loadFaqs() {
+      const res = await fetch('data/faqs.json');
+      const faqs = await res.json();
+      const container = document.getElementById('faq-list');
+
+      faqs.forEach(({ question, answer }, i) => {
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = `
+          <button
+            class="w-full text-left bg-white p-4 rounded-xl shadow focus:outline-none focus:ring-2 focus:ring-[#AC95C1]"
+            aria-expanded="false"
+            data-idx="${i}"
+          >
+            <h2 class="font-semibold">${question}</h2>
+          </button>
+          <div class="faq-answer hidden bg-white p-4 rounded-b-xl shadow border-t-0">
+            <p>${answer}</p>
+          </div>
+        `;
+        container.appendChild(wrapper);
+      });
+
+      // Toggle visibility
+      container.addEventListener('click', e => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const ans = btn.nextElementSibling;
+        const isOpen = !ans.classList.contains('hidden');
+        ans.classList.toggle('hidden');
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      });
+
+      // Search filtering
+      document.getElementById('faq-search').addEventListener('input', e => {
+        const q = e.target.value.toLowerCase();
+        container.querySelectorAll('div').forEach(div => {
+          const text = div.innerText.toLowerCase();
+          div.style.display = text.includes(q) ? 'block' : 'none';
+        });
+      });
+    }
+    document.addEventListener('DOMContentLoaded', loadFaqs);
+  </script>
+</body>
+</html>

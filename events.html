@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Events & Trainings – TCFV Resources</n  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
+
+  <!-- Header -->
+  <header class="bg-[#624B78] text-white py-8 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="font-baskerville text-4xl mb-2">Upcoming Events & Trainings</h1>
+      <p class="opacity-90">Register for webinars, workshops, and more.</p>
+    </div>
+  </header>
+
+  <!-- Events List -->
+  <main class="max-w-5xl mx-auto p-4 space-y-6">
+    <div id="events-list" class="space-y-4"></div>
+  </main>
+
+  <!-- Events Script -->
+  <script>
+    async function loadEvents() {
+      try {
+        const res = await fetch('data/events.json');
+        const events = await res.json();
+        const container = document.getElementById('events-list');
+
+        events.forEach(({ title, description, date, link }) => {
+          const card = document.createElement('div');
+          card.className = 'bg-white p-6 rounded-2xl shadow';
+          card.innerHTML = `
+            <h2 class="font-baskerville text-2xl mb-1">${title}</h2>
+            <p class="text-sm text-[#45375a] italic mb-2">${new Date(date).toLocaleDateString()}</p>
+            <p class="mb-3">${description}</p>
+            <a href="${link}" target="_blank" class="text-[#624B78] underline font-semibold">Learn More</a>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        console.error('Error loading events:', err);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadEvents);
+  </script>
+
+</body>
+</html>

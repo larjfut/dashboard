@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TCFV Resource Hub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
+
+  <!-- ===== Hero Section ===== -->
+  <header id="hero" class="bg-[#624B78] text-white py-12 px-4">
+    <div class="max-w-5xl mx-auto text-center">
+      <!-- Tagline -->
+      <p class="uppercase tracking-wider text-base opacity-75 mb-2">
+        Resource Hub for Survivors and Advocates
+      </p>
+      <!-- Main Heading -->
+      <h1 class="font-baskerville text-4xl md:text-5xl font-semibold mb-3">
+        Welcome to Your Resource Center
+      </h1>
+      <!-- Intro Text -->
+      <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
+        We understand navigating safety, legal systems, and resources can be overwhelming.  
+        This resource hub gathers the most essential tools and guides for survivors,  
+        advocates, and partners. Quickly search, filter, or browse to find exactly  
+        what you need.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== Immediate Help Widget ===== -->
+  <section id="immediate-help" class="bg-[#EEE6F6] text-[#624B78] py-6 px-4 shadow-lg border-b border-[#AC95C1]" role="alert">
+    <div class="max-w-3xl mx-auto flex items-center gap-5">
+      <span class="text-4xl" aria-label="Get Immediate Help">🧑‍🤝‍🧑</span>
+      <div>
+        <h2 class="text-lg font-semibold mb-1">Get Immediate Help</h2>
+        <p class="text-base">
+          If you’re in danger or need urgent support, call the
+          <strong>National DV Hotline:
+            <a href="tel:1-800-799-7233" class="underline">1-800-799-7233 (SAFE)</a>
+          </strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Quick Topic Navigation ===== -->
+  <nav id="quick-topics" class="max-w-5xl mx-auto py-8 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" aria-label="Resource Topics">
+    <a href="#safety-planning" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
+      <div class="text-4xl mb-2" aria-hidden="true">🛡️</div>
+      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Safety Planning</h3>
+      <p class="text-sm text-[#45375a]">Step-by-step tools to help you plan ahead and protect yourself and your loved ones.</p>
+    </a>
+    <a href="#legal-support" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
+      <div class="text-4xl mb-2" aria-hidden="true">⚖️</div>
+      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Legal Support</h3>
+      <p class="text-sm text-[#45375a]">Know your rights, navigate the courts, and understand your legal protections.</p>
+    </a>
+    <a href="#housing-utilities" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
+      <div class="text-4xl mb-2" aria-hidden="true">🏠</div>
+      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Housing & Utilities</h3>
+      <p class="text-sm text-[#45375a]">Guides and templates to secure safe housing or waive utility deposits quickly.</p>
+    </a>
+    <a href="#tech-privacy" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
+      <div class="text-4xl mb-2" aria-hidden="true">💻</div>
+      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Technology & Privacy</h3>
+      <p class="text-sm text-[#45375a]">Tips to protect your privacy online and on your devices.</p>
+    </a>
+  </nav>
+
+  <!-- ===== Filters ===== -->
+  <section class="max-w-5xl mx-auto flex flex-wrap items-center gap-3 px-4 mb-6">
+    <select id="audience-filter" class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-1">
+      <option value="">All Audiences</option>
+    </select>
+    <select id="topic-filter" class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-1">
+      <option value="">All Topics</option>
+    </select>
+    <input type="search" id="search-box" placeholder="Search resources..." class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-auto min-w-[160px]">
+    <button id="clear-btn" class="py-2 px-4 bg-[#AC95C1] text-white rounded-xl">Clear Filters</button>
+  </section>
+
+  <!-- ===== Resource Grid ===== -->
+  <main id="resource-grid" class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 mb-16">
+    <!-- Resource cards injected via JS -->
+  </main>
+
+  <!-- ===== Modal ===== -->
+  <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 opacity-0 pointer-events-none transition-opacity">
+    <div id="modal" class="bg-white rounded-2xl max-w-lg w-full mx-auto my-10 p-8 relative overflow-hidden">
+      <button id="modal-close" class="absolute right-4 top-4 text-2xl">&times;</button>
+      <div id="modal-content"><!-- Populated dynamically --></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
