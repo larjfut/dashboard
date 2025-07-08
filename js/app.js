@@ -18,7 +18,46 @@ const modalOverlay   = document.getElementById('modal-overlay');
 const modalContent   = document.getElementById('modal-content');
 const modalClose     = document.getElementById('modal-close');
 
-let resources = [];
+let resources = []
+
+const predefinedAudiences = [
+  'Survivors',
+  'Advocates',
+  'Campus Advocates',
+  'Child Welfare Partners',
+  'Data Administrators',
+  'Executive Directors',
+  'Educators',
+  'Finance Professionals',
+  'General Public',
+  'Grants Professionals',
+  'IT & Operations Staff',
+  'Legislators',
+  'Outreach Teams',
+  'Policy Professionals',
+  'Prevention Educators',
+  'Program Managers',
+  'Prosecutors',
+  'System Partners',
+  'Youth',
+  'Youth Allies'
+]
+
+const predefinedTopics = [
+  'Safety Planning',
+  'Housing',
+  'Legal',
+  'Technology Safety',
+  'Child Welfare',
+  'Advocacy Skills',
+  'Prevention',
+  'Youth',
+  'Data & Reporting',
+  'Wellness & Self-Care',
+  'Finance & Budgeting',
+  'BIPP',
+  'Elections & Voting'
+]
 
 // Load resource data
 fetch('data/resources.json')
@@ -32,12 +71,12 @@ fetch('data/resources.json')
 
 // Populate audience and topic filters
 function populateFilters() {
-  const audSet = new Set();
-  const topSet = new Set();
+  const audSet = new Set(predefinedAudiences)
+  const topSet = new Set(predefinedTopics)
   resources.forEach(r => {
-    (r.audience || []).forEach(a => audSet.add(a));
-    (r.topics   || []).forEach(t => topSet.add(t));
-  });
+    ;(r.audience || []).forEach(a => audSet.add(a))
+    ;(r.topics || []).forEach(t => topSet.add(t))
+  })
   // Audience
   audSet.forEach(a => {
     const opt = document.createElement('option');
