@@ -20,6 +20,31 @@ const modalClose     = document.getElementById('modal-close');
 
 let resources = []
 
+function toArray(val) {
+  if (!val) return []
+  if (Array.isArray(val)) return val
+  return String(val)
+    .split(',')
+    .map(v => v.trim())
+    .filter(Boolean)
+}
+
+function normalizeResource(raw) {
+  return {
+    name: raw.name ?? raw['Resource Name'] ?? '',
+    icon: raw.icon ?? raw.Icon ?? '',
+    summary: raw.summary ?? raw['Short Description'] ?? '',
+    link: raw.link ?? raw['Full Link'] ?? '',
+    date: raw.date ?? raw.Date ?? '',
+    audience: toArray(raw.audience ?? raw.Audience),
+    topics: toArray(raw.topics ?? raw.Topics),
+    bullets: raw.bullets || [],
+    reminder: raw.reminder || '',
+    related: raw.related || [],
+    actions: raw.actions || []
+  }
+}
+
 const predefinedAudiences = [
   'Survivors',
   'Advocates',
@@ -63,7 +88,7 @@ const predefinedTopics = [
 fetch('data/resources.json')
   .then(res => res.json())
   .then(data => {
-    resources = data;
+    resources = data.map(normalizeResource)
     populateFilters();
     renderResources();
   })
