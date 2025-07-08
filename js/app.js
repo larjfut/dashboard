@@ -21,7 +21,7 @@ const modalClose    = document.getElementById('modal-close');
 let resources = [];
 
 // Load data from full JSON file
-fetch('data/resources_full.json')
+fetch('data/resources.json')
   .then(response => response.json())
   .then(data => {
     resources = data;
