@@ -30,15 +30,33 @@
         const container = document.getElementById('events-list');
 
         events.forEach(({ title, description, date, link }) => {
-          const card = document.createElement('div');
-          card.className = 'bg-white p-6 rounded-2xl shadow';
-          card.innerHTML = `
-            <h2 class="font-baskerville text-2xl mb-1">${title}</h2>
-            <p class="text-sm text-[#45375a] italic mb-2">${new Date(date).toLocaleDateString()}</p>
-            <p class="mb-3">${description}</p>
-            <a href="${link}" target="_blank" class="text-[#624B78] underline font-semibold">Learn More</a>
-          `;
-          container.appendChild(card);
+          const card = document.createElement('div')
+          card.className = 'bg-white p-6 rounded-2xl shadow'
+
+          const h2 = document.createElement('h2')
+          h2.className = 'font-baskerville text-2xl mb-1'
+          h2.textContent = title
+
+          const dateP = document.createElement('p')
+          dateP.className = 'text-sm text-[#45375a] italic mb-2'
+          dateP.textContent = new Date(date).toLocaleDateString()
+
+          const descP = document.createElement('p')
+          descP.className = 'mb-3'
+          descP.textContent = description
+
+          const a = document.createElement('a')
+          a.href = link
+          a.target = '_blank'
+          a.className = 'text-[#624B78] underline font-semibold'
+          a.textContent = 'Learn More'
+
+          card.appendChild(h2)
+          card.appendChild(dateP)
+          card.appendChild(descP)
+          card.appendChild(a)
+
+          container.appendChild(card)
         });
       } catch (err) {
         console.error('Error loading events:', err);
