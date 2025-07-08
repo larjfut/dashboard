@@ -1,86 +1,682 @@
 [
   {
-    "name": "Personalized Safety Plan (fillable)",
-    "icon": "\ud83d\udee1\ufe0f",
-    "audience": [
-      "Survivors"
-    ],
-    "topics": [
-      "Safety Planning"
-    ],
-    "summary": "Create a personalized plan to increase safety before, during, or after leaving an unsafe situation.",
-    "bullets": [
-      "Identify safe contacts and places to go",
-      "List warning signs and safety steps",
-      "Pack an emergency bag (ID, keys, meds)",
-      "Plan for digital and phone safety"
-    ],
-    "reminder": "Review your plan regularly and update as situations change.",
-    "related": [
-      "Tech Safety Checklist",
-      "Know Your Legal Rights"
-    ],
-    "actions": [
-      "Download",
-      "Print",
-      "Share"
-    ],
-    "link": "https://tcfv.org/tcfv_personalized_safetyplan_2021/"
+    "#": 1,
+    "Resource Name": "Personalized Safety Plan (fillable)",
+    "Icon": "🛡️",
+    "Audience": "Survivors",
+    "Topics": "Safety Planning",
+    "Short Description": "8-page guided template to craft a personal safety plan.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/tcfv_personalized_safetyplan_2021/"
   },
   {
-    "name": "30-Day Notice to Vacate (Lease)",
-    "icon": "\ud83c\udfe0",
-    "audience": [
-      "Survivors",
-      "Advocates"
-    ],
-    "topics": [
-      "Housing"
-    ],
-    "summary": "End your lease early if you are a survivor not living with the abuser.",
-    "bullets": [
-      "Fill in your information and landlord details",
-      "State your reason for leaving",
-      "Deliver signed notice to your landlord"
-    ],
-    "reminder": "Keep a copy for your records.",
-    "related": [
-      "Co-Habitation Notice to Vacate",
-      "Utility Waiver \u2013 Electric/Phone"
-    ],
-    "actions": [
-      "Download",
-      "Print",
-      "Share"
-    ],
-    "link": "https://tcfv.org/wp-content/uploads/30-Day-Notice-to-Vacate.pdf"
+    "#": 2,
+    "Resource Name": "30-Day Notice to Vacate (Lease)",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Template for survivors not living with abuser to end lease early.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/30-Day-Notice-to-Vacate.pdf"
   },
   {
-    "name": "Co-Habitation Notice to Vacate",
-    "icon": "\ud83c\udfe0",
-    "audience": [
-      "Survivors",
-      "Advocates"
-    ],
-    "topics": [
-      "Housing"
-    ],
-    "summary": "Request early lease termination if you share your home with an abuser.",
-    "bullets": [
-      "Personalize and sign the letter",
-      "Include abuser\u2019s information",
-      "Deliver notice to your landlord or property manager"
-    ],
-    "reminder": "Keep a signed copy as proof.",
-    "related": [
-      "30-Day Notice to Vacate (Lease)",
-      "Third-Party Documentation Form"
-    ],
-    "actions": [
-      "Download",
-      "Print",
-      "Share"
-    ],
-    "link": "https://tcfv.org/wp-content/uploads/Co-Habitation-Tenant-Notice-to-Vacate.pdf"
+    "#": 3,
+    "Resource Name": "Co-Habitation Notice to Vacate",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Lease termination letter for survivors living with an abuser.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Co-Habitation-Tenant-Notice-to-Vacate.pdf"
+  },
+  {
+    "#": 4,
+    "Resource Name": "Third-Party Documentation Form",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing, Legal",
+    "Short Description": "Certification form for professionals to verify survivor status.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Third-Party-Documentation.pdf"
+  },
+  {
+    "#": 5,
+    "Resource Name": "Utility Waiver  Electric/Phone (EN)",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Certification to waive deposits for electric & telephone service.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Electric-and-Telephone-Waiver-English.pdf"
+  },
+  {
+    "#": 6,
+    "Resource Name": "Utility Waiver  Electric/Phone (ES)",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Spanish version of electric & telephone deposit waiver.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Electric-and-Telephone-Waiver-Spanish.pdf"
+  },
+  {
+    "#": 7,
+    "Resource Name": "Utility Waiver  Austin Energy (EN)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Deposit waiver letter for Austin Energy electric service.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Austin-Energy-Waiver-English.pdf"
+  },
+  {
+    "#": 8,
+    "Resource Name": "Utility Waiver  Austin Energy (ES)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Spanish version for Austin Energy deposit waiver.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Austin-Energy-Waiver-Spanish.pdf"
+  },
+  {
+    "#": 9,
+    "Resource Name": "Utility Waiver  Gas Service (EN)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Certification to waive gas service deposits.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Gas-Waiver-English.pdf"
+  },
+  {
+    "#": 10,
+    "Resource Name": "Utility Waiver  Gas Service (ES)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Spanish gas service deposit waiver form.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Gas-Waiver-Spanish.pdf"
+  },
+  {
+    "#": 11,
+    "Resource Name": "HB 1372 Lifelines to Safety (EN)",
+    "Icon": "🛡️",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Safety Planning, Technology Safety",
+    "Short Description": "FAQ on wireless plan separation for survivors.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Supporting-Lifelines-to-Safety-English.pdf"
+  },
+  {
+    "#": 12,
+    "Resource Name": "HB 1372 Lifelines to Safety (ES)",
+    "Icon": "🛡️",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Safety Planning, Technology Safety",
+    "Short Description": "Spanish version of the wireless separation FAQ.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Supporting-Lifelines-to-Safety-Spanish.pdf"
+  },
+  {
+    "#": 13,
+    "Resource Name": "Wireless Separation PO Templates",
+    "Icon": "💻",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Legal, Technology Safety",
+    "Short Description": "Court forms for phone-plan separation in Protective Orders.",
+    "Date": "2021",
+    "Full Link": "https://texascouncil.sharepoint.com/:f:/s/Public/â¦"
+  },
+  {
+    "#": 14,
+    "Resource Name": "Survivors Rights Palm Card  CPS (EN)",
+    "Icon": "👶",
+    "Audience": "Survivors",
+    "Topics": "Child Welfare",
+    "Short Description": "Quick-reference card on rights during CPS involvement.",
+    "Date": "2019",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2019/03/Final_English_SurvivorsRights_0915.pdf"
+  },
+  {
+    "#": 15,
+    "Resource Name": "Supervivientes: Derechos  CPS (ES)",
+    "Icon": "👶",
+    "Audience": "Survivors",
+    "Topics": "Child Welfare",
+    "Short Description": "Spanish palm card on survivorsâ CPS rights.",
+    "Date": "2019",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2019/03/Final_Spanish_SurvivorsRights_0915.pdf"
+  },
+  {
+    "#": 16,
+    "Resource Name": "Facts About Domestic Violence (Brochure)",
+    "Icon": "🗣️",
+    "Audience": "Survivors",
+    "Topics": "Advocacy Skills",
+    "Short Description": "2-page overview of DV stats, warning signs & hotlines.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Facts-About-DV_English_print.pdf"
+  },
+  {
+    "#": 17,
+    "Resource Name": "Minors Rights Tip Sheet (EN)",
+    "Icon": "👶",
+    "Audience": "Educators, Youth",
+    "Topics": "Child Welfare",
+    "Short Description": "Know-Your-Rights for youth: Title IX, shelter access, counseling.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAHFERHHXGDDERGZJXIUAZVVWN3E"
+  },
+  {
+    "#": 18,
+    "Resource Name": "Hoja de Derechos del Menor (ES)",
+    "Icon": "👶",
+    "Audience": "Youth",
+    "Topics": "Child Welfare",
+    "Short Description": "Spanish minorsâ rights tip sheet for adolescents.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAAWEY5AMSDIUJCKKX5P4GGTA6BP"
+  },
+  {
+    "#": 19,
+    "Resource Name": "Teen Dating Violence Safety Plan",
+    "Icon": "🛡️",
+    "Audience": "Educators, Youth",
+    "Topics": "Safety Planning, Prevention & Youth",
+    "Short Description": "Youth-friendly safety planning tool.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPADHBR4FL4K2UVCKPVNXTBWM7RRU"
+  },
+  {
+    "#": 20,
+    "Resource Name": "Dating Bill of Rights (Palm Card EN)",
+    "Icon": "🧒",
+    "Audience": "Educators, Youth",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Pocket card listing key relationship rights.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAGPYFT2R24ES5BJBAMOXFABBOFP"
+  },
+  {
+    "#": 21,
+    "Resource Name": "Declaración de Derechos (ES)",
+    "Icon": "🧒",
+    "Audience": "Youth",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Spanish âDating Bill of Rightsâ card.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAH7AQVK4Q7WN5EIPMNYVGDUN544"
+  },
+  {
+    "#": 22,
+    "Resource Name": "Know the Difference Bookmark (EN)",
+    "Icon": "🧒",
+    "Audience": "Educators, Youth",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Healthy vs. unhealthy relationship traits for youth.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAC2MHTYJULMKZEKRFRCL4LORZWM"
+  },
+  {
+    "#": 23,
+    "Resource Name": "Conozca la Diferencia (ES)",
+    "Icon": "🧒",
+    "Audience": "Youth",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Spanish healthy vs. unhealthy bookmark.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAFSVP4HKYFOL5DIUXDIMD3VXKXI"
+  },
+  {
+    "#": 24,
+    "Resource Name": "Young Hearts Matter Infographic",
+    "Icon": "📊",
+    "Audience": "General Public, Youth",
+    "Topics": "Prevention & Youth, Data & Reporting",
+    "Short Description": "Teen DV prevalence stats (U.S. & TX).",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAHRK55SIVCZ5BBZRSTEDYOB27YG"
+  },
+  {
+    "#": 25,
+    "Resource Name": "The Essential Guide for Advocates",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "60-page foundational manual on survivor-centered advocacy.",
+    "Date": "2018",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01W5A36WU66DYGZ4TLTZDKTGAUW2YZZ6SV"
+  },
+  {
+    "#": 26,
+    "Resource Name": "Campus-Based Advocacy Toolkit 2.0",
+    "Icon": "🗣️",
+    "Audience": "Educators, Youth",
+    "Topics": "Advocacy Skills, Prevention & Youth",
+    "Short Description": "Logic model & evaluation strategies for campus programs.",
+    "Date": "2024",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAG73LE2PFYTDVEKW6FD6Q7W5QSZ"
+  },
+  {
+    "#": 27,
+    "Resource Name": "Wellness in the Movement Tip Sheet",
+    "Icon": "🌱",
+    "Audience": "Advocates",
+    "Topics": "Wellness & Self-Care",
+    "Short Description": "Summary of self-care & organizational wellness webinars.",
+    "Date": "2023",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAFM3RGHJTVTMFDZOGK2YXQLNLZX"
+  },
+  {
+    "#": 28,
+    "Resource Name": "Tips for Advocates  Mobile Advocacy",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "Strategies for community-based & tech-mediated advocacy.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Mobile-Advocacy.pdf"
+  },
+  {
+    "#": 29,
+    "Resource Name": "Tips for Advocates  Technology Safety",
+    "Icon": "💻",
+    "Audience": "Advocates",
+    "Topics": "Technology Safety",
+    "Short Description": "Guidance on spyware, GPS privacy, social media safety.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Technology.pdf"
+  },
+  {
+    "#": 30,
+    "Resource Name": "Tips for Advocates  Protective Orders & Legal",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "Overview of Texas protective orders & filing processes.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Legal-and-Criminal-Justice-System.pdf"
+  },
+  {
+    "#": 31,
+    "Resource Name": "Tips for Advocates  Human Trafficking",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "Definitions, legal protections & safety planning tips.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020-Human-Trafficking-TAASA-TCFV-Tip-Sheet.pdf"
+  },
+  {
+    "#": 32,
+    "Resource Name": "Tips for Advocates  CPS",
+    "Icon": "👶",
+    "Audience": "Advocates",
+    "Topics": "Child Welfare",
+    "Short Description": "How to support survivors involved with Child Protective Services.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Child-Protective-Services.pdf"
+  },
+  {
+    "#": 33,
+    "Resource Name": "Tips for Advocates  Immigration",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "VAWA/U-Visa guidance & safety planning for immigrants.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Immigration.pdf"
+  },
+  {
+    "#": 34,
+    "Resource Name": "Tips for Advocates  Stalking & Privacy",
+    "Icon": "💻",
+    "Audience": "Advocates",
+    "Topics": "Legal, Technology Safety",
+    "Short Description": "Stalking logs, protective orders, tech-safety tips.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Stalking-and-Privacy.pdf"
+  },
+  {
+    "#": 35,
+    "Resource Name": "Tips for Advocates  Sexual Assault",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "SANE exams, protective orders & survivor rights overview.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Sexual-Assault.pdf"
+  },
+  {
+    "#": 36,
+    "Resource Name": "Tips for Advocates  Child Support",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "Custody vs. support guidance & Good Cause exemptions.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Child-Support-v.2.pdf"
+  },
+  {
+    "#": 37,
+    "Resource Name": "Tips for Advocates  Housing Funds",
+    "Icon": "🏠",
+    "Audience": "Advocates",
+    "Topics": "Housing",
+    "Short Description": "VOCA & flexible funding uses for transitional housing.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Flexible-Funding.pdf"
+  },
+  {
+    "#": 38,
+    "Resource Name": "Stalking Law Changes  Advocate Brief",
+    "Icon": "⚖️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Legal",
+    "Short Description": "4-page summary of 2023 stalking statute updates.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Stalking-Tip-Sheet_Advocates-web.pdf"
+  },
+  {
+    "#": 39,
+    "Resource Name": "Stalking Law Tip Sheet  Advocates",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "Detailed guidance on assisting stalking survivors.",
+    "Date": "2023",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01PC7P5Z2M7SIDMV2OWFE26K6IIV7E6MEF"
+  },
+  {
+    "#": 40,
+    "Resource Name": "Tips for Prosecutors  Stalking Law",
+    "Icon": "⚖️",
+    "Audience": "Prosecutors",
+    "Topics": "Legal",
+    "Short Description": "Prosecutor-focused stalking law update & evidence tips.",
+    "Date": "2023",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01PC7P5ZYVWY7LJSG5WRAL3YFQJKQ3UP3Z"
+  },
+  {
+    "#": 41,
+    "Resource Name": "Advocate Mental Health & Wellness Guide",
+    "Icon": "🌱",
+    "Audience": "Advocates",
+    "Topics": "Wellness & Self-Care",
+    "Short Description": "Self-care exercises & trauma impact info for advocates.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/â¦/01H62CNHD56EXXSPYPVVG3WU46W7AQHESK"
+  },
+  {
+    "#": 42,
+    "Resource Name": "Guía de Bienestar del Intercesor (ES)",
+    "Icon": "🌱",
+    "Audience": "Advocates",
+    "Topics": "Wellness & Self-Care",
+    "Short Description": "Spanish version of the advocate wellness guide.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/â¦/01H62CNHEXWDV73GU2KVBZFESRX6EGJEEN"
+  },
+  {
+    "#": 43,
+    "Resource Name": "Pretrial Juvenile Advocates Resource",
+    "Icon": "👶",
+    "Audience": "Advocates, System Partners",
+    "Topics": "Child Welfare",
+    "Short Description": "Handout on juvenile process basics & advocacy.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Juvenile-Resource-2021.pdf"
+  },
+  {
+    "#": 44,
+    "Resource Name": "Chesapeake Best Practices Brief",
+    "Icon": "🗣️",
+    "Audience": "Advocates, System Partners",
+    "Topics": "Advocacy Skills",
+    "Short Description": "One-pager on rural & urban community DV response tips.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Chesapeake-Best-Practices.pdf"
+  },
+  {
+    "#": 45,
+    "Resource Name": "Nuts & Bolts of Bookkeeping Toolkit",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance & Budgeting",
+    "Short Description": "Core financial management: bookkeeping, grants, controls.",
+    "Date": "2018 (rev 2021)",
+    "Full Link": "https://tcfv.org/wp-content/uploads/â¦/Nuts-and-Bolts-of-Bookkeeping-A-Toolkit_Complete_v3.pdf"
+  },
+  {
+    "#": 46,
+    "Resource Name": "Federal Funding Sources Flowchart",
+    "Icon": "💰",
+    "Audience": "Finance Professionals, Grants Professionals",
+    "Topics": "Finance & Budgeting",
+    "Short Description": "Visual of FVPSA, VOCA, VAWA, etc. funding flows to programs.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/tcfv_federal_funding_sources_flowchart_2021/"
+  },
+  {
+    "#": 47,
+    "Resource Name": "2020 Compensation Report",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance & Budgeting",
+    "Short Description": "Biennial salary & benefits benchmarks for DV agencies.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020-TCFV-Compensation-Report-FINAL.pdf"
+  },
+  {
+    "#": 48,
+    "Resource Name": "2022 Compensation Report",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance & Budgeting",
+    "Short Description": "Updated salary & benefit trends for FV service providers.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2022-TCFV-Compensation-Report-FINAL.pdf"
+  },
+  {
+    "#": 49,
+    "Resource Name": "2024 Compensation Report",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance & Budgeting",
+    "Short Description": "Latest statewide compensation survey data & analysis.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2024-TCFV-Compensation-Report-FINAL.pdf"
+  },
+  {
+    "#": 50,
+    "Resource Name": "Statewide Service Directory 2024",
+    "Icon": "📊",
+    "Audience": "Advocates, System Partners",
+    "Topics": "Data & Reporting",
+    "Short Description": "Directory of TX FV programs, BIPPs, and community partners.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2024-TCFV-Service-Directory_web-pages.pdf"
+  },
+  {
+    "#": 51,
+    "Resource Name": "Tech for Social Impact  Nonprofit Offers",
+    "Icon": "💻",
+    "Audience": "IT & Operations Staff",
+    "Topics": "Technology Safety",
+    "Short Description": "Microsoft grants & discounts summary for nonprofits.",
+    "Date": "2021",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01W5A36WTFBRVAJTH3MRH2JE735QH4376H"
+  },
+  {
+    "#": 52,
+    "Resource Name": "DVAM External Toolkit  2022",
+    "Icon": "🧒",
+    "Audience": "Educators, Outreach Teams, Prevention Educators",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Graphics, posters, templates for DV Awareness Month outreach.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
+  },
+  {
+    "#": 53,
+    "Resource Name": "DVAM External Toolkit  2024",
+    "Icon": "🧒",
+    "Audience": "Educators, Outreach Teams, Prevention Educators",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Updated materials for DVAM campaigns & social media assets.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
+  },
+  {
+    "#": 54,
+    "Resource Name": "Prevention Educators Resource List",
+    "Icon": "🧒",
+    "Audience": "Educators, Prevention Educators, Youth Allies",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Directory of trainings, curricula, webinars, publications.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01W5A36WUCW3RJUNLY35HIPL7JY25YS7PF"
+  },
+  {
+    "#": 55,
+    "Resource Name": "Young Hearts Matter Resources",
+    "Icon": "🧒",
+    "Audience": "Educators, Prevention Educators, Youth Allies",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Online modules & podcast series for teen DV prevention.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/program-resources/youth-and-adult-allies/"
+  },
+  {
+    "#": 56,
+    "Resource Name": "Youth Activism Guide",
+    "Icon": "🧒",
+    "Audience": "Educators, Youth, Youth Allies",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Engaging teens in preventing dating violence year-round.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01L3KXPAHWCMHP22OTSFBKLNAXHKL5OLS5"
+  },
+  {
+    "#": 57,
+    "Resource Name": "Our Hearts Matter Social & Event Toolkit",
+    "Icon": "🧒",
+    "Audience": "Educators, Prevention Educators, Youth Allies",
+    "Topics": "Prevention & Youth",
+    "Short Description": "Week-by-week Teen DV Month campaign ideas & prompts.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01AMQHF3AXJSHSJAWBNVGZ4RCOW3RYKXX3"
+  },
+  {
+    "#": 58,
+    "Resource Name": "BIPP Resource Toolkit  2023",
+    "Icon": "🚫",
+    "Audience": "BIPP providers, Prevention Educators",
+    "Topics": "BIPP",
+    "Short Description": "Accreditation, best practices & equity guidance for BIPP.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2023-TCFV-Battering-Intervention-and-Prevention-Program-Toolkit.pdf"
+  },
+  {
+    "#": 59,
+    "Resource Name": "89th Bills of Note  Summary",
+    "Icon": "🗳️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Elections & Voting",
+    "Short Description": "Key 2025 bills impacting survivors, with TCFV commentary.",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/TCFV-Bills-of-Note-89th-Session.pdf"
+  },
+  {
+    "#": 60,
+    "Resource Name": "89th Priority One-Pagers Packet",
+    "Icon": "🗳️",
+    "Audience": "Legislators, Policy Professionals",
+    "Topics": "Elections & Voting",
+    "Short Description": "One-page briefs on each policy priority (e.g. HB 1332).",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/89th-Lege-Priorities-One-Pagers-ALL-4.pdf"
+  },
+  {
+    "#": 61,
+    "Resource Name": "89th FV Services Funding Fact Sheet",
+    "Icon": "💰",
+    "Audience": "Legislators, Policy Professionals",
+    "Topics": "Finance & Budgeting, Elections & Voting",
+    "Short Description": "Data-driven ask for $25 M increase in family violence funding.",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Family-Violence-Services-Funding-Fact-Sheet-SB1-HB-1.pdf"
+  },
+  {
+    "#": 62,
+    "Resource Name": "89th BIPP Funding Fact Sheet",
+    "Icon": "🚫",
+    "Audience": "Legislators, Policy Professionals",
+    "Topics": "BIPP, Elections & Voting",
+    "Short Description": "Cost-efficiency & impact data supporting $925k funding boost.",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/BIPP-Funding-Fact-Sheet-SB1-HB-1.pdf"
+  },
+  {
+    "#": 63,
+    "Resource Name": "88th Legislative Update (2023)",
+    "Icon": "🗳️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Elections & Voting",
+    "Short Description": "Recap of TCFVâs 2023 session wins, funding, and policy changes.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/88th-Legislative-Session-Update.pdf"
+  },
+  {
+    "#": 64,
+    "Resource Name": "DV High-Risk Teams Welcome Kit",
+    "Icon": "🗣️",
+    "Audience": "Grants Professionals, System Partners",
+    "Topics": "Advocacy Skills",
+    "Short Description": "Orientation & sample tools for launching local DVHRT.",
+    "Date": "23-Nov",
+    "Full Link": "https://tcfv.org/wp-content/uploads/DVHRT-Welcome-Kit.pdf"
+  },
+  {
+    "#": 65,
+    "Resource Name": "Safer Families Project Welcome Kit",
+    "Icon": "👶",
+    "Audience": "Child Welfare Partners, System Partners",
+    "Topics": "Child Welfare",
+    "Short Description": "Collated webinars & QIC resources for DVâChild Welfare sites.",
+    "Date": "FY 2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Safer-Families-Welcome-Kit.pdf"
+  },
+  {
+    "#": 66,
+    "Resource Name": "Osnium Database Upgrade Toolkit",
+    "Icon": "📊",
+    "Audience": "Data Administrators, Program Managers",
+    "Topics": "Data & Reporting",
+    "Short Description": "Step-by-step tasks & training for FY22 Osnium rollout.",
+    "Date": "21-Aug",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01AB47KBC5FM3F4JXYX5H22B3C6USNC72D"
+  },
+  {
+    "#": 67,
+    "Resource Name": "Legislative Advocacy Toolkit",
+    "Icon": "🗳️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Elections & Voting",
+    "Short Description": "Survivor-centered guide to engaging in the TX Legislature.",
+    "Date": "25-Jan",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/â¦/01W5A36WTYN7YUKNSARRGL2ZO6YUJCBH7R"
+  },
+  {
+    "#": 68,
+    "Resource Name": "Tips for Advocates  Housing Funds",
+    "Icon": "🏠",
+    "Audience": "Advocates",
+    "Topics": "Housing",
+    "Short Description": "VOCA & flexible funding uses for transitional housing.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Flexible-Funding.pdf"
   }
 ]
