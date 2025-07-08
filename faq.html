@@ -37,20 +37,28 @@
       const container = document.getElementById('faq-list');
 
       faqs.forEach(({ question, answer }, i) => {
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = `
-          <button
-            class="w-full text-left bg-white p-4 rounded-xl shadow focus:outline-none focus:ring-2 focus:ring-[#AC95C1]"
-            aria-expanded="false"
-            data-idx="${i}"
-          >
-            <h2 class="font-semibold">${question}</h2>
-          </button>
-          <div class="faq-answer hidden bg-white p-4 rounded-b-xl shadow border-t-0">
-            <p>${answer}</p>
-          </div>
-        `;
-        container.appendChild(wrapper);
+        const wrapper = document.createElement('div')
+
+        const btn = document.createElement('button')
+        btn.className = 'w-full text-left bg-white p-4 rounded-xl shadow focus:outline-none focus:ring-2 focus:ring-[#AC95C1]'
+        btn.setAttribute('aria-expanded', 'false')
+        btn.dataset.idx = i
+
+        const h2 = document.createElement('h2')
+        h2.className = 'font-semibold'
+        h2.textContent = question
+        btn.appendChild(h2)
+
+        const ansDiv = document.createElement('div')
+        ansDiv.className = 'faq-answer hidden bg-white p-4 rounded-b-xl shadow border-t-0'
+
+        const p = document.createElement('p')
+        p.textContent = answer
+        ansDiv.appendChild(p)
+
+        wrapper.appendChild(btn)
+        wrapper.appendChild(ansDiv)
+        container.appendChild(wrapper)
       });
 
       // Toggle visibility
