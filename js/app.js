@@ -17,6 +17,7 @@ const grid = document.getElementById("resource-grid")
 const modalOverlay = document.getElementById("modal-overlay")
 const modalContent = document.getElementById("modal-content")
 const modalClose = document.getElementById("modal-close")
+const quickTopics = document.getElementById("quick-topics")
 
 let resources = []
 
@@ -156,6 +157,14 @@ clearBtn.addEventListener("click", () => {
   audienceFilter.value = ""
   topicFilter.value = ""
   searchBox.value = ""
+  renderResources()
+})
+
+quickTopics.addEventListener("click", (e) => {
+  const btn = e.target.closest("[data-topic]")
+  if (!btn) return
+  e.preventDefault()
+  topicFilter.value = btn.dataset.topic
   renderResources()
 })
 
