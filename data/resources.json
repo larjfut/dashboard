@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Personalized Safety Plan (fillable)",
+    "icon": "\ud83d\udee1\ufe0f",
+    "audience": [
+      "Survivors"
+    ],
+    "topics": [
+      "Safety Planning"
+    ],
+    "summary": "Create a personalized plan to increase safety before, during, or after leaving an unsafe situation.",
+    "bullets": [
+      "Identify safe contacts and places to go",
+      "List warning signs and safety steps",
+      "Pack an emergency bag (ID, keys, meds)",
+      "Plan for digital and phone safety"
+    ],
+    "reminder": "Review your plan regularly and update as situations change.",
+    "related": [
+      "Tech Safety Checklist",
+      "Know Your Legal Rights"
+    ],
+    "actions": [
+      "Download",
+      "Print",
+      "Share"
+    ],
+    "link": "https://tcfv.org/tcfv_personalized_safetyplan_2021/"
+  },
+  {
+    "name": "30-Day Notice to Vacate (Lease)",
+    "icon": "\ud83c\udfe0",
+    "audience": [
+      "Survivors",
+      "Advocates"
+    ],
+    "topics": [
+      "Housing"
+    ],
+    "summary": "End your lease early if you are a survivor not living with the abuser.",
+    "bullets": [
+      "Fill in your information and landlord details",
+      "State your reason for leaving",
+      "Deliver signed notice to your landlord"
+    ],
+    "reminder": "Keep a copy for your records.",
+    "related": [
+      "Co-Habitation Notice to Vacate",
+      "Utility Waiver \u2013 Electric/Phone"
+    ],
+    "actions": [
+      "Download",
+      "Print",
+      "Share"
+    ],
+    "link": "https://tcfv.org/wp-content/uploads/30-Day-Notice-to-Vacate.pdf"
+  },
+  {
+    "name": "Co-Habitation Notice to Vacate",
+    "icon": "\ud83c\udfe0",
+    "audience": [
+      "Survivors",
+      "Advocates"
+    ],
+    "topics": [
+      "Housing"
+    ],
+    "summary": "Request early lease termination if you share your home with an abuser.",
+    "bullets": [
+      "Personalize and sign the letter",
+      "Include abuser\u2019s information",
+      "Deliver notice to your landlord or property manager"
+    ],
+    "reminder": "Keep a signed copy as proof.",
+    "related": [
+      "30-Day Notice to Vacate (Lease)",
+      "Third-Party Documentation Form"
+    ],
+    "actions": [
+      "Download",
+      "Print",
+      "Share"
+    ],
+    "link": "https://tcfv.org/wp-content/uploads/Co-Habitation-Tenant-Notice-to-Vacate.pdf"
+  }
+]
