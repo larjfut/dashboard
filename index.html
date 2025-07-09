@@ -380,25 +380,30 @@
           }
         }
 
-        function renderCards() {
-          cardGrid.innerHTML = "";
-          cardGridWrapper.style.display = showAllResources ? "none" : "";
-          if (showAllResources) return;
-          const items = activeTab === "topic" ? topics : audiences;
-          items.forEach((item) => {
-            const el = document.createElement("div");
-            // Small, tight card style:
-            el.className = "bg-white rounded-xl p-3 shadow cursor-pointer hover:shadow-lg transition";
-            el.innerHTML = `
-              <div class="flex items-center justify-center text-center gap-2">
-                <span class="text-2xl text-[#624B78]">${item.icon}</span>
-                <span class="text-base font-medium text-[#624B78]">${item.name}</span>
-              </div>
-            `;
-            el.addEventListener("click", () => selectCategory(item));
-            cardGrid.appendChild(el);
-          });
-        }
+function renderCards() {
+  cardGrid.innerHTML = "";
+  cardGridWrapper.style.display = showAllResources ? "none" : "";
+  if (showAllResources) return;
+
+  // Sort alphabetically by name
+  const items = (activeTab === "topic" ? topics : audiences)
+    .slice() // copy to avoid mutating original
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  items.forEach((item) => {
+    const el = document.createElement("div");
+    el.className = "bg-white rounded-xl p-3 shadow cursor-pointer hover:shadow-lg transition";
+    el.innerHTML = `
+      <div class="flex items-center justify-center text-center gap-2">
+        <span class="text-2xl text-[#624B78]">${item.icon}</span>
+        <span class="text-base font-medium text-[#624B78]">${item.name}</span>
+      </div>
+    `;
+    el.addEventListener("click", () => selectCategory(item));
+    cardGrid.appendChild(el);
+  });
+}
+
 
         function selectCategory(item) {
           selectedCategory = item;
