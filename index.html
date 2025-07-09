@@ -290,23 +290,27 @@
 <p class="text-sm text-[#45375a] mb-2">
   <strong>Topics:</strong>
   ${
-    (r.topics && r.topics.length
-      ? r.topics.map(id => {
-          const t = topics.find(t => t.id === id);
-          return t ? t.name : "Uncategorized";
-        }).join(", ")
-      : "Uncategorized")
+    r.topics && r.topics.length
+      ? r.topics
+          .map((id) => {
+            const t = topics.find((t) => t.id === id)
+            return t ? t.name : "Uncategorized"
+          })
+          .join(", ")
+      : "Uncategorized"
   }
 </p>
 <p class="text-sm text-[#45375a] mb-4">
   <strong>Audience:</strong>
   ${
-    (r.audiences && r.audiences.length
-      ? r.audiences.map(id => {
-          const a = audiences.find(a => a.id === id);
-          return a ? a.name : "Uncategorized";
-        }).join(", ")
-      : "Uncategorized")
+    r.audiences && r.audiences.length
+      ? r.audiences
+          .map((id) => {
+            const a = audiences.find((a) => a.id === id)
+            return a ? a.name : "Uncategorized"
+          })
+          .join(", ")
+      : "Uncategorized"
   }
 </p>
           <a href="${r.link}" target="_blank" class="text-blue-600 underline">Open Resource</a>
