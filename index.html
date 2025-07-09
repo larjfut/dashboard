@@ -6,8 +6,6 @@
   <title>TCFV Resource Hub</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide/dist/umd/lucide.js"></script>
 </head>
 <body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
   <div class="max-w-7xl mx-auto p-6">
@@ -41,42 +39,51 @@
 
   <script>
   (function() {
-    // Data definitions
+    // Helper to slugify names into IDs
+    function slugify(str) {
+      return str
+        .toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    }
+
+    // Category definitions (IDs must match slugify(names))
     const topics = [
-      { id: 'safety-planning', name: 'Safety Planning', icon: 'shield', description: 'Personal, family, or organizational safety plans and guidance.' },
-      { id: 'housing', name: 'Housing', icon: 'home', description: 'Housing rights, resources, and assistance.' },
-      { id: 'legal', name: 'Legal', icon: 'scale', description: 'Legal rights, forms, documentation, and assistance.' },
-      { id: 'technology-safety', name: 'Technology Safety', icon: 'smartphone', description: 'Digital, online, and technology-related safety issues.' },
-      { id: 'child-welfare', name: 'Child Welfare', icon: 'baby', description: 'Child protection, foster care, and children\'s advocacy.' },
-      { id: 'advocacy-skills', name: 'Advocacy Skills', icon: 'message-square', description: 'Skills training for advocacy, leadership, communication, and case management.' },
-      { id: 'prevention', name: 'Prevention', icon: 'trending-up', description: 'Programs and resources focused on prevention.' },
-      { id: 'youth', name: 'Youth', icon: 'user', description: 'Programming or resources targeted at youth or young adults.' },
-      { id: 'data-reporting', name: 'Data & Reporting', icon: 'bar-chart-3', description: 'Data collection, outcomes, reporting guidance.' },
-      { id: 'wellness-self-care', name: 'Wellness & Self-Care', icon: 'heart', description: 'Wellbeing, staff care, mental health.' },
-      { id: 'finance-budgeting', name: 'Finance & Budgeting', icon: 'dollar-sign', description: 'Budgeting, fiscal compliance, finance training.' },
-      { id: 'bipp', name: 'BIPP', icon: 'user-check', description: 'Batterer Intervention & Prevention Programs.' },
-      { id: 'elections-voting', name: 'Elections & Voting', icon: 'vote', description: 'Civic engagement, voter education, policy advocacy.' }
+      { id: 'safety-planning', name: 'Safety Planning', icon: '🛡️' },
+      { id: 'housing', name: 'Housing', icon: '🏠' },
+      { id: 'legal', name: 'Legal', icon: '⚖️' },
+      { id: 'technology-safety', name: 'Technology Safety', icon: '💻' },
+      { id: 'child-welfare', name: 'Child Welfare', icon: '👶' },
+      { id: 'advocacy-skills', name: 'Advocacy Skills', icon: '🗣️' },
+      { id: 'prevention', name: 'Prevention', icon: '🚫' },
+      { id: 'youth', name: 'Youth', icon: '🧑‍🎓' },
+      { id: 'data-reporting', name: 'Data & Reporting', icon: '📊' },
+      { id: 'wellness-self-care', name: 'Wellness & Self-Care', icon: '🧘' },
+      { id: 'finance-budgeting', name: 'Finance & Budgeting', icon: '💰' },
+      { id: 'bipp', name: 'BIPP', icon: '🔄' },
+      { id: 'elections-voting', name: 'Elections & Voting', icon: '🗳️' }
     ];
 
     const audiences = [
-      { id: 'survivors', name: 'Survivors', icon: 'heart', description: 'Individuals directly impacted by domestic violence, seeking support or resources.' },
-      { id: 'advocates', name: 'Advocates', icon: 'users', description: 'Professionals providing direct support and advocacy to survivors.' },
-      { id: 'campus-advocates', name: 'Campus Advocates', icon: 'graduation-cap', description: 'Advocacy professionals in higher education settings.' },
-      { id: 'child-welfare-partners', name: 'Child Welfare Partners', icon: 'baby', description: 'Professionals focused on child protection and welfare.' },
-      { id: 'data-administrators', name: 'Data Administrators', icon: 'database', description: 'Staff responsible for data management and reporting.' },
-      { id: 'executive-directors', name: 'Executive Directors', icon: 'crown', description: 'Organizational leaders and executive management.' },
-      { id: 'educators', name: 'Educators', icon: 'school', description: 'School staff, teachers, or trainers.' },
-      { id: 'finance-professionals', name: 'Finance Professionals', icon: 'calculator', description: 'Staff managing budgeting and financial operations.' },
-      { id: 'general-public', name: 'General Public', icon: 'globe', description: 'Community members or any interested individuals.' },
-      { id: 'grants-professionals', name: 'Grants Professionals', icon: 'file-text', description: 'Staff managing grant writing and reporting.' },
-      { id: 'it-operations-staff', name: 'IT & Ops Staff', icon: 'settings', description: 'Staff responsible for technology and operations.' },
-      { id: 'legislators', name: 'Legislators', icon: 'landmark', description: 'Elected officials and legislative staff.' },
-      { id: 'outreach-teams', name: 'Outreach Teams', icon: 'megaphone', description: 'Staff focused on community outreach.' },
-      { id: 'policy-professionals', name: 'Policy Professionals', icon: 'file-check', description: 'Individuals in policy analysis and advocacy.' },
-      { id: 'program-managers', name: 'Program Managers', icon: 'user-x', description: 'Individuals overseeing or managing programs.' },
-      { id: 'prosecutors', name: 'Prosecutors', icon: 'gavel', description: 'Legal professionals prosecuting domestic violence cases.' },
-      { id: 'system-partners', name: 'System Partners', icon: 'handshake', description: 'Agencies collaborating with DV programs.' },
-      { id: 'youth-allies', name: 'Youth Allies', icon: 'user-plus', description: 'Adults or peers supporting youth engagement.' }
+      { id: 'survivors', name: 'Survivors', icon: '🛡️' },
+      { id: 'advocates', name: 'Advocates', icon: '👥' },
+      { id: 'campus-advocates', name: 'Campus Advocates', icon: '🎓' },
+      { id: 'child-welfare-partners', name: 'Child Welfare Partners', icon: '👶' },
+      { id: 'data-administrators', name: 'Data Administrators', icon: '🗄️' },
+      { id: 'executive-directors', name: 'Executive Directors', icon: '👑' },
+      { id: 'educators', name: 'Educators', icon: '🏫' },
+      { id: 'finance-professionals', name: 'Finance Professionals', icon: '🧮' },
+      { id: 'general-public', name: 'General Public', icon: '🌐' },
+      { id: 'grants-professionals', name: 'Grants Professionals', icon: '📄' },
+      { id: 'it-operations-staff', name: 'IT & Ops Staff', icon: '⚙️' },
+      { id: 'legislators', name: 'Legislators', icon: '🏛️' },
+      { id: 'outreach-teams', name: 'Outreach Teams', icon: '📢' },
+      { id: 'policy-professionals', name: 'Policy Professionals', icon: '✔️' },
+      { id: 'program-managers', name: 'Program Managers', icon: '👤' },
+      { id: 'prosecutors', name: 'Prosecutors', icon: '🔨' },
+      { id: 'system-partners', name: 'System Partners', icon: '🤝' },
+      { id: 'youth-allies', name: 'Youth Allies', icon: '➕' }
     ];
 
     let resources = [];
@@ -93,10 +100,19 @@
     const searchInput = document.getElementById('search-input');
     const clearBtn = document.getElementById('clear-filters');
 
-    // Load resources then initialize dashboard
+    // Load and normalize resources then initialize dashboard
     fetch('data/resources.json')
       .then(response => response.json())
-      .then(data => { resources = data; })
+      .then(raw => {
+        resources = raw.map(item => ({
+          name: item['Resource Name'],
+          icon: item.Icon,
+          audiences: (item.Audience || '').split(/,\s*/).map(slugify),
+          topics: (item.Topics || '').split(/,\s*/).map(slugify),
+          summary: item['Short Description'],
+          link: item['Full Link']
+        }));
+      })
       .catch(err => console.error('Failed to load resources:', err))
       .finally(init);
 
@@ -119,19 +135,13 @@
 
     function updateTabStyles() {
       if (activeTab === 'topic') {
-        tabTopic.classList.add('bg-[#624B78]','text-white');
-        tabTopic.classList.remove('bg-white','text-[#624B78]');
-        tabAud.classList.add('bg-white','text-[#624B78]');
-        tabAud.classList.remove('bg-[#624B78]','text-white');
+        tabTopic.classList.add('bg-[#624B78]', 'text-white');
+        tabAud.classList.remove('bg-[#624B78]', 'text-white');
       } else {
-        tabAud.classList.add('bg-[#624B78]','text-white');
-        tabAud.classList.remove('bg-white','text-[#624B78]');
-        tabTopic.classList.add('bg-white','text-[#624B78]');
-        tabTopic.classList.remove('bg-[#624B78]','text-white');
+        tabAud.classList.add('bg-[#624B78]', 'text-white');
+        tabTopic.classList.remove('bg-[#624B78]', 'text-white');
       }
     }
-
-    function renderTabs() { updateTabStyles(); }
 
     function renderCards() {
       cardGrid.innerHTML = '';
@@ -141,22 +151,20 @@
         el.className = 'bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl';
         el.innerHTML = `
           <div class="flex flex-col items-center text-center">
-            <i data-lucide="${item.icon}" class="w-8 h-8 text-[#624B78] mb-3"></i>
-            <h3 class="text-lg font-semibold text-[#624B78] mb-1">${item.name}</h3>
-            <p class="text-sm text-[#45375a]">${item.description}</p>
+            <div class="text-4xl mb-3">${item.icon}</div>
+            <h3 class="text-lg font-semibold mb-1 text-[#624B78]">${item.name}</h3>
           </div>
         `;
         el.addEventListener('click', () => selectCategory(item));
         cardGrid.appendChild(el);
       });
-      lucide.createIcons();
     }
 
     function selectCategory(item) {
       selectedCategory = item;
-      renderResources();
-      renderFilterOptions();
       filtersEl.classList.remove('hidden');
+      renderFilterOptions();
+      renderResources();
       cardGrid.innerHTML = '';
     }
 
@@ -176,7 +184,7 @@
       const fa = filterAudEl.value;
       const q = searchInput.value.toLowerCase();
       const filtered = resources.filter(r => {
-        const inCategory = r[activeTab==='topic'?'topics':'audiences'].includes(selectedCategory.id);
+        const inCategory = r[activeTab === 'topic' ? 'topics' : 'audiences'].includes(selectedCategory.id);
         const matchTopic = ft ? r.topics.includes(ft) : true;
         const matchAud = fa ? r.audiences.includes(fa) : true;
         const matchSearch = q ? r.name.toLowerCase().includes(q) : true;
@@ -190,13 +198,16 @@
         const card = document.createElement('div');
         card.className = 'bg-white p-6 rounded-2xl shadow-lg';
         card.innerHTML = `
-          <h3 class="text-lg font-semibold mb-2">${r.name}</h3>
-          <div class="flex flex-wrap gap-2 mb-2">${r.topics.map(id=>`<span class="text-xs px-2 py-1 rounded bg-[#AC95C1]">${topics.find(t=>t.id===id).name}</span>`).join('')}</div>
-          <div class="flex flex-wrap gap-2">${r.audiences.map(id=>`<span class="text-xs px-2 py-1 rounded bg-[#624B78] text-white">${audiences.find(a=>a.id===id).name}</span>`).join('')}</div>
+          <div class="flex items-center mb-2">
+            <div class="text-2xl mr-3">${r.icon}</div>
+            <h3 class="text-lg font-semibold">${r.name}</h3>
+          </div>
+          <p class="text-sm text-[#45375a] mb-2"><strong>Topics:</strong> ${r.topics.map(id => topics.find(t => t.id === id).name).join(', ')}</p>
+          <p class="text-sm text-[#45375a] mb-4"><strong>Audience:</strong> ${r.audiences.map(id => audiences.find(a => a.id === id).name).join(', ')}</p>
+          <a href="${r.link}" target="_blank" class="text-blue-600 underline">Open Resource</a>
         `;
         resGrid.appendChild(card);
       });
-      lucide.createIcons();
     }
 
     function clearFilters() {
