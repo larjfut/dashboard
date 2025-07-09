@@ -6,58 +6,65 @@
     <title>TCFV Resource Hub</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for professional icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-pO1j5Y5DZ0dypM2G8e6z2n0lPz+QZ1p2eN1YhVB8Xg4EhE+2D6zRNhKNO6v+QzjhxpoGZ+YzJYz4ObE+TbbDdw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
     <div class="max-w-7xl mx-auto p-6">
-      <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">
-        Resource Hub
-      </h1>
-      <p class="text-lg text-[#45375a] mb-6">
-        Browse resources by topic or audience
-      </p>
+      <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">Resource Hub</h1>
+      <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
-      <!-- Tabs -->
-      <div class="flex space-x-2 mb-8">
-        <button
-          id="tab-topic"
-          class="px-6 py-3 rounded-lg font-medium bg-[#624B78] text-white"
-        >
-          Topic
-        </button>
-        <button
-          id="tab-audience"
-          class="px-6 py-3 rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78]"
-        >
-          Audience
-        </button>
-      </div>
+      <!-- Tabs + Filters -->
+      <div class="flex justify-between items-center mb-8">
+        <!-- Tabs -->
+        <div class="flex space-x-2">
+          <button
+            id="tab-topic"
+            class="px-3 py-1 rounded-lg font-medium bg-[#624B78] text-white text-sm"
+          >
+            Topic
+          </button>
+          <button
+            id="tab-audience"
+            class="px-3 py-1 rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78] text-sm"
+          >
+            Audience
+          </button>
+        </div>
 
-      <!-- Filters (hidden until category selected) -->
-      <div id="filters" class="hidden flex flex-wrap gap-4 items-center mb-6">
-        <select
-          id="filter-topic"
-          class="rounded-xl py-2 px-4 border border-[#AC95C1]"
-        >
-          <option value="">All Topics</option>
-        </select>
-        <select
-          id="filter-audience"
-          class="rounded-xl py-2 px-4 border border-[#AC95C1]"
-        >
-          <option value="">All Audiences</option>
-        </select>
-        <input
-          id="search-input"
-          type="search"
-          placeholder="Search resources..."
-          class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-auto min-w-[160px]"
-        />
-        <button
-          id="clear-filters"
-          class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl"
-        >
-          Clear Filters
-        </button>
+        <!-- Always-visible Filters -->
+        <div id="filters" class="flex flex-wrap gap-2 items-center">
+          <select
+            id="filter-topic"
+            class="rounded-xl py-1 px-2 border border-[#AC95C1] text-sm"
+          >
+            <option value="">All Topics</option>
+          </select>
+          <select
+            id="filter-audience"
+            class="rounded-xl py-1 px-2 border border-[#AC95C1] text-sm"
+          >
+            <option value="">All Audiences</option>
+          </select>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search..."
+            class="rounded-xl py-1 px-2 border border-[#AC95C1] text-sm min-w-[120px]"
+          />
+          <button
+            id="clear-filters"
+            class="px-2 py-1 bg-[#AC95C1] text-white rounded-xl text-sm"
+          >
+            Clear
+          </button>
+        </div>
       </div>
 
       <!-- Category Cards -->
@@ -74,104 +81,71 @@
     </div>
 
     <script>
-      ;(function () {
+      (function () {
         // Helper to slugify names into IDs
         function slugify(str) {
           return str
             .toLowerCase()
             .replace(/&/g, "and")
             .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-+|-+$/g, "")
+            .replace(/^-+|-+$/g, "");
         }
 
-        // Category definitions (IDs must match slugify(names))
+        // Category definitions with Font Awesome icons
         const topics = [
-          { id: "safety-planning", name: "Safety Planning", icon: "🛡️" },
-          { id: "housing", name: "Housing", icon: "🏠" },
-          { id: "legal", name: "Legal", icon: "⚖️" },
-          { id: "technology-safety", name: "Technology Safety", icon: "💻" },
-          { id: "child-welfare", name: "Child Welfare", icon: "👶" },
-          { id: "advocacy-skills", name: "Advocacy Skills", icon: "🗣️" },
-          { id: "prevention", name: "Prevention", icon: "🚫" },
-          { id: "youth", name: "Youth", icon: "🧑‍🎓" },
-          { id: "data-reporting", name: "Data & Reporting", icon: "📊" },
-          {
-            id: "wellness-self-care",
-            name: "Wellness & Self-Care",
-            icon: "🧘",
-          },
-          { id: "finance-budgeting", name: "Finance & Budgeting", icon: "💰" },
-          { id: "bipp", name: "BIPP", icon: "🔄" },
-          { id: "elections-voting", name: "Elections & Voting", icon: "🗳️" },
-        ]
+          { id: "safety-planning", name: "Safety Planning", icon: '<i class="fas fa-shield-alt"></i>' },
+          { id: "housing", name: "Housing", icon: '<i class="fas fa-home"></i>' },
+          { id: "legal", name: "Legal", icon: '<i class="fas fa-balance-scale"></i>' },
+          { id: "technology-safety", name: "Technology Safety", icon: '<i class="fas fa-laptop"></i>' },
+          { id: "child-welfare", name: "Child Welfare", icon: '<i class="fas fa-child"></i>' },
+          { id: "advocacy-skills", name: "Advocacy Skills", icon: '<i class="fas fa-comments"></i>' },
+          { id: "prevention", name: "Prevention", icon: '<i class="fas fa-ban"></i>' },
+          { id: "youth", name: "Youth", icon: '<i class="fas fa-graduation-cap"></i>' },
+          { id: "data-reporting", name: "Data & Reporting", icon: '<i class="fas fa-chart-bar"></i>' },
+          { id: "wellness-self-care", name: "Wellness & Self-Care", icon: '<i class="fas fa-spa"></i>' },
+          { id: "finance-budgeting", name: "Finance & Budgeting", icon: '<i class="fas fa-dollar-sign"></i>' },
+          { id: "bipp", name: "BIPP", icon: '<i class="fas fa-sync-alt"></i>' },
+          { id: "elections-voting", name: "Elections & Voting", icon: '<i class="fas fa-vote-yea"></i>' },
+        ];
 
         const audiences = [
-          { id: "survivors", name: "Survivors", icon: "🛡️" },
-          { id: "advocates", name: "Advocates", icon: "👥" },
-          { id: "campus-advocates", name: "Campus Advocates", icon: "🎓" },
-          {
-            id: "child-welfare-partners",
-            name: "Child Welfare Partners",
-            icon: "👶",
-          },
-          {
-            id: "data-administrators",
-            name: "Data Administrators",
-            icon: "🗄️",
-          },
-          {
-            id: "executive-directors",
-            name: "Executive Directors",
-            icon: "👑",
-          },
-          { id: "educators", name: "Educators", icon: "🏫" },
-          {
-            id: "finance-professionals",
-            name: "Finance Professionals",
-            icon: "🧮",
-          },
-          { id: "general-public", name: "General Public", icon: "🌐" },
-          {
-            id: "grants-professionals",
-            name: "Grants Professionals",
-            icon: "📄",
-          },
-          { id: "it-operations-staff", name: "IT & Ops Staff", icon: "⚙️" },
-          { id: "legislators", name: "Legislators", icon: "🏛️" },
-          { id: "outreach-teams", name: "Outreach Teams", icon: "📢" },
-          {
-            id: "policy-professionals",
-            name: "Policy Professionals",
-            icon: "✔️",
-          },
-          { id: "program-managers", name: "Program Managers", icon: "👤" },
-          { id: "prosecutors", name: "Prosecutors", icon: "🔨" },
-          { id: "system-partners", name: "System Partners", icon: "🤝" },
-          { id: "youth-allies", name: "Youth Allies", icon: "➕" },
-          { id: "youth", name: "Youth", icon: "🧑‍🎓" },
-          {
-            id: "prevention-educators",
-            name: "Prevention Educators",
-            icon: "🧒",
-          },
-          { id: "bipp-providers", name: "BIPP Providers", icon: "🔄" },
-        ]
+          { id: "survivors", name: "Survivors", icon: '<i class="fas fa-user-shield"></i>' },
+          { id: "advocates", name: "Advocates", icon: '<i class="fas fa-users"></i>' },
+          { id: "campus-advocates", name: "Campus Advocates", icon: '<i class="fas fa-user-graduate"></i>' },
+          { id: "child-welfare-partners", name: "Child Welfare Partners", icon: '<i class="fas fa-handshake"></i>' },
+          { id: "data-administrators", name: "Data Administrators", icon: '<i class="fas fa-database"></i>' },
+          { id: "executive-directors", name: "Executive Directors", icon: '<i class="fas fa-user-tie"></i>' },
+          { id: "educators", name: "Educators", icon: '<i class="fas fa-chalkboard-teacher"></i>' },
+          { id: "finance-professionals", name: "Finance Professionals", icon: '<i class="fas fa-money-bill-wave"></i>' },
+          { id: "general-public", name: "General Public", icon: '<i class="fas fa-globe"></i>' },
+          { id: "grants-professionals", name: "Grants Professionals", icon: '<i class="fas fa-file-alt"></i>' },
+          { id: "it-operations-staff", name: "IT & Ops Staff", icon: '<i class="fas fa-cogs"></i>' },
+          { id: "legislators", name: "Legislators", icon: '<i class="fas fa-balance-scale"></i>' },
+          { id: "outreach-teams", name: "Outreach Teams", icon: '<i class="fas fa-bullhorn"></i>' },
+          { id: "policy-professionals", name: "Policy Professionals", icon: '<i class="fas fa-clipboard-check"></i>' },
+          { id: "program-managers", name: "Program Managers", icon: '<i class="fas fa-tasks"></i>' },
+          { id: "prosecutors", name: "Prosecutors", icon: '<i class="fas fa-gavel"></i>' },
+          { id: "system-partners", name: "System Partners", icon: '<i class="fas fa-network-wired"></i>' },
+          { id: "youth-allies", name: "Youth Allies", icon: '<i class="fas fa-user-friends"></i>' },
+          { id: "youth", name: "Youth", icon: '<i class="fas fa-graduation-cap"></i>' },
+          { id: "prevention-educators", name: "Prevention Educators", icon: '<i class="fas fa-chalkboard"></i>' },
+          { id: "bipp-providers", name: "BIPP Providers", icon: '<i class="fas fa-sync-alt"></i>' },
+        ];
 
-        let resources = []
-        let activeTab = "topic"
-        let selectedCategory = null
+        let resources = [];
+        let activeTab = "topic";
+        let selectedCategory = null;
 
-        const tabTopic = document.getElementById("tab-topic")
-        const tabAud = document.getElementById("tab-audience")
-        const cardGrid = document.getElementById("card-grid")
-        const resGrid = document.getElementById("resource-grid")
-        const filtersEl = document.getElementById("filters")
-        const filterTopicEl = document.getElementById("filter-topic")
-        const filterAudEl = document.getElementById("filter-audience")
-        const searchInput = document.getElementById("search-input")
-        const clearBtn = document.getElementById("clear-filters")
+        const tabTopic      = document.getElementById("tab-topic");
+        const tabAud        = document.getElementById("tab-audience");
+        const cardGrid      = document.getElementById("card-grid");
+        const resGrid       = document.getElementById("resource-grid");
+        const filterTopicEl = document.getElementById("filter-topic");
+        const filterAudEl   = document.getElementById("filter-audience");
+        const searchInput   = document.getElementById("search-input");
+        const clearBtn      = document.getElementById("clear-filters");
 
-        // Load and normalize resources then initialize dashboard
+        // Load resources then initialize
         fetch("data/resources.json")
           .then((response) => response.json())
           .then((raw) => {
@@ -179,182 +153,165 @@
               name: item["Resource Name"],
               icon: item.Icon,
               audiences: (item.Audience || "").split(/,\s*/).map(slugify),
-              topics: (item.Topics || "").split(/,\s*/).map(slugify),
-              summary: item["Short Description"],
-              date: item.Date,
-              link: item["Full Link"],
-            }))
+              topics:    (item.Topics || "").split(/,\s*/).map(slugify),
+              summary:   item["Short Description"],
+              date:      item.Date,
+              link:      item["Full Link"],
+            }));
           })
           .catch((err) => console.error("Failed to load resources:", err))
-          .finally(init)
+          .finally(init);
 
         function init() {
-          tabTopic.addEventListener("click", () => switchTab("topic"))
-          tabAud.addEventListener("click", () => switchTab("audience"))
-          clearBtn.addEventListener("click", clearFilters)
-          updateTabStyles()
-          renderCards()
+          tabTopic.addEventListener("click", () => switchTab("topic"));
+          tabAud.addEventListener("click", () => switchTab("audience"));
+          clearBtn.addEventListener("click", clearFilters);
+          updateTabStyles();
+          renderFilterOptions();
+          renderCards();
         }
 
         function switchTab(tab) {
-          activeTab = tab
-          selectedCategory = null
-          resGrid.innerHTML = ""
-          filtersEl.classList.add("hidden")
-          updateTabStyles()
-          renderCards()
+          activeTab = tab;
+          selectedCategory = null;
+          resGrid.innerHTML = "";
+          updateTabStyles();
+          renderCards();
         }
 
         function updateTabStyles() {
           if (activeTab === "topic") {
-            tabTopic.classList.add("bg-[#624B78]", "text-white")
-            tabTopic.classList.remove(
-              "bg-white",
-              "text-[#624B78]",
-              "border",
-              "border-[#624B78]",
-            )
-
-            tabAud.classList.add(
-              "bg-white",
-              "text-[#624B78]",
-              "border",
-              "border-[#624B78]",
-            )
-            tabAud.classList.remove("bg-[#624B78]", "text-white")
+            tabTopic.classList.add("bg-[#624B78]", "text-white");
+            tabTopic.classList.remove("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
+            tabAud.classList.add("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
+            tabAud.classList.remove("bg-[#624B78]", "text-white");
           } else {
-            tabAud.classList.add("bg-[#624B78]", "text-white")
-            tabAud.classList.remove(
-              "bg-white",
-              "text-[#624B78]",
-              "border",
-              "border-[#624B78]",
-            )
-
-            tabTopic.classList.add(
-              "bg-white",
-              "text-[#624B78]",
-              "border",
-              "border-[#624B78]",
-            )
-            tabTopic.classList.remove("bg-[#624B78]", "text-white")
+            tabAud.classList.add("bg-[#624B78]", "text-white");
+            tabAud.classList.remove("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
+            tabTopic.classList.add("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
+            tabTopic.classList.remove("bg-[#624B78]", "text-white");
           }
-        }
-
-        function renderCards() {
-          cardGrid.innerHTML = ""
-          const items = activeTab === "topic" ? topics : audiences
-          items.forEach((item) => {
-            const el = document.createElement("div")
-            el.className =
-              "bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl"
-            el.innerHTML = `
-          <div class="flex flex-col items-center text-center">
-            <div class="text-4xl mb-3">${item.icon}</div>
-            <h3 class="text-lg font-semibold mb-1 text-[#624B78]">${item.name}</h3>
-          </div>
-        `
-            el.addEventListener("click", () => selectCategory(item))
-            cardGrid.appendChild(el)
-          })
-        }
-
-        function selectCategory(item) {
-          selectedCategory = item
-          filtersEl.classList.remove("hidden")
-          renderFilterOptions()
-          renderResources()
-          cardGrid.innerHTML = ""
         }
 
         function renderFilterOptions() {
-          filterTopicEl.innerHTML = '<option value="">All Topics</option>'
+          // Populate topic filter
+          filterTopicEl.innerHTML = '<option value="">All Topics</option>';
           topics.forEach((t) =>
             filterTopicEl.insertAdjacentHTML(
               "beforeend",
-              `<option value="${t.id}">${t.name}</option>`,
-            ),
-          )
-          filterAudEl.innerHTML = '<option value="">All Audiences</option>'
+              `<option value="${t.id}">${t.name}</option>`
+            )
+          );
+          // Populate audience filter
+          filterAudEl.innerHTML = '<option value="">All Audiences</option>';
           audiences.forEach((a) =>
             filterAudEl.insertAdjacentHTML(
               "beforeend",
-              `<option value="${a.id}">${a.name}</option>`,
-            ),
-          )
-          filterTopicEl.addEventListener("change", renderResources)
-          filterAudEl.addEventListener("change", renderResources)
-          searchInput.addEventListener("input", renderResources)
+              `<option value="${a.id}">${a.name}</option>`
+            )
+          );
+
+          // Attach filter events
+          filterTopicEl.addEventListener("change", renderResources);
+          filterAudEl.addEventListener("change", renderResources);
+          searchInput.addEventListener("input", renderResources);
+        }
+
+        function renderCards() {
+          cardGrid.innerHTML = "";
+          const items = activeTab === "topic" ? topics : audiences;
+          items.forEach((item) => {
+            const el = document.createElement("div");
+            el.className = "bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl";
+            el.innerHTML = `
+              <div class="flex flex-col items-center text-center">
+                <div class="text-4xl mb-3 text-[#624B78]">${item.icon}</div>
+                <h3 class="text-lg font-semibold mb-1 text-[#624B78]">${item.name}</h3>
+              </div>
+            `;
+            el.addEventListener("click", () => selectCategory(item));
+            cardGrid.appendChild(el);
+          });
+        }
+
+        function selectCategory(item) {
+          selectedCategory = item;
+          cardGrid.innerHTML = "";
+          renderResources();
         }
 
         function renderResources() {
-          resGrid.innerHTML = ""
-          const ft = filterTopicEl.value
-          const fa = filterAudEl.value
-          const q = searchInput.value.toLowerCase()
+          resGrid.innerHTML = "";
+          const ft = filterTopicEl.value;
+          const fa = filterAudEl.value;
+          const q  = searchInput.value.toLowerCase();
+
           const filtered = resources.filter((r) => {
-            const inCategory = r[
-              activeTab === "topic" ? "topics" : "audiences"
-            ].includes(selectedCategory.id)
-            const matchTopic = ft ? r.topics.includes(ft) : true
-            const matchAud = fa ? r.audiences.includes(fa) : true
-            const matchSearch = q ? r.name.toLowerCase().includes(q) : true
-            return inCategory && matchTopic && matchAud && matchSearch
-          })
+            const inCategory = selectedCategory
+              ? r[activeTab === "topic" ? "topics" : "audiences"].includes(selectedCategory.id)
+              : true;
+            const matchTopic  = ft ? r.topics.includes(ft) : true;
+            const matchAud    = fa ? r.audiences.includes(fa) : true;
+            const matchSearch = q  ? r.name.toLowerCase().includes(q) : true;
+            return inCategory && matchTopic && matchAud && matchSearch;
+          });
+
           if (!filtered.length) {
-            resGrid.innerHTML =
-              '<p class="text-center text-[#45375a] py-6">No resources found.</p>'
-            return
+            resGrid.innerHTML = '<p class="text-center text-[#45375a] py-6">No resources found.</p>';
+            return;
           }
+
           filtered.forEach((r) => {
-            const card = document.createElement("div")
-            card.className = "bg-white p-6 rounded-2xl shadow-lg"
+            const card = document.createElement("div");
+            card.className = "bg-white p-6 rounded-2xl shadow-lg";
             card.innerHTML = `
-          <div class="flex items-center mb-2">
-            <div class="text-2xl mr-3">${r.icon}</div>
-            <h3 class="text-lg font-semibold">${r.name}</h3>
-          </div>
-          <p class="text-sm text-[#45375a] mb-2">${r.summary}</p>
-          <p class="text-sm text-[#45375a] mb-2"><strong>Date:</strong> ${r.date}</p>
-<p class="text-sm text-[#45375a] mb-2">
-  <strong>Topics:</strong>
-  ${
-    r.topics && r.topics.length
-      ? r.topics
-          .map((id) => {
-            const t = topics.find((t) => t.id === id)
-            return t ? t.name : "Uncategorized"
-          })
-          .join(", ")
-      : "Uncategorized"
-  }
-</p>
-<p class="text-sm text-[#45375a] mb-4">
-  <strong>Audience:</strong>
-  ${
-    r.audiences && r.audiences.length
-      ? r.audiences
-          .map((id) => {
-            const a = audiences.find((a) => a.id === id)
-            return a ? a.name : "Uncategorized"
-          })
-          .join(", ")
-      : "Uncategorized"
-  }
-</p>
-          <a href="${r.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-[#624B78] text-white rounded-xl hover:bg-[#45375a]">Open Resource</a>
-          `
-            resGrid.appendChild(card)
-          })
+              <div class="flex items-center mb-2">
+                <div class="text-2xl mr-3 text-[#624B78]">${r.icon}</div>
+                <h3 class="text-lg font-semibold">${r.name}</h3>
+              </div>
+              <p class="text-sm text-[#45375a] mb-2">${r.summary}</p>
+              <p class="text-sm text-[#45375a] mb-2"><strong>Date:</strong> ${r.date}</p>
+              <p class="text-sm text-[#45375a] mb-2">
+                <strong>Topics:</strong> 
+                ${
+                  r.topics && r.topics.length
+                    ? r.topics
+                        .map((id) => {
+                          const t = topics.find((t) => t.id === id);
+                          return t ? t.name : "Uncategorized";
+                        })
+                        .join(", ")
+                    : "Uncategorized"
+                }
+              </p>
+              <p class="text-sm text-[#45375a] mb-4">
+                <strong>Audience:</strong>
+                ${
+                  r.audiences && r.audiences.length
+                    ? r.audiences
+                        .map((id) => {
+                          const a = audiences.find((a) => a.id === id);
+                          return a ? a.name : "Uncategorized";
+                        })
+                        .join(", ")
+                    : "Uncategorized"
+                }
+              </p>
+              <a href="${r.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-[#624B78] text-white rounded-xl hover:bg-[#45375a] text-sm">Open Resource</a>
+            `;
+            resGrid.appendChild(card);
+          });
         }
 
         function clearFilters() {
-          filterTopicEl.value = ""
-          filterAudEl.value = ""
-          searchInput.value = ""
-          renderResources()
+          filterTopicEl.value = "";
+          filterAudEl.value = "";
+          searchInput.value = "";
+          selectedCategory    = null;
+          resGrid.innerHTML    = "";
+          renderCards();
         }
-      })()
+      })();
     </script>
   </body>
 </html>
