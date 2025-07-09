@@ -65,10 +65,12 @@
 
       <!-- Category Cards in padded container -->
       <div class="px-4 md:px-12">
-        <div
-          id="card-grid"
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6"
-        ></div>
+        <div id="card-grid-wrapper">
+          <div
+            id="card-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6"
+          ></div>
+        </div>
       </div>
 
       <!-- Resource Cards in padded container -->
@@ -300,12 +302,14 @@
         let resources = [];
         let activeTab = "topic";
         let selectedCategory = null;
+        let showAllResources = false;
 
         const tabTopic      = document.getElementById("tab-topic");
         const tabAud        = document.getElementById("tab-audience");
         const cardGrid      = document.getElementById("card-grid");
         const resGrid       = document.getElementById("resource-grid");
         const categoryHeading = document.getElementById("category-heading");
+        const cardGridWrapper = document.getElementById("card-grid-wrapper");
 
         // Button elements
         const showAllBtn = document.getElementById("show-all-cards");
@@ -340,6 +344,8 @@
         function switchTab(tab) {
           activeTab = tab;
           selectedCategory = null;
+          showAllResources = false;
+          cardGridWrapper.style.display = "";
           resGrid.innerHTML = "";
           updateTabStyles();
           renderCards();
@@ -362,6 +368,8 @@
 
         function renderCards() {
           cardGrid.innerHTML = "";
+          cardGridWrapper.style.display = showAllResources ? "none" : "";
+          if (showAllResources) return;
           const items = activeTab === "topic" ? topics : audiences;
           items.forEach((item) => {
             const el = document.createElement("div");
@@ -379,7 +387,8 @@
 
         function selectCategory(item) {
           selectedCategory = item;
-          cardGrid.innerHTML = "";
+          showAllResources = false;
+          cardGridWrapper.style.display = "none";
           renderResources();
         }
 
@@ -457,16 +466,69 @@
           });
         }
 
+        function renderAllResources() {
+          // Hide category cards
+          cardGridWrapper.style.display = "none";
+          categoryHeading.innerHTML = "";
+          resGrid.innerHTML = "";
+
+          if (!resources.length) {
+            resGrid.innerHTML = '<p class="text-center text-[#45375a] py-6">No resources found.</p>';
+            return;
+          }
+          resources.forEach((r) => {
+            const card = document.createElement("div");
+            card.className = "bg-white p-6 rounded-2xl shadow-lg";
+            card.innerHTML = `
+              <div class="flex items-center mb-2">
+                <div class="text-2xl mr-3 text-[#624B78]">${r.icon}</div>
+                <h3 class="text-lg font-semibold">${r.name}</h3>
+              </div>
+              <p class="text-sm text-[#45375a] mb-2">${r.summary}</p>
+              <p class="text-sm text-[#45375a] mb-2"><strong>Date:</strong> ${r.date}</p>
+              <p class="text-sm text-[#45375a] mb-2">
+                <strong>Topics:</strong> 
+                ${
+                  r.topics && r.topics.length
+                    ? r.topics
+                        .map((id) => {
+                          const t = topics.find((t) => t.id === id);
+                          return t ? t.name : "Uncategorized";
+                        })
+                        .join(", ")
+                    : "Uncategorized"
+                }
+              </p>
+              <p class="text-sm text-[#45375a] mb-4">
+                <strong>Audience:</strong>
+                ${
+                  r.audiences && r.audiences.length
+                    ? r.audiences
+                        .map((id) => {
+                          const a = audiences.find((a) => a.id === id);
+                          return a ? a.name : "Uncategorized";
+                        })
+                        .join(", ")
+                    : "Uncategorized"
+                }
+              </p>
+              <a href="${r.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-[#624B78] text-white rounded-xl hover:bg-[#45375a] text-sm">Open Resource</a>
+            `;
+            resGrid.appendChild(card);
+          });
+        }
+
         function showAllCards() {
           selectedCategory = null;
-          categoryHeading.innerHTML = "";
-          renderCards();
-          resGrid.innerHTML = "";
+          showAllResources = true;
+          renderAllResources();
         }
 
         function clearFilters() {
           selectedCategory = null;
+          showAllResources = false;
           categoryHeading.innerHTML = "";
+          cardGridWrapper.style.display = "";
           renderCards();
           resGrid.innerHTML = "";
         }
