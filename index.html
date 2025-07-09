@@ -79,14 +79,10 @@
       { id: 'youth-allies', name: 'Youth Allies', icon: 'user-plus', description: 'Adults or peers supporting youth engagement.' }
     ];
 
-    // Resources will be loaded from external JSON
     let resources = [];
-
-    // State
     let activeTab = 'topic';
     let selectedCategory = null;
 
-    // Elements
     const tabTopic = document.getElementById('tab-topic');
     const tabAud = document.getElementById('tab-audience');
     const cardGrid = document.getElementById('card-grid');
@@ -97,14 +93,12 @@
     const searchInput = document.getElementById('search-input');
     const clearBtn = document.getElementById('clear-filters');
 
-    // Initialize after fetching resources
+    // Load resources then initialize dashboard
     fetch('data/resources.json')
       .then(response => response.json())
-      .then(data => {
-        resources = data;
-        init();
-      })
-      .catch(err => console.error('Failed to load resources:', err));
+      .then(data => { resources = data; })
+      .catch(err => console.error('Failed to load resources:', err))
+      .finally(init);
 
     function init() {
       tabTopic.addEventListener('click', () => switchTab('topic'));
@@ -137,9 +131,7 @@
       }
     }
 
-    function renderTabs() {
-      updateTabStyles();
-    }
+    function renderTabs() { updateTabStyles(); }
 
     function renderCards() {
       cardGrid.innerHTML = '';
@@ -179,4 +171,42 @@
     }
 
     function renderResources() {
-      resGrid.innerHTML = '';```
+      resGrid.innerHTML = '';
+      const ft = filterTopicEl.value;
+      const fa = filterAudEl.value;
+      const q = searchInput.value.toLowerCase();
+      const filtered = resources.filter(r => {
+        const inCategory = r[activeTab==='topic'?'topics':'audiences'].includes(selectedCategory.id);
+        const matchTopic = ft ? r.topics.includes(ft) : true;
+        const matchAud = fa ? r.audiences.includes(fa) : true;
+        const matchSearch = q ? r.name.toLowerCase().includes(q) : true;
+        return inCategory && matchTopic && matchAud && matchSearch;
+      });
+      if (!filtered.length) {
+        resGrid.innerHTML = '<p class="text-center text-[#45375a] py-6">No resources found.</p>';
+        return;
+      }
+      filtered.forEach(r => {
+        const card = document.createElement('div');
+        card.className = 'bg-white p-6 rounded-2xl shadow-lg';
+        card.innerHTML = `
+          <h3 class="text-lg font-semibold mb-2">${r.name}</h3>
+          <div class="flex flex-wrap gap-2 mb-2">${r.topics.map(id=>`<span class="text-xs px-2 py-1 rounded bg-[#AC95C1]">${topics.find(t=>t.id===id).name}</span>`).join('')}</div>
+          <div class="flex flex-wrap gap-2">${r.audiences.map(id=>`<span class="text-xs px-2 py-1 rounded bg-[#624B78] text-white">${audiences.find(a=>a.id===id).name}</span>`).join('')}</div>
+        `;
+        resGrid.appendChild(card);
+      });
+      lucide.createIcons();
+    }
+
+    function clearFilters() {
+      filterTopicEl.value = '';
+      filterAudEl.value = '';
+      searchInput.value = '';
+      renderResources();
+    }
+
+  })();
+  </script>
+</body>
+</html>
