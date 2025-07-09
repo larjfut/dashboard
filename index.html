@@ -21,24 +21,25 @@
       <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
       <!-- Tabs + Filters Container -->
-      <div class="flex justify-between items-center mb-8">
-        <!-- Tabs -->
-        <div class="flex space-x-2">
-          <button
-            id="tab-topic"
-            class="flex items-center px-2 py-1 text-m leading-none whitespace-nowrap rounded-lg font-medium bg-[#624B78] text-white hover:bg-[#45375a] transition"
-          >
-            <i class="fas fa-tags mr-1"></i>
-            Topic
-          </button>
-          <button
-            id="tab-audience"
-            class="flex items-center px-2 py-1 text-m leading-none whitespace-nowrap rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78] hover:bg-[#f3eff9] transition"
-          >
-            <i class="fas fa-users mr-1"></i>
-            Audience
-          </button>
-        </div>
+      <div class="flex space-x-4">
+  <button
+    id="tab-topic"
+    class="flex items-center gap-2 px-6 py-3 text-lg font-bold rounded-2xl shadow-md transition
+           bg-[#624B78] text-white hover:bg-[#45375a] hover:scale-105 active:scale-95 focus:outline-none"
+  >
+    <i class="fas fa-tags text-2xl"></i>
+    Topic
+  </button>
+  <button
+    id="tab-audience"
+    class="flex items-center gap-2 px-6 py-3 text-lg font-bold rounded-2xl shadow-md transition
+           bg-white text-[#624B78] border-2 border-[#624B78] hover:bg-[#f3eff9] hover:scale-105 active:scale-95 focus:outline-none"
+  >
+    <i class="fas fa-users text-2xl"></i>
+    Audience
+  </button>
+</div>
+
 
         <!-- Always-visible Filters (with icons) -->
         <div id="filters" class="flex flex-wrap gap-2 items-center">
