@@ -41,7 +41,7 @@
   },
   {
     "#": 5,
-    "Resource Name": "Utility Waiver  Electric/Phone (EN)",
+    "Resource Name": "Utility Waiver - Electric/Phone (EN)",
     "Icon": "🏠",
     "Audience": "Advocates, Survivors",
     "Topics": "Housing",
@@ -51,7 +51,7 @@
   },
   {
     "#": 6,
-    "Resource Name": "Utility Waiver  Electric/Phone (ES)",
+    "Resource Name": "Utility Waiver - Electric/Phone (ES)",
     "Icon": "🏠",
     "Audience": "Advocates, Survivors",
     "Topics": "Housing",
@@ -61,7 +61,7 @@
   },
   {
     "#": 7,
-    "Resource Name": "Utility Waiver  Austin Energy (EN)",
+    "Resource Name": "Utility Waiver - Austin Energy (EN)",
     "Icon": "🏠",
     "Audience": "Survivors",
     "Topics": "Housing",
@@ -71,7 +71,7 @@
   },
   {
     "#": 8,
-    "Resource Name": "Utility Waiver  Austin Energy (ES)",
+    "Resource Name": "Utility Waiver - Austin Energy (ES)",
     "Icon": "🏠",
     "Audience": "Survivors",
     "Topics": "Housing",
@@ -81,7 +81,7 @@
   },
   {
     "#": 9,
-    "Resource Name": "Utility Waiver  Gas Service (EN)",
+    "Resource Name": "Utility Waiver - Gas Service (EN)",
     "Icon": "🏠",
     "Audience": "Survivors",
     "Topics": "Housing",
@@ -91,7 +91,7 @@
   },
   {
     "#": 10,
-    "Resource Name": "Utility Waiver  Gas Service (ES)",
+    "Resource Name": "Utility Waiver - Gas Service (ES)",
     "Icon": "🏠",
     "Audience": "Survivors",
     "Topics": "Housing",
@@ -101,7 +101,7 @@
   },
   {
     "#": 11,
-    "Resource Name": "HB 1372 Lifelines to Safety (EN)",
+    "Resource Name": "HB 1372 - Lifelines to Safety (EN)",
     "Icon": "🛡️",
     "Audience": "Advocates, Survivors",
     "Topics": "Safety Planning, Technology Safety",
@@ -111,7 +111,7 @@
   },
   {
     "#": 12,
-    "Resource Name": "HB 1372 Lifelines to Safety (ES)",
+    "Resource Name": "HB 1372 - Lifelines to Safety (ES)",
     "Icon": "🛡️",
     "Audience": "Advocates, Survivors",
     "Topics": "Safety Planning, Technology Safety",
@@ -131,7 +131,7 @@
   },
   {
     "#": 14,
-    "Resource Name": "Survivors Rights Palm Card  CPS (EN)",
+    "Resource Name": "Survivors Rights Palm Card - CPS (EN)",
     "Icon": "👶",
     "Audience": "Survivors",
     "Topics": "Child Welfare",
@@ -141,7 +141,7 @@
   },
   {
     "#": 15,
-    "Resource Name": "Supervivientes: Derechos  CPS (ES)",
+    "Resource Name": "Supervivientes: Derechos - CPS (ES)",
     "Icon": "👶",
     "Audience": "Survivors",
     "Topics": "Child Welfare",
@@ -161,7 +161,7 @@
   },
   {
     "#": 17,
-    "Resource Name": "Minors Rights Tip Sheet (EN)",
+    "Resource Name": "Minors Rights Tip Sheet (EN)",
     "Icon": "👶",
     "Audience": "Educators, Youth",
     "Topics": "Child Welfare",
@@ -191,7 +191,7 @@
   },
   {
     "#": 20,
-    "Resource Name": "Dating Bill of Rights (Palm Card EN)",
+    "Resource Name": "Dating Bill of Rights (EN)",
     "Icon": "🧒",
     "Audience": "Educators, Youth",
     "Topics": "Prevention, Youth",
@@ -211,7 +211,7 @@
   },
   {
     "#": 22,
-    "Resource Name": "Know the Difference Bookmark (EN)",
+    "Resource Name": "Know the Difference - HEalthy vs Unhealthy Relationships Bookmark (EN)",
     "Icon": "🧒",
     "Audience": "Educators, Youth",
     "Topics": "Prevention, Youth",
@@ -221,7 +221,7 @@
   },
   {
     "#": 23,
-    "Resource Name": "Conozca la Diferencia (ES)",
+    "Resource Name": "Conozca la Diferencia (ES)",
     "Icon": "🧒",
     "Audience": "Youth",
     "Topics": "Prevention, Youth",
@@ -271,7 +271,7 @@
   },
   {
     "#": 28,
-    "Resource Name": "Tips for Advocates  Mobile Advocacy",
+    "Resource Name": "Tips for Advocates - Mobile Advocacy",
     "Icon": "🗣️",
     "Audience": "Advocates",
     "Topics": "Advocacy Skills",
@@ -281,7 +281,7 @@
   },
   {
     "#": 29,
-    "Resource Name": "Tips for Advocates  Technology Safety",
+    "Resource Name": "Tips for Advocates - Technology Safety",
     "Icon": "💻",
     "Audience": "Advocates",
     "Topics": "Technology Safety",
@@ -311,7 +311,7 @@
   },
   {
     "#": 32,
-    "Resource Name": "Tips for Advocates  CPS",
+    "Resource Name": "Tips for Advocates - CPS",
     "Icon": "👶",
     "Audience": "Advocates",
     "Topics": "Child Welfare",
@@ -321,7 +321,7 @@
   },
   {
     "#": 33,
-    "Resource Name": "Tips for Advocates  Immigration",
+    "Resource Name": "Tips for Advocates - Immigration",
     "Icon": "⚖️",
     "Audience": "Advocates",
     "Topics": "Legal",
@@ -341,7 +341,7 @@
   },
   {
     "#": 35,
-    "Resource Name": "Tips for Advocates  Sexual Assault",
+    "Resource Name": "Tips for Advocates - Sexual Assault",
     "Icon": "🗣️",
     "Audience": "Advocates",
     "Topics": "Advocacy Skills",
@@ -351,7 +351,7 @@
   },
   {
     "#": 36,
-    "Resource Name": "Tips for Advocates  Child Support",
+    "Resource Name": "Tips for Advocates - Child Support",
     "Icon": "⚖️",
     "Audience": "Advocates",
     "Topics": "Legal",
@@ -361,7 +361,7 @@
   },
   {
     "#": 37,
-    "Resource Name": "Tips for Advocates  Housing Funds",
+    "Resource Name": "Tips for Advocates - Housing Funds",
     "Icon": "🏠",
     "Audience": "Advocates",
     "Topics": "Housing",
@@ -371,7 +371,7 @@
   },
   {
     "#": 38,
-    "Resource Name": "Stalking Law Changes  Advocate Brief",
+    "Resource Name": "Stalking Law Changes - Advocate Brief",
     "Icon": "⚖️",
     "Audience": "Advocates, Policy Professionals",
     "Topics": "Legal",
@@ -381,7 +381,7 @@
   },
   {
     "#": 39,
-    "Resource Name": "Stalking Law Tip Sheet  Advocates",
+    "Resource Name": "Stalking Law Tip Sheet - Advocates",
     "Icon": "⚖️",
     "Audience": "Advocates",
     "Topics": "Legal",
@@ -391,7 +391,7 @@
   },
   {
     "#": 40,
-    "Resource Name": "Tips for Prosecutors  Stalking Law",
+    "Resource Name": "Tips for Prosecutors - Stalking Law",
     "Icon": "⚖️",
     "Audience": "Prosecutors",
     "Topics": "Legal",
@@ -421,7 +421,7 @@
   },
   {
     "#": 43,
-    "Resource Name": "Pretrial Juvenile Advocates Resource",
+    "Resource Name": "Pretrial Juvenile Advocates - Resource",
     "Icon": "👶",
     "Audience": "Advocates, System Partners",
     "Topics": "Child Welfare",
@@ -501,7 +501,7 @@
   },
   {
     "#": 51,
-    "Resource Name": "Tech for Social Impact  Nonprofit Offers",
+    "Resource Name": "Tech for Social Impact - Nonprofit Offers",
     "Icon": "💻",
     "Audience": "IT Operations Staff",
     "Topics": "Technology Safety",
@@ -511,7 +511,7 @@
   },
   {
     "#": 52,
-    "Resource Name": "DVAM External Toolkit  2022",
+    "Resource Name": "DVAM External Toolkit - 2022",
     "Icon": "🧒",
     "Audience": "Educators, Outreach Teams, Prevention Educators",
     "Topics": "Prevention, Youth",
@@ -521,7 +521,7 @@
   },
   {
     "#": 53,
-    "Resource Name": "DVAM External Toolkit  2024",
+    "Resource Name": "DVAM External Toolkit - 2024",
     "Icon": "🧒",
     "Audience": "Educators, Outreach Teams, Prevention Educators",
     "Topics": "Prevention, Youth",
@@ -571,7 +571,7 @@
   },
   {
     "#": 58,
-    "Resource Name": "BIPP Resource Toolkit  2023",
+    "Resource Name": "BIPP Resource Toolkit - 2023",
     "Icon": "🚫",
     "Audience": "BIPP providers, Prevention Educators",
     "Topics": "BIPP",
@@ -581,7 +581,7 @@
   },
   {
     "#": 59,
-    "Resource Name": "89th Bills of Note  Summary",
+    "Resource Name": "89th Bills of Note - Summary",
     "Icon": "🗳️",
     "Audience": "Advocates, Policy Professionals",
     "Topics": "Elections Voting",
@@ -671,7 +671,7 @@
   },
   {
     "#": 68,
-    "Resource Name": "Tips for Advocates  Housing Funds",
+    "Resource Name": "Tips for Advocates - Housing Funds",
     "Icon": "🏠",
     "Audience": "Advocates",
     "Topics": "Housing",
