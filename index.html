@@ -181,6 +181,7 @@
               audiences: (item.Audience || "").split(/,\s*/).map(slugify),
               topics: (item.Topics || "").split(/,\s*/).map(slugify),
               summary: item["Short Description"],
+              date: item.Date,
               link: item["Full Link"],
             }))
           })
@@ -287,6 +288,8 @@
             <div class="text-2xl mr-3">${r.icon}</div>
             <h3 class="text-lg font-semibold">${r.name}</h3>
           </div>
+          <p class="text-sm text-[#45375a] mb-2">${r.summary}</p>
+          <p class="text-sm text-[#45375a] mb-2"><strong>Date:</strong> ${r.date}</p>
 <p class="text-sm text-[#45375a] mb-2">
   <strong>Topics:</strong>
   ${
@@ -313,8 +316,8 @@
       : "Uncategorized"
   }
 </p>
-          <a href="${r.link}" target="_blank" class="text-blue-600 underline">Open Resource</a>
-        `
+          <a href="${r.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-[#624B78] text-white rounded-xl hover:bg-[#45375a]">Open Resource</a>
+          `
             resGrid.appendChild(card)
           })
         }
