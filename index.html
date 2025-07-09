@@ -6,34 +6,36 @@
     <title>TCFV Resource Hub</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for professional icons -->
+    <!-- Font Awesome for icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-pO1j5Y5DZ0dypM2G8e6z2n0lPz+QZ1p2eN1YhVB8Xg4EhE+2D6zRNhKNO6v+QzjhxpoGZ+YzJYz4ObE+TbbDdw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
   </head>
   <body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
     <div class="max-w-7xl mx-auto p-6">
+      <!-- Header -->
       <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">Resource Hub</h1>
       <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
-      <!-- Tabs + Filters -->
+      <!-- Tabs + Filters Container -->
       <div class="flex justify-between items-center mb-8">
         <!-- Tabs -->
         <div class="flex space-x-2">
           <button
             id="tab-topic"
-            class="px-3 py-1 rounded-lg font-medium bg-[#624B78] text-white text-sm"
+            class="flex items-center px-2 py-1 text-xs leading-none whitespace-nowrap rounded-lg font-medium bg-[#624B78] text-white hover:bg-[#45375a] transition"
           >
+            <i class="fas fa-tags mr-1"></i>
             Topic
           </button>
           <button
             id="tab-audience"
-            class="px-3 py-1 rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78] text-sm"
+            class="flex items-center px-2 py-1 text-xs leading-none whitespace-nowrap rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78] hover:bg-[#f3eff9] transition"
           >
+            <i class="fas fa-users mr-1"></i>
             Audience
           </button>
         </div>
@@ -60,7 +62,7 @@
           />
           <button
             id="clear-filters"
-            class="px-2 py-1 bg-[#AC95C1] text-white rounded-xl text-sm"
+            class="px-2 py-1 bg-[#AC95C1] text-white rounded-xl text-sm hover:bg-[#8f7ca5] transition"
           >
             Clear
           </button>
@@ -80,6 +82,7 @@
       ></div>
     </div>
 
+    <!-- JavaScript -->
     <script>
       (function () {
         // Helper to slugify names into IDs
@@ -120,14 +123,13 @@
           { id: "general-public", name: "General Public", icon: '<i class="fas fa-globe"></i>' },
           { id: "grants-professionals", name: "Grants Professionals", icon: '<i class="fas fa-file-alt"></i>' },
           { id: "it-operations-staff", name: "IT & Ops Staff", icon: '<i class="fas fa-cogs"></i>' },
-          { id: "legislators", name: "Legislators", icon: '<i class="fas fa-balance-scale"></i>' },
+          { id: "legislators", name: "Legislators", icon: '<i class="fas fa-landmark"></i>' },
           { id: "outreach-teams", name: "Outreach Teams", icon: '<i class="fas fa-bullhorn"></i>' },
           { id: "policy-professionals", name: "Policy Professionals", icon: '<i class="fas fa-clipboard-check"></i>' },
           { id: "program-managers", name: "Program Managers", icon: '<i class="fas fa-tasks"></i>' },
           { id: "prosecutors", name: "Prosecutors", icon: '<i class="fas fa-gavel"></i>' },
           { id: "system-partners", name: "System Partners", icon: '<i class="fas fa-network-wired"></i>' },
           { id: "youth-allies", name: "Youth Allies", icon: '<i class="fas fa-user-friends"></i>' },
-          { id: "youth", name: "Youth", icon: '<i class="fas fa-graduation-cap"></i>' },
           { id: "prevention-educators", name: "Prevention Educators", icon: '<i class="fas fa-chalkboard"></i>' },
           { id: "bipp-providers", name: "BIPP Providers", icon: '<i class="fas fa-sync-alt"></i>' },
         ];
@@ -210,8 +212,6 @@
               `<option value="${a.id}">${a.name}</option>`
             )
           );
-
-          // Attach filter events
           filterTopicEl.addEventListener("change", renderResources);
           filterAudEl.addEventListener("change", renderResources);
           searchInput.addEventListener("input", renderResources);
@@ -307,8 +307,8 @@
           filterTopicEl.value = "";
           filterAudEl.value = "";
           searchInput.value = "";
-          selectedCategory    = null;
-          resGrid.innerHTML    = "";
+          selectedCategory = null;
+          resGrid.innerHTML = "";
           renderCards();
         }
       })();
