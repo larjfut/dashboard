@@ -20,7 +20,7 @@
       <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">Resource Hub</h1>
       <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
-      <!-- Tabs + Filters Container -->
+      <!-- Tabs + Button Bar -->
       <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8 gap-4">
         <!-- Tabs (left) -->
         <div class="flex space-x-5">
@@ -41,39 +41,21 @@
             Audience
           </button>
         </div>
-        <!-- Filters (right, visually grouped) -->
-        <div id="filters"
-          class="flex flex-wrap md:flex-nowrap gap-2 md:gap-3 items-center bg-white/90 shadow rounded-2xl px-4 py-2 mt-2 md:mt-0"
+        <!-- Button Bar (right) -->
+        <div
+          class="flex gap-3 items-center bg-white/90 shadow rounded-2xl px-4 py-2 mt-2 md:mt-0"
         >
-          <div class="flex items-center">
-            <i class="fas fa-list-alt mr-2 text-[#624B78] text-lg"></i>
-            <select
-              id="filter-topic"
-              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[120px] md:min-w-[160px]"
-            >
-              <option value="">All Topics</option>
-            </select>
-          </div>
-          <div class="flex items-center">
-            <i class="fas fa-users mr-2 text-[#624B78] text-lg"></i>
-            <select
-              id="filter-audience"
-              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[120px] md:min-w-[160px]"
-            >
-              <option value="">All Audiences</option>
-            </select>
-          </div>
-          <input
-            id="search-input"
-            type="search"
-            placeholder="Search..."
-            class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[120px] md:min-w-[160px]"
-          />
+          <button
+            id="show-all-cards"
+            class="px-4 py-2 bg-[#624B78] text-white rounded-xl text-base hover:bg-[#45375a] transition h-12 font-semibold"
+          >
+            Show All Cards
+          </button>
           <button
             id="clear-filters"
-            class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl text-base hover:bg-[#8f7ca5] transition h-12"
+            class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl text-base hover:bg-[#8f7ca5] transition h-12 font-semibold"
           >
-            Clear
+            Clear Filters
           </button>
         </div>
       </div>
@@ -323,10 +305,11 @@
         const tabAud        = document.getElementById("tab-audience");
         const cardGrid      = document.getElementById("card-grid");
         const resGrid       = document.getElementById("resource-grid");
-        const filterTopicEl = document.getElementById("filter-topic");
-        const filterAudEl   = document.getElementById("filter-audience");
-        const searchInput   = document.getElementById("search-input");
-        const clearBtn      = document.getElementById("clear-filters");
+        const categoryHeading = document.getElementById("category-heading");
+
+        // Button elements
+        const showAllBtn = document.getElementById("show-all-cards");
+        const clearBtn   = document.getElementById("clear-filters");
 
         // Load resources then initialize
         fetch("data/resources.json")
@@ -348,9 +331,9 @@
         function init() {
           tabTopic.addEventListener("click", () => switchTab("topic"));
           tabAud.addEventListener("click", () => switchTab("audience"));
+          showAllBtn.addEventListener("click", showAllCards);
           clearBtn.addEventListener("click", clearFilters);
           updateTabStyles();
-          renderFilterOptions();
           renderCards();
         }
 
@@ -360,8 +343,7 @@
           resGrid.innerHTML = "";
           updateTabStyles();
           renderCards();
-          // Clear category heading if switching tabs
-          document.getElementById("category-heading").innerHTML = "";
+          categoryHeading.innerHTML = "";
         }
 
         function updateTabStyles() {
@@ -378,28 +360,6 @@
           }
         }
 
-        function renderFilterOptions() {
-          // Populate topic filter
-          filterTopicEl.innerHTML = '<option value="">All Topics</option>';
-          topics.forEach((t) =>
-            filterTopicEl.insertAdjacentHTML(
-              "beforeend",
-              `<option value="${t.id}">${t.name}</option>`
-            )
-          );
-          // Populate audience filter
-          filterAudEl.innerHTML = '<option value="">All Audiences</option>';
-          audiences.forEach((a) =>
-            filterAudEl.insertAdjacentHTML(
-              "beforeend",
-              `<option value="${a.id}">${a.name}</option>`
-            )
-          );
-          filterTopicEl.addEventListener("change", renderResources);
-          filterAudEl.addEventListener("change", renderResources);
-          searchInput.addEventListener("input", renderResources);
-        }
-
         function renderCards() {
           cardGrid.innerHTML = "";
           const items = activeTab === "topic" ? topics : audiences;
@@ -409,7 +369,7 @@
             el.innerHTML = `
               <div class="flex flex-col items-center text-center">
                 <div class="text-5xl mb-3 text-[#624B78]">${item.icon}</div>
-                <h3 class="text-3xl font-semibold mb-1 text-[#624B78]">${item.name}</h3>
+                <h3 class="text-xl font-semibold mb-1 text-[#624B78]">${item.name}</h3>
               </div>
             `;
             el.addEventListener("click", () => selectCategory(item));
@@ -425,39 +385,33 @@
 
         function renderResources() {
           // Set heading/description if category is selected
-          const categoryHeading = document.getElementById("category-heading");
           if (selectedCategory) {
-categoryHeading.innerHTML = `
-  <div class="text-4xl font-extrabold text-[#624B78] mb-2 flex items-center gap-3">
-    <span class="text-5xl">${selectedCategory.icon}</span>
-    ${selectedCategory.name}
-  </div>
-  <div class="text-xl text-[#45375a] mb-6">
-    ${selectedCategory.description || ""}
-  </div>
-`;
-
+            categoryHeading.innerHTML = `
+              <div class="text-4xl font-extrabold text-[#624B78] mb-2 flex items-center gap-3">
+                <span class="text-5xl">${selectedCategory.icon}</span>
+                ${selectedCategory.name}
+              </div>
+              <div class="text-xl text-[#45375a] mb-6">
+                ${selectedCategory.description || ""}
+              </div>
+            `;
           } else {
             categoryHeading.innerHTML = "";
           }
 
           resGrid.innerHTML = "";
-          const ft = filterTopicEl.value;
-          const fa = filterAudEl.value;
-          const q  = searchInput.value.toLowerCase();
 
-          const filtered = resources.filter((r) => {
-            const inCategory = selectedCategory
-              ? r[activeTab === "topic" ? "topics" : "audiences"].includes(selectedCategory.id)
-              : true;
-            const matchTopic  = ft ? r.topics.includes(ft) : true;
-            const matchAud    = fa ? r.audiences.includes(fa) : true;
-            const matchSearch = q  ? r.name.toLowerCase().includes(q) : true;
-            return inCategory && matchTopic && matchAud && matchSearch;
-          });
+          // Only show resources for the selected category
+          const filtered = selectedCategory
+            ? resources.filter((r) =>
+                r[activeTab === "topic" ? "topics" : "audiences"].includes(selectedCategory.id)
+              )
+            : [];
 
           if (!filtered.length) {
-            resGrid.innerHTML = '<p class="text-center text-[#45375a] py-6">No resources found.</p>';
+            resGrid.innerHTML = selectedCategory
+              ? '<p class="text-center text-[#45375a] py-6">No resources found for this category.</p>'
+              : '';
             return;
           }
 
@@ -503,15 +457,18 @@ categoryHeading.innerHTML = `
           });
         }
 
-        function clearFilters() {
-          filterTopicEl.value = "";
-          filterAudEl.value = "";
-          searchInput.value = "";
+        function showAllCards() {
           selectedCategory = null;
-          resGrid.innerHTML = "";
+          categoryHeading.innerHTML = "";
           renderCards();
-          // Clear category heading when filters are cleared
-          document.getElementById("category-heading").innerHTML = "";
+          resGrid.innerHTML = "";
+        }
+
+        function clearFilters() {
+          selectedCategory = null;
+          categoryHeading.innerHTML = "";
+          renderCards();
+          resGrid.innerHTML = "";
         }
       })();
     </script>
