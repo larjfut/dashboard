@@ -207,9 +207,35 @@
         function updateTabStyles() {
           if (activeTab === "topic") {
             tabTopic.classList.add("bg-[#624B78]", "text-white")
+            tabTopic.classList.remove(
+              "bg-white",
+              "text-[#624B78]",
+              "border",
+              "border-[#624B78]",
+            )
+
+            tabAud.classList.add(
+              "bg-white",
+              "text-[#624B78]",
+              "border",
+              "border-[#624B78]",
+            )
             tabAud.classList.remove("bg-[#624B78]", "text-white")
           } else {
             tabAud.classList.add("bg-[#624B78]", "text-white")
+            tabAud.classList.remove(
+              "bg-white",
+              "text-[#624B78]",
+              "border",
+              "border-[#624B78]",
+            )
+
+            tabTopic.classList.add(
+              "bg-white",
+              "text-[#624B78]",
+              "border",
+              "border-[#624B78]",
+            )
             tabTopic.classList.remove("bg-[#624B78]", "text-white")
           }
         }
