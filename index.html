@@ -2,212 +2,181 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>TCFV Resource Hub</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TCFV Resource Hub</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html { scroll-behavior: smooth; }
-  </style>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide/dist/umd/lucide.js"></script>
 </head>
 <body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
+  <div class="max-w-7xl mx-auto p-6">
+    <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">Resource Hub</h1>
+    <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
-  <!-- ===== Hero Section ===== -->
-  <header id="hero" class="bg-[#624B78] text-white py-12 px-4">
-    <div class="max-w-5xl mx-auto text-center">
-      <!-- Tagline -->
-      <p class="uppercase tracking-wider text-base opacity-75 mb-2">
-        Resource Hub for Survivors and Advocates
-      </p>
-      <!-- Main Heading -->
-      <h1 class="font-baskerville text-4xl md:text-5xl font-semibold mb-3">
-        Welcome to Your Resource Center
-      </h1>
-      <!-- Intro Text -->
-      <p class="text-lg md:text-xl opacity-90 max-w-2xl mx-auto">
-        We understand navigating safety, legal systems, and resources can be overwhelming.  
-        This resource hub gathers the most essential tools and guides for survivors,  
-        advocates, and partners. Quickly search, filter, or browse to find exactly  
-        what you need.
-      </p>
+    <!-- Tabs -->
+    <div class="flex space-x-2 mb-8">
+      <button id="tab-topic" class="px-6 py-3 rounded-lg font-medium bg-[#624B78] text-white">Topic</button>
+      <button id="tab-audience" class="px-6 py-3 rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78]">Audience</button>
     </div>
-  </header>
 
-  <!-- ===== Immediate Help Widget ===== -->
-  <section id="immediate-help" class="bg-[#EEE6F6] text-[#624B78] py-6 px-4 shadow-lg border-b border-[#AC95C1]" role="alert">
-    <div class="max-w-3xl mx-auto flex items-center gap-5">
-      <span class="text-4xl" aria-label="Get Immediate Help">🧑‍🤝‍🧑</span>
-      <div>
-        <h2 class="text-lg font-semibold mb-1">Get Immediate Help</h2>
-        <p class="text-base">
-          If you’re in danger or need urgent support, call the
-          <strong>National DV Hotline:
-            <a href="tel:1-800-799-7233" class="underline">1-800-799-7233 (SAFE)</a>
-          </strong>
-        </p>
-      </div>
+    <!-- Filters (hidden until category selected) -->
+    <div id="filters" class="hidden flex flex-wrap gap-4 items-center mb-6">
+      <select id="filter-topic" class="rounded-xl py-2 px-4 border border-[#AC95C1]">
+        <option value="">All Topics</option>
+      </select>
+      <select id="filter-audience" class="rounded-xl py-2 px-4 border border-[#AC95C1]">
+        <option value="">All Audiences</option>
+      </select>
+      <input id="search-input" type="search" placeholder="Search resources..." class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-auto min-w-[160px]">
+      <button id="clear-filters" class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl">Clear Filters</button>
     </div>
-  </section>
 
-  <!-- ===== Quick Topic Navigation ===== -->
-  <nav id="quick-topics" class="max-w-5xl mx-auto py-8 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" aria-label="Resource Topics">
-    <button type="button" data-topic="Safety Planning" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🛡️</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Safety Planning</h3>
-      <p class="text-sm text-[#45375a]">Step-by-step tools to help you plan ahead and protect yourself and your loved ones.</p>
-    </button>
-    <button type="button" data-topic="Legal" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">⚖️</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Legal</h3>
-      <p class="text-sm text-[#45375a]">Know your rights, navigate the courts, and understand your legal protections.</p>
-    </button>
-    <button type="button" data-topic="Housing" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🏠</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Housing</h3>
-      <p class="text-sm text-[#45375a]">Guides and templates to secure safe housing or waive utility deposits quickly.</p>
-    </button>
-    <button type="button" data-topic="Technology Safety" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">💻</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Technology Safety</h3>
-      <p class="text-sm text-[#45375a]">Tips to protect your privacy online and on your devices.</p>
-    </button>
-    <button type="button" data-topic="Child Welfare" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🧒</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Child Welfare</h3>
-      <p class="text-sm text-[#45375a]">Information for protecting children and supporting families.</p>
-    </button>
-    <button type="button" data-topic="Advocacy Skills" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🗣️</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Advocacy Skills</h3>
-      <p class="text-sm text-[#45375a]">Training and tips for effective advocacy work.</p>
-    </button>
-    <button type="button" data-topic="Prevention" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🚫</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Prevention</h3>
-      <p class="text-sm text-[#45375a]">Programs and resources focused on prevention.</p>
-    </button>
-    <button type="button" data-topic="Youth" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🧑‍🎓</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Youth</h3>
-      <p class="text-sm text-[#45375a]">Programming and resources for youth audiences.</p>
-    </button>
-    <button type="button" data-topic="Data & Reporting" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">📊</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Data &amp; Reporting</h3>
-      <p class="text-sm text-[#45375a]">Guidance on data collection and reporting.</p>
-    </button>
-    <button type="button" data-topic="Wellness & Self-Care" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🧘</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Wellness &amp; Self-Care</h3>
-      <p class="text-sm text-[#45375a]">Resources to support personal wellbeing and self-care.</p>
-    </button>
-    <button type="button" data-topic="Finance & Budgeting" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">💰</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Finance &amp; Budgeting</h3>
-      <p class="text-sm text-[#45375a]">Budgeting help and fiscal compliance guidance.</p>
-    </button>
-    <button type="button" data-topic="BIPP" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🔄</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">BIPP</h3>
-      <p class="text-sm text-[#45375a]">Batterer Intervention &amp; Prevention Program resources.</p>
-    </button>
-    <button type="button" data-topic="Elections & Voting" class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition p-5 text-center focus:outline-none focus:ring-2 focus:ring-[#AC95C1]">
-      <div class="text-4xl mb-2" aria-hidden="true">🗳️</div>
-      <h3 class="text-lg font-semibold mb-1 text-[#624B78]">Elections &amp; Voting</h3>
-      <p class="text-sm text-[#45375a]">Learn about civic engagement and voter education.</p>
-    </button>
-  </nav>
+    <!-- Category Cards -->
+    <div id="card-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
 
-  <!-- ===== Filters ===== -->
-  <section class="max-w-5xl mx-auto flex flex-wrap items-center gap-3 px-4 mb-6">
-    <select id="audience-filter" class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-1">
-      <option value="">All Audiences</option>
-    </select>
-    <select id="topic-filter" class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-1">
-      <option value="">All Topics</option>
-    </select>
-    <input type="search" id="search-box" placeholder="Search resources..." class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-auto min-w-[160px]">
-    <button id="clear-btn" class="py-2 px-4 bg-[#AC95C1] text-white rounded-xl">Clear Filters</button>
-  </section>
-
-  <!-- ===== Resource Grid ===== -->
-  <main id="resource-grid" class="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-4 mb-16">
-    <!-- Resource cards injected via JS -->
-  </main>
-
-  <!-- ===== Topic Sections ===== -->
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Safety Planning</h2>
-    <p class="text-[#45375a]">Find tips and printable tools to help create a personalized safety plan.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Legal</h2>
-    <p class="text-[#45375a]">Explore resources about your rights and navigating the legal system.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Housing</h2>
-    <p class="text-[#45375a]">Access guides to secure housing and manage utilities safely.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Technology Safety</h2>
-    <p class="text-[#45375a]">Learn ways to protect your privacy on devices and online services.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Child Welfare</h2>
-    <p class="text-[#45375a]">Resources focused on child protection and advocacy.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Advocacy Skills</h2>
-    <p class="text-[#45375a]">Training to strengthen advocacy, leadership and communication.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Prevention</h2>
-    <p class="text-[#45375a]">Programs and resources focused on prevention.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Youth</h2>
-    <p class="text-[#45375a]">Information and programming for youth audiences.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Data &amp; Reporting</h2>
-    <p class="text-[#45375a]">Guidance on data collection and reporting outcomes.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Wellness &amp; Self-Care</h2>
-    <p class="text-[#45375a]">Tips to support wellness and self-care for staff and survivors.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Finance &amp; Budgeting</h2>
-    <p class="text-[#45375a]">Tools to manage finances and ensure fiscal compliance.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">BIPP</h2>
-    <p class="text-[#45375a]">Batterer Intervention &amp; Prevention Program resources.</p>
-  </section>
-
-  <section class="max-w-5xl mx-auto px-4 mb-16">
-    <h2 class="font-baskerville text-2xl mb-4">Elections &amp; Voting</h2>
-    <p class="text-[#45375a]">Civic engagement, voter education and policy advocacy.</p>
-  </section>
-
-  <!-- ===== Modal ===== -->
-  <div id="modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 opacity-0 pointer-events-none transition-opacity">
-    <div id="modal" class="bg-white rounded-2xl max-w-lg w-full mx-auto my-10 p-8 relative overflow-hidden">
-      <button id="modal-close" class="absolute right-4 top-4 text-2xl">&times;</button>
-      <div id="modal-content"><!-- Populated dynamically --></div>
-    </div>
+    <!-- Resource Cards -->
+    <div id="resource-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
   </div>
 
-  <script src="js/app.js"></script>
-</body>
-</html>
+  <script>
+  (function() {
+    // Data definitions
+    const topics = [
+      { id: 'safety-planning', name: 'Safety Planning', icon: 'shield', description: 'Personal, family, or organizational safety plans and guidance.' },
+      { id: 'housing', name: 'Housing', icon: 'home', description: 'Housing rights, resources, and assistance.' },
+      { id: 'legal', name: 'Legal', icon: 'scale', description: 'Legal rights, forms, documentation, and assistance.' },
+      { id: 'technology-safety', name: 'Technology Safety', icon: 'smartphone', description: 'Digital, online, and technology-related safety issues.' },
+      { id: 'child-welfare', name: 'Child Welfare', icon: 'baby', description: 'Child protection, foster care, and children\'s advocacy.' },
+      { id: 'advocacy-skills', name: 'Advocacy Skills', icon: 'message-square', description: 'Skills training for advocacy, leadership, communication, and case management.' },
+      { id: 'prevention', name: 'Prevention', icon: 'trending-up', description: 'Programs and resources focused on prevention.' },
+      { id: 'youth', name: 'Youth', icon: 'user', description: 'Programming or resources targeted at youth or young adults.' },
+      { id: 'data-reporting', name: 'Data & Reporting', icon: 'bar-chart-3', description: 'Data collection, outcomes, reporting guidance.' },
+      { id: 'wellness-self-care', name: 'Wellness & Self-Care', icon: 'heart', description: 'Wellbeing, staff care, mental health.' },
+      { id: 'finance-budgeting', name: 'Finance & Budgeting', icon: 'dollar-sign', description: 'Budgeting, fiscal compliance, finance training.' },
+      { id: 'bipp', name: 'BIPP', icon: 'user-check', description: 'Batterer Intervention & Prevention Programs.' },
+      { id: 'elections-voting', name: 'Elections & Voting', icon: 'vote', description: 'Civic engagement, voter education, policy advocacy.' }
+    ];
+
+    const audiences = [
+      { id: 'survivors', name: 'Survivors', icon: 'heart', description: 'Individuals directly impacted by domestic violence, seeking support or resources.' },
+      { id: 'advocates', name: 'Advocates', icon: 'users', description: 'Professionals providing direct support and advocacy to survivors.' },
+      { id: 'campus-advocates', name: 'Campus Advocates', icon: 'graduation-cap', description: 'Advocacy professionals in higher education settings.' },
+      { id: 'child-welfare-partners', name: 'Child Welfare Partners', icon: 'baby', description: 'Professionals focused on child protection and welfare.' },
+      { id: 'data-administrators', name: 'Data Administrators', icon: 'database', description: 'Staff responsible for data management and reporting.' },
+      { id: 'executive-directors', name: 'Executive Directors', icon: 'crown', description: 'Organizational leaders and executive management.' },
+      { id: 'educators', name: 'Educators', icon: 'school', description: 'School staff, teachers, or trainers.' },
+      { id: 'finance-professionals', name: 'Finance Professionals', icon: 'calculator', description: 'Staff managing budgeting and financial operations.' },
+      { id: 'general-public', name: 'General Public', icon: 'globe', description: 'Community members or any interested individuals.' },
+      { id: 'grants-professionals', name: 'Grants Professionals', icon: 'file-text', description: 'Staff managing grant writing and reporting.' },
+      { id: 'it-operations-staff', name: 'IT & Ops Staff', icon: 'settings', description: 'Staff responsible for technology and operations.' },
+      { id: 'legislators', name: 'Legislators', icon: 'landmark', description: 'Elected officials and legislative staff.' },
+      { id: 'outreach-teams', name: 'Outreach Teams', icon: 'megaphone', description: 'Staff focused on community outreach.' },
+      { id: 'policy-professionals', name: 'Policy Professionals', icon: 'file-check', description: 'Individuals in policy analysis and advocacy.' },
+      { id: 'program-managers', name: 'Program Managers', icon: 'user-x', description: 'Individuals overseeing or managing programs.' },
+      { id: 'prosecutors', name: 'Prosecutors', icon: 'gavel', description: 'Legal professionals prosecuting domestic violence cases.' },
+      { id: 'system-partners', name: 'System Partners', icon: 'handshake', description: 'Agencies collaborating with DV programs.' },
+      { id: 'youth-allies', name: 'Youth Allies', icon: 'user-plus', description: 'Adults or peers supporting youth engagement.' }
+    ];
+
+    // Resources will be loaded from external JSON
+    let resources = [];
+
+    // State
+    let activeTab = 'topic';
+    let selectedCategory = null;
+
+    // Elements
+    const tabTopic = document.getElementById('tab-topic');
+    const tabAud = document.getElementById('tab-audience');
+    const cardGrid = document.getElementById('card-grid');
+    const resGrid = document.getElementById('resource-grid');
+    const filtersEl = document.getElementById('filters');
+    const filterTopicEl = document.getElementById('filter-topic');
+    const filterAudEl = document.getElementById('filter-audience');
+    const searchInput = document.getElementById('search-input');
+    const clearBtn = document.getElementById('clear-filters');
+
+    // Initialize after fetching resources
+    fetch('data/resources.json')
+      .then(response => response.json())
+      .then(data => {
+        resources = data;
+        init();
+      })
+      .catch(err => console.error('Failed to load resources:', err));
+
+    function init() {
+      tabTopic.addEventListener('click', () => switchTab('topic'));
+      tabAud.addEventListener('click', () => switchTab('audience'));
+      clearBtn.addEventListener('click', clearFilters);
+      renderTabs();
+      renderCards();
+    }
+
+    function switchTab(tab) {
+      activeTab = tab;
+      selectedCategory = null;
+      resGrid.innerHTML = '';
+      filtersEl.classList.add('hidden');
+      updateTabStyles();
+      renderCards();
+    }
+
+    function updateTabStyles() {
+      if (activeTab === 'topic') {
+        tabTopic.classList.add('bg-[#624B78]','text-white');
+        tabTopic.classList.remove('bg-white','text-[#624B78]');
+        tabAud.classList.add('bg-white','text-[#624B78]');
+        tabAud.classList.remove('bg-[#624B78]','text-white');
+      } else {
+        tabAud.classList.add('bg-[#624B78]','text-white');
+        tabAud.classList.remove('bg-white','text-[#624B78]');
+        tabTopic.classList.add('bg-white','text-[#624B78]');
+        tabTopic.classList.remove('bg-[#624B78]','text-white');
+      }
+    }
+
+    function renderTabs() {
+      updateTabStyles();
+    }
+
+    function renderCards() {
+      cardGrid.innerHTML = '';
+      const items = activeTab === 'topic' ? topics : audiences;
+      items.forEach(item => {
+        const el = document.createElement('div');
+        el.className = 'bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl';
+        el.innerHTML = `
+          <div class="flex flex-col items-center text-center">
+            <i data-lucide="${item.icon}" class="w-8 h-8 text-[#624B78] mb-3"></i>
+            <h3 class="text-lg font-semibold text-[#624B78] mb-1">${item.name}</h3>
+            <p class="text-sm text-[#45375a]">${item.description}</p>
+          </div>
+        `;
+        el.addEventListener('click', () => selectCategory(item));
+        cardGrid.appendChild(el);
+      });
+      lucide.createIcons();
+    }
+
+    function selectCategory(item) {
+      selectedCategory = item;
+      renderResources();
+      renderFilterOptions();
+      filtersEl.classList.remove('hidden');
+      cardGrid.innerHTML = '';
+    }
+
+    function renderFilterOptions() {
+      filterTopicEl.innerHTML = '<option value="">All Topics</option>';
+      topics.forEach(t => filterTopicEl.insertAdjacentHTML('beforeend', `<option value="${t.id}">${t.name}</option>`));
+      filterAudEl.innerHTML = '<option value="">All Audiences</option>';
+      audiences.forEach(a => filterAudEl.insertAdjacentHTML('beforeend', `<option value="${a.id}">${a.name}</option>`));
+      filterTopicEl.addEventListener('change', renderResources);
+      filterAudEl.addEventListener('change', renderResources);
+      searchInput.addEventListener('input', renderResources);
+    }
+
+    function renderResources() {
+      resGrid.innerHTML = '';```
