@@ -64,15 +64,14 @@
       <div id="category-heading" class="px-4 md:px-12 mb-2"></div>
 
       <!-- Category Cards in padded container -->
-<div class="px-2 md:px-4">
-  <div id="card-grid-wrapper">
-    <div
-      id="card-grid"
-      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
-    ></div>
-  </div>
-</div>
-
+      <div class="px-2 md:px-4">
+        <div id="card-grid-wrapper">
+          <div
+            id="card-grid"
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
+          ></div>
+        </div>
+      </div>
 
       <!-- Resource Cards in padded container -->
       <div class="px-4 md:px-12">
@@ -94,7 +93,7 @@
             .replace(/^-+|-+$/g, "");
         }
 
-        // Topics array with Font Awesome icons and sample descriptions
+        // Topics array with DVHRT added
         const topics = [
           {
             id: "safety-planning",
@@ -174,9 +173,16 @@
             icon: '<i class="fas fa-vote-yea"></i>',
             description: "Civic participation and voter information for survivors and advocates."
           },
+          // === NEW: DVHRT topic card ===
+          {
+            id: "dvh-rt",
+            name: "DVHRT",
+            icon: '<i class="fas fa-people-arrows"></i>',
+            description: "Domestic Violence High Risk Teams (DVHRT) coordinate multi-disciplinary strategies for increased survivor safety and homicide prevention."
+          }
         ];
 
-        // Audiences array with Font Awesome icons and sample descriptions
+        // Audiences array with DVHRT added
         const audiences = [
           {
             id: "survivors",
@@ -298,6 +304,13 @@
             icon: '<i class="fas fa-sync-alt"></i>',
             description: "Professionals providing Batterer Intervention and Prevention Programs."
           },
+          // === NEW: DVHRT audience card ===
+          {
+            id: "dvh-rt",
+            name: "DVHRT",
+            icon: '<i class="fas fa-people-arrows"></i>',
+            description: "Members or partners of Domestic Violence High Risk Teams (DVHRT), including law enforcement, advocates, and allied agencies."
+          }
         ];
 
         let resources = [];
