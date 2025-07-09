@@ -1,223 +1,307 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>TCFV Resource Hub</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
-  <div class="max-w-7xl mx-auto p-6">
-    <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">Resource Hub</h1>
-    <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>TCFV Resource Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
+    <div class="max-w-7xl mx-auto p-6">
+      <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">
+        Resource Hub
+      </h1>
+      <p class="text-lg text-[#45375a] mb-6">
+        Browse resources by topic or audience
+      </p>
 
-    <!-- Tabs -->
-    <div class="flex space-x-2 mb-8">
-      <button id="tab-topic" class="px-6 py-3 rounded-lg font-medium bg-[#624B78] text-white">Topic</button>
-      <button id="tab-audience" class="px-6 py-3 rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78]">Audience</button>
+      <!-- Tabs -->
+      <div class="flex space-x-2 mb-8">
+        <button
+          id="tab-topic"
+          class="px-6 py-3 rounded-lg font-medium bg-[#624B78] text-white"
+        >
+          Topic
+        </button>
+        <button
+          id="tab-audience"
+          class="px-6 py-3 rounded-lg font-medium bg-white text-[#624B78] border border-[#624B78]"
+        >
+          Audience
+        </button>
+      </div>
+
+      <!-- Filters (hidden until category selected) -->
+      <div id="filters" class="hidden flex flex-wrap gap-4 items-center mb-6">
+        <select
+          id="filter-topic"
+          class="rounded-xl py-2 px-4 border border-[#AC95C1]"
+        >
+          <option value="">All Topics</option>
+        </select>
+        <select
+          id="filter-audience"
+          class="rounded-xl py-2 px-4 border border-[#AC95C1]"
+        >
+          <option value="">All Audiences</option>
+        </select>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search resources..."
+          class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-auto min-w-[160px]"
+        />
+        <button
+          id="clear-filters"
+          class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl"
+        >
+          Clear Filters
+        </button>
+      </div>
+
+      <!-- Category Cards -->
+      <div
+        id="card-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+      ></div>
+
+      <!-- Resource Cards -->
+      <div
+        id="resource-grid"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+      ></div>
     </div>
 
-    <!-- Filters (hidden until category selected) -->
-    <div id="filters" class="hidden flex flex-wrap gap-4 items-center mb-6">
-      <select id="filter-topic" class="rounded-xl py-2 px-4 border border-[#AC95C1]">
-        <option value="">All Topics</option>
-      </select>
-      <select id="filter-audience" class="rounded-xl py-2 px-4 border border-[#AC95C1]">
-        <option value="">All Audiences</option>
-      </select>
-      <input id="search-input" type="search" placeholder="Search resources..." class="rounded-xl py-2 px-4 border border-[#AC95C1] flex-auto min-w-[160px]">
-      <button id="clear-filters" class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl">Clear Filters</button>
-    </div>
+    <script>
+      ;(function () {
+        // Helper to slugify names into IDs
+        function slugify(str) {
+          return str
+            .toLowerCase()
+            .replace(/&/g, "and")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "")
+        }
 
-    <!-- Category Cards -->
-    <div id="card-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
+        // Category definitions (IDs must match slugify(names))
+        const topics = [
+          { id: "safety-planning", name: "Safety Planning", icon: "🛡️" },
+          { id: "housing", name: "Housing", icon: "🏠" },
+          { id: "legal", name: "Legal", icon: "⚖️" },
+          { id: "technology-safety", name: "Technology Safety", icon: "💻" },
+          { id: "child-welfare", name: "Child Welfare", icon: "👶" },
+          { id: "advocacy-skills", name: "Advocacy Skills", icon: "🗣️" },
+          { id: "prevention", name: "Prevention", icon: "🚫" },
+          { id: "youth", name: "Youth", icon: "🧑‍🎓" },
+          { id: "data-reporting", name: "Data & Reporting", icon: "📊" },
+          {
+            id: "wellness-self-care",
+            name: "Wellness & Self-Care",
+            icon: "🧘",
+          },
+          { id: "finance-budgeting", name: "Finance & Budgeting", icon: "💰" },
+          { id: "bipp", name: "BIPP", icon: "🔄" },
+          { id: "elections-voting", name: "Elections & Voting", icon: "🗳️" },
+        ]
 
-    <!-- Resource Cards -->
-    <div id="resource-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
-  </div>
+        const audiences = [
+          { id: "survivors", name: "Survivors", icon: "🛡️" },
+          { id: "advocates", name: "Advocates", icon: "👥" },
+          { id: "campus-advocates", name: "Campus Advocates", icon: "🎓" },
+          {
+            id: "child-welfare-partners",
+            name: "Child Welfare Partners",
+            icon: "👶",
+          },
+          {
+            id: "data-administrators",
+            name: "Data Administrators",
+            icon: "🗄️",
+          },
+          {
+            id: "executive-directors",
+            name: "Executive Directors",
+            icon: "👑",
+          },
+          { id: "educators", name: "Educators", icon: "🏫" },
+          {
+            id: "finance-professionals",
+            name: "Finance Professionals",
+            icon: "🧮",
+          },
+          { id: "general-public", name: "General Public", icon: "🌐" },
+          {
+            id: "grants-professionals",
+            name: "Grants Professionals",
+            icon: "📄",
+          },
+          { id: "it-operations-staff", name: "IT & Ops Staff", icon: "⚙️" },
+          { id: "legislators", name: "Legislators", icon: "🏛️" },
+          { id: "outreach-teams", name: "Outreach Teams", icon: "📢" },
+          {
+            id: "policy-professionals",
+            name: "Policy Professionals",
+            icon: "✔️",
+          },
+          { id: "program-managers", name: "Program Managers", icon: "👤" },
+          { id: "prosecutors", name: "Prosecutors", icon: "🔨" },
+          { id: "system-partners", name: "System Partners", icon: "🤝" },
+          { id: "youth-allies", name: "Youth Allies", icon: "➕" },
+          { id: "youth", name: "Youth", icon: "🧑‍🎓" },
+          {
+            id: "prevention-educators",
+            name: "Prevention Educators",
+            icon: "🧒",
+          },
+          { id: "bipp-providers", name: "BIPP Providers", icon: "🔄" },
+        ]
 
-  <script>
-  (function() {
-    // Helper to slugify names into IDs
-    function slugify(str) {
-      return str
-        .toLowerCase()
-        .replace(/&/g, 'and')
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-    }
+        let resources = []
+        let activeTab = "topic"
+        let selectedCategory = null
 
-    // Category definitions (IDs must match slugify(names))
-    const topics = [
-      { id: 'safety-planning', name: 'Safety Planning', icon: '🛡️' },
-      { id: 'housing', name: 'Housing', icon: '🏠' },
-      { id: 'legal', name: 'Legal', icon: '⚖️' },
-      { id: 'technology-safety', name: 'Technology Safety', icon: '💻' },
-      { id: 'child-welfare', name: 'Child Welfare', icon: '👶' },
-      { id: 'advocacy-skills', name: 'Advocacy Skills', icon: '🗣️' },
-      { id: 'prevention', name: 'Prevention', icon: '🚫' },
-      { id: 'youth', name: 'Youth', icon: '🧑‍🎓' },
-      { id: 'data-reporting', name: 'Data & Reporting', icon: '📊' },
-      { id: 'wellness-self-care', name: 'Wellness & Self-Care', icon: '🧘' },
-      { id: 'finance-budgeting', name: 'Finance & Budgeting', icon: '💰' },
-      { id: 'bipp', name: 'BIPP', icon: '🔄' },
-      { id: 'elections-voting', name: 'Elections & Voting', icon: '🗳️' }
-    ];
+        const tabTopic = document.getElementById("tab-topic")
+        const tabAud = document.getElementById("tab-audience")
+        const cardGrid = document.getElementById("card-grid")
+        const resGrid = document.getElementById("resource-grid")
+        const filtersEl = document.getElementById("filters")
+        const filterTopicEl = document.getElementById("filter-topic")
+        const filterAudEl = document.getElementById("filter-audience")
+        const searchInput = document.getElementById("search-input")
+        const clearBtn = document.getElementById("clear-filters")
 
-    const audiences = [
-      { id: 'survivors', name: 'Survivors', icon: '🛡️' },
-      { id: 'advocates', name: 'Advocates', icon: '👥' },
-      { id: 'campus-advocates', name: 'Campus Advocates', icon: '🎓' },
-      { id: 'child-welfare-partners', name: 'Child Welfare Partners', icon: '👶' },
-      { id: 'data-administrators', name: 'Data Administrators', icon: '🗄️' },
-      { id: 'executive-directors', name: 'Executive Directors', icon: '👑' },
-      { id: 'educators', name: 'Educators', icon: '🏫' },
-      { id: 'finance-professionals', name: 'Finance Professionals', icon: '🧮' },
-      { id: 'general-public', name: 'General Public', icon: '🌐' },
-      { id: 'grants-professionals', name: 'Grants Professionals', icon: '📄' },
-      { id: 'it-operations-staff', name: 'IT & Ops Staff', icon: '⚙️' },
-      { id: 'legislators', name: 'Legislators', icon: '🏛️' },
-      { id: 'outreach-teams', name: 'Outreach Teams', icon: '📢' },
-      { id: 'policy-professionals', name: 'Policy Professionals', icon: '✔️' },
-      { id: 'program-managers', name: 'Program Managers', icon: '👤' },
-      { id: 'prosecutors', name: 'Prosecutors', icon: '🔨' },
-      { id: 'system-partners', name: 'System Partners', icon: '🤝' },
-      { id: 'youth-allies', name: 'Youth Allies', icon: '➕' }
-    ];
+        // Load and normalize resources then initialize dashboard
+        fetch("data/resources.json")
+          .then((response) => response.json())
+          .then((raw) => {
+            resources = raw.map((item) => ({
+              name: item["Resource Name"],
+              icon: item.Icon,
+              audiences: (item.Audience || "").split(/,\s*/).map(slugify),
+              topics: (item.Topics || "").split(/,\s*/).map(slugify),
+              summary: item["Short Description"],
+              link: item["Full Link"],
+            }))
+          })
+          .catch((err) => console.error("Failed to load resources:", err))
+          .finally(init)
 
-    let resources = [];
-    let activeTab = 'topic';
-    let selectedCategory = null;
+        function init() {
+          tabTopic.addEventListener("click", () => switchTab("topic"))
+          tabAud.addEventListener("click", () => switchTab("audience"))
+          clearBtn.addEventListener("click", clearFilters)
+          renderTabs()
+          renderCards()
+        }
 
-    const tabTopic = document.getElementById('tab-topic');
-    const tabAud = document.getElementById('tab-audience');
-    const cardGrid = document.getElementById('card-grid');
-    const resGrid = document.getElementById('resource-grid');
-    const filtersEl = document.getElementById('filters');
-    const filterTopicEl = document.getElementById('filter-topic');
-    const filterAudEl = document.getElementById('filter-audience');
-    const searchInput = document.getElementById('search-input');
-    const clearBtn = document.getElementById('clear-filters');
+        function switchTab(tab) {
+          activeTab = tab
+          selectedCategory = null
+          resGrid.innerHTML = ""
+          filtersEl.classList.add("hidden")
+          updateTabStyles()
+          renderCards()
+        }
 
-    // Load and normalize resources then initialize dashboard
-    fetch('data/resources.json')
-      .then(response => response.json())
-      .then(raw => {
-        resources = raw.map(item => ({
-          name: item['Resource Name'],
-          icon: item.Icon,
-          audiences: (item.Audience || '').split(/,\s*/).map(slugify),
-          topics: (item.Topics || '').split(/,\s*/).map(slugify),
-          summary: item['Short Description'],
-          link: item['Full Link']
-        }));
-      })
-      .catch(err => console.error('Failed to load resources:', err))
-      .finally(init);
+        function updateTabStyles() {
+          if (activeTab === "topic") {
+            tabTopic.classList.add("bg-[#624B78]", "text-white")
+            tabAud.classList.remove("bg-[#624B78]", "text-white")
+          } else {
+            tabAud.classList.add("bg-[#624B78]", "text-white")
+            tabTopic.classList.remove("bg-[#624B78]", "text-white")
+          }
+        }
 
-    function init() {
-      tabTopic.addEventListener('click', () => switchTab('topic'));
-      tabAud.addEventListener('click', () => switchTab('audience'));
-      clearBtn.addEventListener('click', clearFilters);
-      renderTabs();
-      renderCards();
-    }
-
-    function switchTab(tab) {
-      activeTab = tab;
-      selectedCategory = null;
-      resGrid.innerHTML = '';
-      filtersEl.classList.add('hidden');
-      updateTabStyles();
-      renderCards();
-    }
-
-    function updateTabStyles() {
-      if (activeTab === 'topic') {
-        tabTopic.classList.add('bg-[#624B78]', 'text-white');
-        tabAud.classList.remove('bg-[#624B78]', 'text-white');
-      } else {
-        tabAud.classList.add('bg-[#624B78]', 'text-white');
-        tabTopic.classList.remove('bg-[#624B78]', 'text-white');
-      }
-    }
-
-    function renderCards() {
-      cardGrid.innerHTML = '';
-      const items = activeTab === 'topic' ? topics : audiences;
-      items.forEach(item => {
-        const el = document.createElement('div');
-        el.className = 'bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl';
-        el.innerHTML = `
+        function renderCards() {
+          cardGrid.innerHTML = ""
+          const items = activeTab === "topic" ? topics : audiences
+          items.forEach((item) => {
+            const el = document.createElement("div")
+            el.className =
+              "bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl"
+            el.innerHTML = `
           <div class="flex flex-col items-center text-center">
             <div class="text-4xl mb-3">${item.icon}</div>
             <h3 class="text-lg font-semibold mb-1 text-[#624B78]">${item.name}</h3>
           </div>
-        `;
-        el.addEventListener('click', () => selectCategory(item));
-        cardGrid.appendChild(el);
-      });
-    }
+        `
+            el.addEventListener("click", () => selectCategory(item))
+            cardGrid.appendChild(el)
+          })
+        }
 
-    function selectCategory(item) {
-      selectedCategory = item;
-      filtersEl.classList.remove('hidden');
-      renderFilterOptions();
-      renderResources();
-      cardGrid.innerHTML = '';
-    }
+        function selectCategory(item) {
+          selectedCategory = item
+          filtersEl.classList.remove("hidden")
+          renderFilterOptions()
+          renderResources()
+          cardGrid.innerHTML = ""
+        }
 
-    function renderFilterOptions() {
-      filterTopicEl.innerHTML = '<option value="">All Topics</option>';
-      topics.forEach(t => filterTopicEl.insertAdjacentHTML('beforeend', `<option value="${t.id}">${t.name}</option>`));
-      filterAudEl.innerHTML = '<option value="">All Audiences</option>';
-      audiences.forEach(a => filterAudEl.insertAdjacentHTML('beforeend', `<option value="${a.id}">${a.name}</option>`));
-      filterTopicEl.addEventListener('change', renderResources);
-      filterAudEl.addEventListener('change', renderResources);
-      searchInput.addEventListener('input', renderResources);
-    }
+        function renderFilterOptions() {
+          filterTopicEl.innerHTML = '<option value="">All Topics</option>'
+          topics.forEach((t) =>
+            filterTopicEl.insertAdjacentHTML(
+              "beforeend",
+              `<option value="${t.id}">${t.name}</option>`,
+            ),
+          )
+          filterAudEl.innerHTML = '<option value="">All Audiences</option>'
+          audiences.forEach((a) =>
+            filterAudEl.insertAdjacentHTML(
+              "beforeend",
+              `<option value="${a.id}">${a.name}</option>`,
+            ),
+          )
+          filterTopicEl.addEventListener("change", renderResources)
+          filterAudEl.addEventListener("change", renderResources)
+          searchInput.addEventListener("input", renderResources)
+        }
 
-    function renderResources() {
-      resGrid.innerHTML = '';
-      const ft = filterTopicEl.value;
-      const fa = filterAudEl.value;
-      const q = searchInput.value.toLowerCase();
-      const filtered = resources.filter(r => {
-        const inCategory = r[activeTab === 'topic' ? 'topics' : 'audiences'].includes(selectedCategory.id);
-        const matchTopic = ft ? r.topics.includes(ft) : true;
-        const matchAud = fa ? r.audiences.includes(fa) : true;
-        const matchSearch = q ? r.name.toLowerCase().includes(q) : true;
-        return inCategory && matchTopic && matchAud && matchSearch;
-      });
-      if (!filtered.length) {
-        resGrid.innerHTML = '<p class="text-center text-[#45375a] py-6">No resources found.</p>';
-        return;
-      }
-      filtered.forEach(r => {
-        const card = document.createElement('div');
-        card.className = 'bg-white p-6 rounded-2xl shadow-lg';
-        card.innerHTML = `
+        function renderResources() {
+          resGrid.innerHTML = ""
+          const ft = filterTopicEl.value
+          const fa = filterAudEl.value
+          const q = searchInput.value.toLowerCase()
+          const filtered = resources.filter((r) => {
+            const inCategory = r[
+              activeTab === "topic" ? "topics" : "audiences"
+            ].includes(selectedCategory.id)
+            const matchTopic = ft ? r.topics.includes(ft) : true
+            const matchAud = fa ? r.audiences.includes(fa) : true
+            const matchSearch = q ? r.name.toLowerCase().includes(q) : true
+            return inCategory && matchTopic && matchAud && matchSearch
+          })
+          if (!filtered.length) {
+            resGrid.innerHTML =
+              '<p class="text-center text-[#45375a] py-6">No resources found.</p>'
+            return
+          }
+          filtered.forEach((r) => {
+            const card = document.createElement("div")
+            card.className = "bg-white p-6 rounded-2xl shadow-lg"
+            card.innerHTML = `
           <div class="flex items-center mb-2">
             <div class="text-2xl mr-3">${r.icon}</div>
             <h3 class="text-lg font-semibold">${r.name}</h3>
           </div>
-          <p class="text-sm text-[#45375a] mb-2"><strong>Topics:</strong> ${r.topics.map(id => topics.find(t => t.id === id).name).join(', ')}</p>
-          <p class="text-sm text-[#45375a] mb-4"><strong>Audience:</strong> ${r.audiences.map(id => audiences.find(a => a.id === id).name).join(', ')}</p>
+          <p class="text-sm text-[#45375a] mb-2"><strong>Topics:</strong> ${r.topics.map((id) => topics.find((t) => t.id === id).name).join(", ")}</p>
+          <p class="text-sm text-[#45375a] mb-4"><strong>Audience:</strong> ${r.audiences.map((id) => audiences.find((a) => a.id === id).name).join(", ")}</p>
           <a href="${r.link}" target="_blank" class="text-blue-600 underline">Open Resource</a>
-        `;
-        resGrid.appendChild(card);
-      });
-    }
+        `
+            resGrid.appendChild(card)
+          })
+        }
 
-    function clearFilters() {
-      filterTopicEl.value = '';
-      filterAudEl.value = '';
-      searchInput.value = '';
-      renderResources();
-    }
-
-  })();
-  </script>
-</body>
+        function clearFilters() {
+          filterTopicEl.value = ""
+          filterAudEl.value = ""
+          searchInput.value = ""
+          renderResources()
+        }
+      })()
+    </script>
+  </body>
 </html>
