@@ -1,553 +1,682 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>TCFV Resource Hub</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body class="bg-[#EEE6F6] text-[#2c2135] font-montserrat">
-    <div class="max-w-7xl mx-auto p-6">
-      <!-- Header -->
-      <h1 class="text-4xl font-baskerville mb-2 text-[#624B78]">Resource Hub</h1>
-      <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
-
-      <!-- Tabs + Button Bar -->
-      <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8 gap-4">
-        <!-- Tabs (left) -->
-        <div class="flex space-x-5">
-          <button
-            id="tab-topic"
-            class="flex items-center gap-3 px-8 py-4 text-2xl font-extrabold rounded-3xl shadow-lg transition
-                   bg-[#624B78] text-white hover:bg-[#45375a] hover:scale-105 active:scale-100 focus:outline-none"
-          >
-            <i class="fas fa-tags text-3xl"></i>
-            Topic
-          </button>
-          <button
-            id="tab-audience"
-            class="flex items-center gap-3 px-8 py-4 text-2xl font-extrabold rounded-3xl shadow-lg transition
-                   bg-white text-[#624B78] border-4 border-[#624B78] hover:bg-[#f3eff9] hover:scale-105 active:scale-100 focus:outline-none"
-          >
-            <i class="fas fa-users text-3xl"></i>
-            Audience
-          </button>
-        </div>
-        <!-- Button Bar (right) -->
-        <div
-          class="flex gap-3 items-center bg-white/90 shadow rounded-2xl px-4 py-2 mt-2 md:mt-0"
-        >
-          <button
-            id="show-all-cards"
-            class="px-4 py-2 bg-[#624B78] text-white rounded-xl text-base hover:bg-[#45375a] transition h-12 font-semibold"
-          >
-            Show All Cards
-          </button>
-          <button
-            id="clear-filters"
-            class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl text-base hover:bg-[#8f7ca5] transition h-12 font-semibold"
-          >
-            Clear Filters
-          </button>
-        </div>
-      </div>
-
-      <!-- Category Heading -->
-      <div id="category-heading" class="px-4 md:px-12 mb-2"></div>
-
-      <!-- Category Cards in padded container -->
-      <div class="px-2 md:px-4">
-        <div id="card-grid-wrapper">
-          <div
-            id="card-grid"
-            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
-          ></div>
-        </div>
-      </div>
-
-      <!-- Resource Cards in padded container -->
-      <div class="px-4 md:px-12">
-        <div
-          id="resource-grid"
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-        ></div>
-      </div>
-    </div>
-
-    <!-- JavaScript -->
-    <script>
-      (function () {
-        function slugify(str) {
-          return str
-            .toLowerCase()
-            .replace(/&/g, "and")
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-+|-+$/g, "");
-        }
-
-        // Topics array with DVHRT added
-        const topics = [
-          {
-            id: "safety-planning",
-            name: "Safety Planning",
-            icon: '<i class="fas fa-shield-alt"></i>',
-            description: "Strategies and tools to help survivors plan for safety before, during, or after leaving an abusive relationship."
-          },
-          {
-            id: "housing",
-            name: "Housing",
-            icon: '<i class="fas fa-home"></i>',
-            description: "Support and resources for emergency shelter, transitional housing, and long-term housing stability."
-          },
-          {
-            id: "legal",
-            name: "Legal",
-            icon: '<i class="fas fa-balance-scale"></i>',
-            description: "Legal rights, options, and assistance for survivors navigating the justice system."
-          },
-          {
-            id: "technology-safety",
-            name: "Technology Safety",
-            icon: '<i class="fas fa-laptop"></i>',
-            description: "Protecting digital privacy, online safety, and secure technology use for survivors."
-          },
-          {
-            id: "child-welfare",
-            name: "Child Welfare",
-            icon: '<i class="fas fa-child"></i>',
-            description: "Support for survivors and their children, including child welfare services and advocacy."
-          },
-          {
-            id: "advocacy-skills",
-            name: "Advocacy Skills",
-            icon: '<i class="fas fa-comments"></i>',
-            description: "Training and tools for advocates to provide effective, trauma-informed support."
-          },
-          {
-            id: "prevention",
-            name: "Prevention",
-            icon: '<i class="fas fa-ban"></i>',
-            description: "Efforts and strategies to prevent domestic violence and promote healthy relationships."
-          },
-          {
-            id: "youth",
-            name: "Youth",
-            icon: '<i class="fas fa-graduation-cap"></i>',
-            description: "Resources and education tailored for youth impacted by or at risk of relationship violence."
-          },
-          {
-            id: "data-reporting",
-            name: "Data & Reporting",
-            icon: '<i class="fas fa-chart-bar"></i>',
-            description: "Guidance and tools for collecting, managing, and reporting program data."
-          },
-          {
-            id: "wellness-self-care",
-            name: "Wellness & Self-Care",
-            icon: '<i class="fas fa-spa"></i>',
-            description: "Promoting physical, emotional, and mental wellness for survivors and advocates."
-          },
-          {
-            id: "finance-budgeting",
-            name: "Finance & Budgeting",
-            icon: '<i class="fas fa-dollar-sign"></i>',
-            description: "Financial education, resources, and support for survivors and service providers."
-          },
-          {
-            id: "bipp",
-            name: "BIPP",
-            icon: '<i class="fas fa-sync-alt"></i>',
-            description: "Information and resources on Batterer Intervention and Prevention Programs (BIPP)."
-          },
-          {
-            id: "elections-voting",
-            name: "Elections & Voting",
-            icon: '<i class="fas fa-vote-yea"></i>',
-            description: "Civic participation and voter information for survivors and advocates."
-          },
-          // === NEW: DVHRT topic card ===
-          {
-            id: "dvh-rt",
-            name: "DVHRT",
-            icon: '<i class="fas fa-people-arrows"></i>',
-            description: "Domestic Violence High Risk Teams (DVHRT) coordinate multi-disciplinary strategies for increased survivor safety and homicide prevention."
-          }
-        ];
-
-        // Audiences array with DVHRT added
-        const audiences = [
-          {
-            id: "survivors",
-            name: "Survivors",
-            icon: '<i class="fas fa-user-shield"></i>',
-            description: "Individuals with lived experience of domestic violence seeking support and resources."
-          },
-          {
-            id: "advocates",
-            name: "Advocates",
-            icon: '<i class="fas fa-users"></i>',
-            description: "Professionals providing direct support, advocacy, and resources to survivors."
-          },
-          {
-            id: "campus-advocates",
-            name: "Campus Advocates",
-            icon: '<i class="fas fa-user-graduate"></i>',
-            description: "Advocates serving college and university communities."
-          },
-          {
-            id: "child-welfare-partners",
-            name: "Child Welfare Partners",
-            icon: '<i class="fas fa-handshake"></i>',
-            description: "Agencies and professionals working in child protection and family services."
-          },
-          {
-            id: "data-administrators",
-            name: "Data Administrators",
-            icon: '<i class="fas fa-database"></i>',
-            description: "Staff responsible for managing and reporting organizational data."
-          },
-          {
-            id: "executive-directors",
-            name: "Executive Directors",
-            icon: '<i class="fas fa-user-tie"></i>',
-            description: "Leaders overseeing strategy, operations, and mission of organizations."
-          },
-          {
-            id: "educators",
-            name: "Educators",
-            icon: '<i class="fas fa-chalkboard-teacher"></i>',
-            description: "Teachers and education staff supporting violence prevention and healthy relationships."
-          },
-          {
-            id: "finance-professionals",
-            name: "Finance Professionals",
-            icon: '<i class="fas fa-money-bill-wave"></i>',
-            description: "Staff and volunteers managing organizational or program finances."
-          },
-          {
-            id: "general-public",
-            name: "General Public",
-            icon: '<i class="fas fa-globe"></i>',
-            description: "Community members and allies interested in learning and supporting DV prevention."
-          },
-          {
-            id: "grants-professionals",
-            name: "Grants Professionals",
-            icon: '<i class="fas fa-file-alt"></i>',
-            description: "Staff responsible for securing and managing grants."
-          },
-          {
-            id: "it-operations-staff",
-            name: "IT & Ops Staff",
-            icon: '<i class="fas fa-cogs"></i>',
-            description: "Technical and operational staff supporting technology and infrastructure."
-          },
-          {
-            id: "legislators",
-            name: "Legislators",
-            icon: '<i class="fas fa-landmark"></i>',
-            description: "Elected officials and their staff focused on public policy and advocacy."
-          },
-          {
-            id: "outreach-teams",
-            name: "Outreach Teams",
-            icon: '<i class="fas fa-bullhorn"></i>',
-            description: "Teams promoting awareness and connecting communities to resources."
-          },
-          {
-            id: "policy-professionals",
-            name: "Policy Professionals",
-            icon: '<i class="fas fa-clipboard-check"></i>',
-            description: "Experts in public policy, analysis, and legislative advocacy."
-          },
-          {
-            id: "program-managers",
-            name: "Program Managers",
-            icon: '<i class="fas fa-tasks"></i>',
-            description: "Staff overseeing program operations, goals, and outcomes."
-          },
-          {
-            id: "prosecutors",
-            name: "Prosecutors",
-            icon: '<i class="fas fa-gavel"></i>',
-            description: "Attorneys and staff responsible for prosecuting domestic violence cases."
-          },
-          {
-            id: "system-partners",
-            name: "System Partners",
-            icon: '<i class="fas fa-network-wired"></i>',
-            description: "Organizations and agencies collaborating to improve survivor outcomes."
-          },
-          {
-            id: "youth-allies",
-            name: "Youth Allies",
-            icon: '<i class="fas fa-user-friends"></i>',
-            description: "Young people and supporters engaged in prevention and leadership."
-          },
-          {
-            id: "prevention-educators",
-            name: "Prevention Educators",
-            icon: '<i class="fas fa-chalkboard"></i>',
-            description: "Trainers and educators leading violence prevention initiatives."
-          },
-          {
-            id: "bipp-providers",
-            name: "BIPP Providers",
-            icon: '<i class="fas fa-sync-alt"></i>',
-            description: "Professionals providing Batterer Intervention and Prevention Programs."
-          },
-          // === NEW: DVHRT audience card ===
-          {
-            id: "dvh-rt",
-            name: "DVHRT",
-            icon: '<i class="fas fa-people-arrows"></i>',
-            description: "Members or partners of Domestic Violence High Risk Teams (DVHRT), including law enforcement, advocates, and allied agencies."
-          }
-        ];
-
-        let resources = [];
-        let activeTab = "topic";
-        let selectedCategory = null;
-        let showAllResources = false;
-
-        const tabTopic      = document.getElementById("tab-topic");
-        const tabAud        = document.getElementById("tab-audience");
-        const cardGrid      = document.getElementById("card-grid");
-        const resGrid       = document.getElementById("resource-grid");
-        const categoryHeading = document.getElementById("category-heading");
-        const cardGridWrapper = document.getElementById("card-grid-wrapper");
-
-        // Button elements
-        const showAllBtn = document.getElementById("show-all-cards");
-        const clearBtn   = document.getElementById("clear-filters");
-
-        // Load resources then initialize
-        fetch("data/resources.json")
-          .then((response) => response.json())
-          .then((raw) => {
-            resources = raw.map((item) => ({
-              name: item["Resource Name"],
-              icon: item.Icon,
-              audiences: (item.Audience || "").split(/,\s*/).map(slugify),
-              topics:    (item.Topics || "").split(/,\s*/).map(slugify),
-              summary:   item["Short Description"],
-              date:      item.Date,
-              link:      item["Full Link"],
-            }));
-          })
-          .catch((err) => console.error("Failed to load resources:", err))
-          .finally(init);
-
-        function init() {
-          tabTopic.addEventListener("click", () => switchTab("topic"));
-          tabAud.addEventListener("click", () => switchTab("audience"));
-          showAllBtn.addEventListener("click", showAllCards);
-          clearBtn.addEventListener("click", clearFilters);
-          updateTabStyles();
-          renderCards();
-        }
-
-        function switchTab(tab) {
-          activeTab = tab;
-          selectedCategory = null;
-          showAllResources = false;
-          cardGridWrapper.style.display = "";
-          resGrid.innerHTML = "";
-          updateTabStyles();
-          renderCards();
-          categoryHeading.innerHTML = "";
-        }
-
-        function updateTabStyles() {
-          if (activeTab === "topic") {
-            tabTopic.classList.add("bg-[#624B78]", "text-white");
-            tabTopic.classList.remove("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
-            tabAud.classList.add("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
-            tabAud.classList.remove("bg-[#624B78]", "text-white");
-          } else {
-            tabAud.classList.add("bg-[#624B78]", "text-white");
-            tabAud.classList.remove("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
-            tabTopic.classList.add("bg-white", "text-[#624B78]", "border", "border-[#624B78]");
-            tabTopic.classList.remove("bg-[#624B78]", "text-white");
-          }
-        }
-
-        function renderCards() {
-          cardGrid.innerHTML = "";
-          cardGridWrapper.style.display = showAllResources ? "none" : "";
-          if (showAllResources) return;
-          const items = activeTab === "topic" ? topics : audiences;
-          items.forEach((item) => {
-            const el = document.createElement("div");
-            // Small, tight card style:
-            el.className = "bg-white rounded-xl p-3 shadow cursor-pointer hover:shadow-lg transition";
-            el.innerHTML = `
-              <div class="flex items-center justify-center text-center gap-2">
-                <span class="text-2xl text-[#624B78]">${item.icon}</span>
-                <span class="text-base font-medium text-[#624B78]">${item.name}</span>
-              </div>
-            `;
-            el.addEventListener("click", () => selectCategory(item));
-            cardGrid.appendChild(el);
-          });
-        }
-
-        function selectCategory(item) {
-          selectedCategory = item;
-          showAllResources = false;
-          cardGridWrapper.style.display = "none";
-          renderResources();
-        }
-
-        function renderResources() {
-          // Set heading/description if category is selected
-          if (selectedCategory) {
-            categoryHeading.innerHTML = `
-              <div class="text-4xl font-extrabold text-[#624B78] mb-2 flex items-center gap-3">
-                <span class="text-5xl">${selectedCategory.icon}</span>
-                ${selectedCategory.name}
-              </div>
-              <div class="text-xl text-[#45375a] mb-6">
-                ${selectedCategory.description || ""}
-              </div>
-            `;
-          } else {
-            categoryHeading.innerHTML = "";
-          }
-
-          resGrid.innerHTML = "";
-
-          // Only show resources for the selected category
-          const filtered = selectedCategory
-            ? resources.filter((r) =>
-                r[activeTab === "topic" ? "topics" : "audiences"].includes(selectedCategory.id)
-              )
-            : [];
-
-          if (!filtered.length) {
-            resGrid.innerHTML = selectedCategory
-              ? '<p class="text-center text-[#45375a] py-6">No resources found for this category.</p>'
-              : '';
-            return;
-          }
-
-          filtered.forEach((r) => {
-            const card = document.createElement("div");
-            card.className = "bg-white p-6 rounded-2xl shadow-lg";
-            card.innerHTML = `
-              <div class="flex items-center mb-2">
-                <div class="text-2xl mr-3 text-[#624B78]">${r.icon}</div>
-                <h3 class="text-lg font-semibold">${r.name}</h3>
-              </div>
-              <p class="text-sm text-[#45375a] mb-2">${r.summary}</p>
-              <p class="text-sm text-[#45375a] mb-2"><strong>Date:</strong> ${r.date}</p>
-              <p class="text-sm text-[#45375a] mb-2">
-                <strong>Topics:</strong> 
-                ${
-                  r.topics && r.topics.length
-                    ? r.topics
-                        .map((id) => {
-                          const t = topics.find((t) => t.id === id);
-                          return t ? t.name : "Uncategorized";
-                        })
-                        .join(", ")
-                    : "Uncategorized"
-                }
-              </p>
-              <p class="text-sm text-[#45375a] mb-4">
-                <strong>Audience:</strong>
-                ${
-                  r.audiences && r.audiences.length
-                    ? r.audiences
-                        .map((id) => {
-                          const a = audiences.find((a) => a.id === id);
-                          return a ? a.name : "Uncategorized";
-                        })
-                        .join(", ")
-                    : "Uncategorized"
-                }
-              </p>
-              <a href="${r.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-[#624B78] text-white rounded-xl hover:bg-[#45375a] text-sm">Open Resource</a>
-            `;
-            resGrid.appendChild(card);
-          });
-        }
-
-        function renderAllResources() {
-          // Hide category cards
-          cardGridWrapper.style.display = "none";
-          categoryHeading.innerHTML = "";
-          resGrid.innerHTML = "";
-
-          if (!resources.length) {
-            resGrid.innerHTML = '<p class="text-center text-[#45375a] py-6">No resources found.</p>';
-            return;
-          }
-          resources.forEach((r) => {
-            const card = document.createElement("div");
-            card.className = "bg-white p-6 rounded-2xl shadow-lg";
-            card.innerHTML = `
-              <div class="flex items-center mb-2">
-                <div class="text-2xl mr-3 text-[#624B78]">${r.icon}</div>
-                <h3 class="text-lg font-semibold">${r.name}</h3>
-              </div>
-              <p class="text-sm text-[#45375a] mb-2">${r.summary}</p>
-              <p class="text-sm text-[#45375a] mb-2"><strong>Date:</strong> ${r.date}</p>
-              <p class="text-sm text-[#45375a] mb-2">
-                <strong>Topics:</strong> 
-                ${
-                  r.topics && r.topics.length
-                    ? r.topics
-                        .map((id) => {
-                          const t = topics.find((t) => t.id === id);
-                          return t ? t.name : "Uncategorized";
-                        })
-                        .join(", ")
-                    : "Uncategorized"
-                }
-              </p>
-              <p class="text-sm text-[#45375a] mb-4">
-                <strong>Audience:</strong>
-                ${
-                  r.audiences && r.audiences.length
-                    ? r.audiences
-                        .map((id) => {
-                          const a = audiences.find((a) => a.id === id);
-                          return a ? a.name : "Uncategorized";
-                        })
-                        .join(", ")
-                    : "Uncategorized"
-                }
-              </p>
-              <a href="${r.link}" target="_blank" class="inline-block mt-2 px-4 py-2 bg-[#624B78] text-white rounded-xl hover:bg-[#45375a] text-sm">Open Resource</a>
-            `;
-            resGrid.appendChild(card);
-          });
-        }
-
-        function showAllCards() {
-          selectedCategory = null;
-          showAllResources = true;
-          renderAllResources();
-        }
-
-        function clearFilters() {
-          selectedCategory = null;
-          showAllResources = false;
-          categoryHeading.innerHTML = "";
-          cardGridWrapper.style.display = "";
-          renderCards();
-          resGrid.innerHTML = "";
-        }
-      })();
-    </script>
-  </body>
-</html>
+[
+  {
+    "#": 1,
+    "Resource Name": "Personalized Safety Plan (fillable)",
+    "Icon": "🛡️",
+    "Audience": "Survivors",
+    "Topics": "Safety Planning",
+    "Short Description": "8-page guided template to craft a personal safety plan.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/tcfv_personalized_safetyplan_2021/"
+  },
+  {
+    "#": 2,
+    "Resource Name": "30-Day Notice to Vacate (Lease)",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Template for survivors not living with abuser to end lease early.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/30-Day-Notice-to-Vacate.pdf"
+  },
+  {
+    "#": 3,
+    "Resource Name": "Co-Habitation Notice to Vacate",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Lease termination letter for survivors living with an abuser.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Co-Habitation-Tenant-Notice-to-Vacate.pdf"
+  },
+  {
+    "#": 4,
+    "Resource Name": "Third-Party Documentation Form",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing, Legal",
+    "Short Description": "Certification form for professionals to verify survivor status.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Third-Party-Documentation.pdf"
+  },
+  {
+    "#": 5,
+    "Resource Name": "Utility Waiver - Electric/Phone (EN)",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Certification to waive deposits for electric & telephone service.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Electric-and-Telephone-Waiver-English.pdf"
+  },
+  {
+    "#": 6,
+    "Resource Name": "Utility Waiver - Electric/Phone (ES)",
+    "Icon": "🏠",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Housing",
+    "Short Description": "Spanish version of electric & telephone deposit waiver.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Electric-and-Telephone-Waiver-Spanish.pdf"
+  },
+  {
+    "#": 7,
+    "Resource Name": "Utility Waiver - Austin Energy (EN)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Deposit waiver letter for Austin Energy electric service.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Austin-Energy-Waiver-English.pdf"
+  },
+  {
+    "#": 8,
+    "Resource Name": "Utility Waiver - Austin Energy (ES)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Spanish version for Austin Energy deposit waiver.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Austin-Energy-Waiver-Spanish.pdf"
+  },
+  {
+    "#": 9,
+    "Resource Name": "Utility Waiver - Gas Service (EN)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Certification to waive gas service deposits.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Gas-Waiver-English.pdf"
+  },
+  {
+    "#": 10,
+    "Resource Name": "Utility Waiver - Gas Service (ES)",
+    "Icon": "🏠",
+    "Audience": "Survivors",
+    "Topics": "Housing",
+    "Short Description": "Spanish gas service deposit waiver form.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Gas-Waiver-Spanish.pdf"
+  },
+  {
+    "#": 11,
+    "Resource Name": "HB 1372 - Lifelines to Safety (EN)",
+    "Icon": "🛡️",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Safety Planning, Technology Safety",
+    "Short Description": "FAQ on wireless plan separation for survivors.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Supporting-Lifelines-to-Safety-English.pdf"
+  },
+  {
+    "#": 12,
+    "Resource Name": "HB 1372 - Lifelines to Safety (ES)",
+    "Icon": "🛡️",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Safety Planning, Technology Safety",
+    "Short Description": "Spanish version of the wireless separation FAQ.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Supporting-Lifelines-to-Safety-Spanish.pdf"
+  },
+  {
+    "#": 13,
+    "Resource Name": "Wireless Separation PO Templates",
+    "Icon": "💻",
+    "Audience": "Advocates, Survivors",
+    "Topics": "Legal, Technology Safety",
+    "Short Description": "Court forms for phone-plan separation in Protective Orders.",
+    "Date": "2021",
+    "Full Link": "https://texascouncil.sharepoint.com/:f:/s/Public/..."
+  },
+  {
+    "#": 14,
+    "Resource Name": "Survivors Rights Palm Card - CPS (EN)",
+    "Icon": "👶",
+    "Audience": "Survivors",
+    "Topics": "Child Welfare",
+    "Short Description": "Quick-reference card on rights during CPS involvement.",
+    "Date": "2019",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2019/03/Final_English_SurvivorsRights_0915.pdf"
+  },
+  {
+    "#": 15,
+    "Resource Name": "Supervivientes: Derechos - CPS (ES)",
+    "Icon": "👶",
+    "Audience": "Survivors",
+    "Topics": "Child Welfare",
+    "Short Description": "Spanish palm card on survivors' CPS rights.",
+    "Date": "2019",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2019/03/Final_Spanish_SurvivorsRights_0915.pdf"
+  },
+  {
+    "#": 16,
+    "Resource Name": "Facts About Domestic Violence (Brochure)",
+    "Icon": "🗣️",
+    "Audience": "Survivors",
+    "Topics": "Advocacy Skills",
+    "Short Description": "2-page overview of DV stats, warning signs & hotlines.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Facts-About-DV_English_print.pdf"
+  },
+  {
+    "#": 17,
+    "Resource Name": "Minors Rights Tip Sheet (EN)",
+    "Icon": "👶",
+    "Audience": "Educators, Youth",
+    "Topics": "Child Welfare",
+    "Short Description": "Know-Your-Rights for youth: Title IX, shelter access, counseling.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAHFERHHXGDDERGZJXIUAZVVWN3E"
+  },
+  {
+    "#": 18,
+    "Resource Name": "Hoja de Derechos del Menor (ES)",
+    "Icon": "👶",
+    "Audience": "Youth",
+    "Topics": "Child Welfare",
+    "Short Description": "Spanish minors' rights tip sheet for adolescents.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAAWEY5AMSDIUJCKKX5P4GGTA6BP"
+  },
+  {
+    "#": 19,
+    "Resource Name": "Teen Dating Violence Safety Plan",
+    "Icon": "🛡️",
+    "Audience": "Educators, Youth",
+    "Topics": "Safety Planning, Prevention, Youth",
+    "Short Description": "Youth-friendly safety planning tool.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPADHBR4FL4K2UVCKPVNXTBWM7RRU"
+  },
+  {
+    "#": 20,
+    "Resource Name": "Dating Bill of Rights (EN)",
+    "Icon": "🧒",
+    "Audience": "Educators, Youth",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Pocket card listing key relationship rights.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAGPYFT2R24ES5BJBAMOXFABBOFP"
+  },
+  {
+    "#": 21,
+    "Resource Name": "Declaración de Derechos (ES)",
+    "Icon": "🧒",
+    "Audience": "Youth",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Spanish \"Dating Bill of Rights\" card.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAH7AQVK4Q7WN5EIPMNYVGDUN544"
+  },
+  {
+    "#": 22,
+    "Resource Name": "Know the Difference - HEalthy vs Unhealthy Relationships Bookmark (EN)",
+    "Icon": "🧒",
+    "Audience": "Educators, Youth",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Healthy vs. unhealthy relationship traits for youth.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAC2MHTYJULMKZEKRFRCL4LORZWM"
+  },
+  {
+    "#": 23,
+    "Resource Name": "Conozca la Diferencia (ES)",
+    "Icon": "🧒",
+    "Audience": "Youth",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Spanish healthy vs. unhealthy bookmark.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAFSVP4HKYFOL5DIUXDIMD3VXKXI"
+  },
+  {
+    "#": 24,
+    "Resource Name": "Young Hearts Matter Infographic",
+    "Icon": "📊",
+    "Audience": "General Public, Youth",
+    "Topics": "Prevention, Youth, Data Reporting",
+    "Short Description": "Teen DV prevalence stats (U.S. & TX).",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAHRK55SIVCZ5BBZRSTEDYOB27YG"
+  },
+  {
+    "#": 25,
+    "Resource Name": "The Essential Guide for Advocates",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "60-page foundational manual on survivor-centered advocacy.",
+    "Date": "2018",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01W5A36WU66DYGZ4TLTZDKTGAUW2YZZ6SV"
+  },
+  {
+    "#": 26,
+    "Resource Name": "Campus-Based Advocacy Toolkit 2.0",
+    "Icon": "🗣️",
+    "Audience": "Educators, Youth",
+    "Topics": "Advocacy Skills, Prevention, Youth",
+    "Short Description": "Logic model & evaluation strategies for campus programs.",
+    "Date": "2024",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAG73LE2PFYTDVEKW6FD6Q7W5QSZ"
+  },
+  {
+    "#": 27,
+    "Resource Name": "Wellness in the Movement Tip Sheet",
+    "Icon": "🌱",
+    "Audience": "Advocates",
+    "Topics": "Wellness Self-Care",
+    "Short Description": "Summary of self-care & organizational wellness webinars.",
+    "Date": "2023",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAFM3RGHJTVTMFDZOGK2YXQLNLZX"
+  },
+  {
+    "#": 28,
+    "Resource Name": "Tips for Advocates - Mobile Advocacy",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "Strategies for community-based & tech-mediated advocacy.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Mobile-Advocacy.pdf"
+  },
+  {
+    "#": 29,
+    "Resource Name": "Tips for Advocates - Technology Safety",
+    "Icon": "💻",
+    "Audience": "Advocates",
+    "Topics": "Technology Safety",
+    "Short Description": "Guidance on spyware, GPS privacy, social media safety.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Technology.pdf"
+  },
+  {
+    "#": 30,
+    "Resource Name": "Tips for Advocates  Protective Orders & Legal",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "Overview of Texas protective orders & filing processes.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Legal-and-Criminal-Justice-System.pdf"
+  },
+  {
+    "#": 31,
+    "Resource Name": "Tips for Advocates  Human Trafficking",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "Definitions, legal protections & safety planning tips.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020-Human-Trafficking-TAASA-TCFV-Tip-Sheet.pdf"
+  },
+  {
+    "#": 32,
+    "Resource Name": "Tips for Advocates - CPS",
+    "Icon": "👶",
+    "Audience": "Advocates",
+    "Topics": "Child Welfare",
+    "Short Description": "How to support survivors involved with Child Protective Services.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Child-Protective-Services.pdf"
+  },
+  {
+    "#": 33,
+    "Resource Name": "Tips for Advocates - Immigration",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "VAWA/U-Visa guidance & safety planning for immigrants.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Immigration.pdf"
+  },
+  {
+    "#": 34,
+    "Resource Name": "Tips for Advocates  Stalking & Privacy",
+    "Icon": "💻",
+    "Audience": "Advocates",
+    "Topics": "Legal, Technology Safety",
+    "Short Description": "Stalking logs, protective orders, tech-safety tips.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Stalking-and-Privacy.pdf"
+  },
+  {
+    "#": 35,
+    "Resource Name": "Tips for Advocates - Sexual Assault",
+    "Icon": "🗣️",
+    "Audience": "Advocates",
+    "Topics": "Advocacy Skills",
+    "Short Description": "SANE exams, protective orders & survivor rights overview.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Sexual-Assault.pdf"
+  },
+  {
+    "#": 36,
+    "Resource Name": "Tips for Advocates - Child Support",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "Custody vs. support guidance & Good Cause exemptions.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Child-Support-v.2.pdf"
+  },
+  {
+    "#": 37,
+    "Resource Name": "Tips for Advocates - Housing Funds",
+    "Icon": "🏠",
+    "Audience": "Advocates",
+    "Topics": "Housing",
+    "Short Description": "VOCA & flexible funding uses for transitional housing.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Flexible-Funding.pdf"
+  },
+  {
+    "#": 38,
+    "Resource Name": "Stalking Law Changes - Advocate Brief",
+    "Icon": "⚖️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Legal",
+    "Short Description": "4-page summary of 2023 stalking statute updates.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Stalking-Tip-Sheet_Advocates-web.pdf"
+  },
+  {
+    "#": 39,
+    "Resource Name": "Stalking Law Tip Sheet - Advocates",
+    "Icon": "⚖️",
+    "Audience": "Advocates",
+    "Topics": "Legal",
+    "Short Description": "Detailed guidance on assisting stalking survivors.",
+    "Date": "2023",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01PC7P5Z2M7SIDMV2OWFE26K6IIV7E6MEF"
+  },
+  {
+    "#": 40,
+    "Resource Name": "Tips for Prosecutors - Stalking Law",
+    "Icon": "⚖️",
+    "Audience": "Prosecutors",
+    "Topics": "Legal",
+    "Short Description": "Prosecutor-focused stalking law update & evidence tips.",
+    "Date": "2023",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01PC7P5ZYVWY7LJSG5WRAL3YFQJKQ3UP3Z"
+  },
+  {
+    "#": 41,
+    "Resource Name": "Advocate Mental Health & Wellness Guide",
+    "Icon": "🌱",
+    "Audience": "Advocates",
+    "Topics": "Wellness Self-Care",
+    "Short Description": "Self-care exercises & trauma impact info for advocates.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/.../01H62CNHD56EXXSPYPVVG3WU46W7AQHESK"
+  },
+  {
+    "#": 42,
+    "Resource Name": "Guía de Bienestar del Intercesor (ES)",
+    "Icon": "🌱",
+    "Audience": "Advocates",
+    "Topics": "Wellness Self-Care",
+    "Short Description": "Spanish version of the advocate wellness guide.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/.../01H62CNHEXWDV73GU2KVBZFESRX6EGJEEN"
+  },
+  {
+    "#": 43,
+    "Resource Name": "Pretrial Juvenile Advocates - Resource",
+    "Icon": "👶",
+    "Audience": "Advocates, System Partners",
+    "Topics": "Child Welfare",
+    "Short Description": "Handout on juvenile process basics & advocacy.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Juvenile-Resource-2021.pdf"
+  },
+  {
+    "#": 44,
+    "Resource Name": "Chesapeake Best Practices Brief",
+    "Icon": "🗣️",
+    "Audience": "Advocates, System Partners",
+    "Topics": "Advocacy Skills",
+    "Short Description": "One-pager on rural & urban community DV response tips.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Chesapeake-Best-Practices.pdf"
+  },
+  {
+    "#": 45,
+    "Resource Name": "Nuts & Bolts of Bookkeeping Toolkit",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance Budgeting",
+    "Short Description": "Core financial management: bookkeeping, grants, controls.",
+    "Date": "2018 (rev 2021)",
+    "Full Link": "https://tcfv.org/wp-content/uploads/.../Nuts-and-Bolts-of-Bookkeeping-A-Toolkit_Complete_v3.pdf"
+  },
+  {
+    "#": 46,
+    "Resource Name": "Federal Funding Sources Flowchart",
+    "Icon": "💰",
+    "Audience": "Finance Professionals, Grants Professionals",
+    "Topics": "Finance Budgeting",
+    "Short Description": "Visual of FVPSA, VOCA, VAWA, etc. funding flows to programs.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/tcfv_federal_funding_sources_flowchart_2021/"
+  },
+  {
+    "#": 47,
+    "Resource Name": "2020 Compensation Report",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance Budgeting",
+    "Short Description": "Biennial salary & benefits benchmarks for DV agencies.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020-TCFV-Compensation-Report-FINAL.pdf"
+  },
+  {
+    "#": 48,
+    "Resource Name": "2022 Compensation Report",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance Budgeting",
+    "Short Description": "Updated salary & benefit trends for FV service providers.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2022-TCFV-Compensation-Report-FINAL.pdf"
+  },
+  {
+    "#": 49,
+    "Resource Name": "2024 Compensation Report",
+    "Icon": "💰",
+    "Audience": "Executive Directors, Finance Professionals",
+    "Topics": "Finance Budgeting",
+    "Short Description": "Latest statewide compensation survey data & analysis.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2024-TCFV-Compensation-Report-FINAL.pdf"
+  },
+  {
+    "#": 50,
+    "Resource Name": "Statewide Service Directory 2024",
+    "Icon": "📊",
+    "Audience": "Advocates, System Partners",
+    "Topics": "Data Reporting",
+    "Short Description": "Directory of TX FV programs, BIPPs, and community partners.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2024-TCFV-Service-Directory_web-pages.pdf"
+  },
+  {
+    "#": 51,
+    "Resource Name": "Tech for Social Impact - Nonprofit Offers",
+    "Icon": "💻",
+    "Audience": "IT Operations Staff",
+    "Topics": "Technology Safety",
+    "Short Description": "Microsoft grants & discounts summary for nonprofits.",
+    "Date": "2021",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01W5A36WTFBRVAJTH3MRH2JE735QH4376H"
+  },
+  {
+    "#": 52,
+    "Resource Name": "DVAM External Toolkit - 2022",
+    "Icon": "🧒",
+    "Audience": "Educators, Outreach Teams, Prevention Educators",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Graphics, posters, templates for DV Awareness Month outreach.",
+    "Date": "2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
+  },
+  {
+    "#": 53,
+    "Resource Name": "DVAM External Toolkit - 2024",
+    "Icon": "🧒",
+    "Audience": "Educators, Outreach Teams, Prevention Educators",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Updated materials for DVAM campaigns & social media assets.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
+  },
+  {
+    "#": 54,
+    "Resource Name": "Prevention Educators Resource List",
+    "Icon": "🧒",
+    "Audience": "Educators, Prevention Educators, Youth Allies",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Directory of trainings, curricula, webinars, publications.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01W5A36WUCW3RJUNLY35HIPL7JY25YS7PF"
+  },
+  {
+    "#": 55,
+    "Resource Name": "Young Hearts Matter Resources",
+    "Icon": "🧒",
+    "Audience": "Educators, Prevention Educators, Youth Allies",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Online modules & podcast series for teen DV prevention.",
+    "Date": "2024",
+    "Full Link": "https://tcfv.org/program-resources/youth-and-adult-allies/"
+  },
+  {
+    "#": 56,
+    "Resource Name": "Youth Activism Guide",
+    "Icon": "🧒",
+    "Audience": "Educators, Youth, Youth Allies",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Engaging teens in preventing dating violence year-round.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAHWCMHP22OTSFBKLNAXHKL5OLS5"
+  },
+  {
+    "#": 57,
+    "Resource Name": "Our Hearts Matter Social & Event Toolkit",
+    "Icon": "🧒",
+    "Audience": "Educators, Prevention Educators, Youth Allies",
+    "Topics": "Prevention, Youth",
+    "Short Description": "Week-by-week Teen DV Month campaign ideas & prompts.",
+    "Date": "2020",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01AMQHF3AXJSHSJAWBNVGZ4RCOW3RYKXX3"
+  },
+  {
+    "#": 58,
+    "Resource Name": "BIPP Resource Toolkit - 2023",
+    "Icon": "🚫",
+    "Audience": "BIPP providers, Prevention Educators",
+    "Topics": "BIPP",
+    "Short Description": "Accreditation, best practices & equity guidance for BIPP.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2023-TCFV-Battering-Intervention-and-Prevention-Program-Toolkit.pdf"
+  },
+  {
+    "#": 59,
+    "Resource Name": "89th Bills of Note - Summary",
+    "Icon": "🗳️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Elections Voting",
+    "Short Description": "Key 2025 bills impacting survivors, with TCFV commentary.",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/TCFV-Bills-of-Note-89th-Session.pdf"
+  },
+  {
+    "#": 60,
+    "Resource Name": "89th Priority One-Pagers Packet",
+    "Icon": "🗳️",
+    "Audience": "Legislators, Policy Professionals",
+    "Topics": "Elections Voting",
+    "Short Description": "One-page briefs on each policy priority (e.g. HB 1332).",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/89th-Lege-Priorities-One-Pagers-ALL-4.pdf"
+  },
+  {
+    "#": 61,
+    "Resource Name": "89th FV Services Funding Fact Sheet",
+    "Icon": "💰",
+    "Audience": "Legislators, Policy Professionals",
+    "Topics": "Finance Budgeting, Elections Voting",
+    "Short Description": "Data-driven ask for $25 M increase in family violence funding.",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Family-Violence-Services-Funding-Fact-Sheet-SB1-HB-1.pdf"
+  },
+  {
+    "#": 62,
+    "Resource Name": "89th BIPP Funding Fact Sheet",
+    "Icon": "🚫",
+    "Audience": "Legislators, Policy Professionals",
+    "Topics": "BIPP, Elections Voting",
+    "Short Description": "Cost-efficiency & impact data supporting $925k funding boost.",
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/BIPP-Funding-Fact-Sheet-SB1-HB-1.pdf"
+  },
+  {
+    "#": 63,
+    "Resource Name": "88th Legislative Update (2023)",
+    "Icon": "🗳️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Elections Voting",
+    "Short Description": "Recap of TCFV's 2023 session wins, funding, and policy changes.",
+    "Date": "2023",
+    "Full Link": "https://tcfv.org/wp-content/uploads/88th-Legislative-Session-Update.pdf"
+  },
+  {
+    "#": 64,
+    "Resource Name": "DV High-Risk Teams Welcome Kit",
+    "Icon": "🗣️",
+    "Audience": "Grants Professionals, System Partners, DVHRT",
+    "Topics": "Advocacy Skills, DVHRT",
+    "Short Description": "Orientation & sample tools for launching local DVHRT.",
+    "Date": "23-Nov",
+    "Full Link": "https://tcfv.org/wp-content/uploads/DVHRT-Welcome-Kit.pdf"
+  },
+  {
+    "#": 65,
+    "Resource Name": "Safer Families Project Welcome Kit",
+    "Icon": "👶",
+    "Audience": "Child Welfare Partners, System Partners",
+    "Topics": "Child Welfare",
+    "Short Description": "Collated webinars & QIC resources for DV-Child Welfare sites.",
+    "Date": "FY 2022",
+    "Full Link": "https://tcfv.org/wp-content/uploads/Safer-Families-Welcome-Kit.pdf"
+  },
+  {
+    "#": 66,
+    "Resource Name": "Osnium Database Upgrade Toolkit",
+    "Icon": "📊",
+    "Audience": "Data Administrators, Program Managers",
+    "Topics": "Data Reporting",
+    "Short Description": "Step-by-step tasks & training for FY22 Osnium rollout.",
+    "Date": "21-Aug",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01AB47KBC5FM3F4JXYX5H22B3C6USNC72D"
+  },
+  {
+    "#": 67,
+    "Resource Name": "Legislative Advocacy Toolkit",
+    "Icon": "🗳️",
+    "Audience": "Advocates, Policy Professionals",
+    "Topics": "Elections Voting",
+    "Short Description": "Survivor-centered guide to engaging in the TX Legislature.",
+    "Date": "25-Jan",
+    "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01W5A36WTYN7YUKNSARRGL2ZO6YUJCBH7R"
+  },
+  {
+    "#": 68,
+    "Resource Name": "Tips for Advocates - Housing Funds",
+    "Icon": "🏠",
+    "Audience": "Advocates",
+    "Topics": "Housing",
+    "Short Description": "VOCA & flexible funding uses for transitional housing.",
+    "Date": "2020",
+    "Full Link": "https://tcfv.org/wp-content/uploads/2020TipSheets_Flexible-Funding.pdf"
+  }
+]
