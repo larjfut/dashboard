@@ -21,45 +21,42 @@
       <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
       <!-- Tabs + Filters Container -->
-     <div class="flex space-x-5">
-  <button
-    id="tab-topic"
-    class="flex items-center gap-3 px-8 py-4 text-2xl font-extrabold rounded-3xl shadow-lg transition
-           bg-[#624B78] text-white hover:bg-[#45375a] hover:scale-105 active:scale-100 focus:outline-none"
-  >
-    <i class="fas fa-tags text-3xl"></i>
-    Topic
-  </button>
-  <button
-    id="tab-audience"
-    class="flex items-center gap-3 px-8 py-4 text-2xl font-extrabold rounded-3xl shadow-lg transition
-           bg-white text-[#624B78] border-4 border-[#624B78] hover:bg-[#f3eff9] hover:scale-105 active:scale-100 focus:outline-none"
-  >
-    <i class="fas fa-users text-3xl"></i>
-    Audience
-  </button>
-</div>
-
-
-
-        <!-- Always-visible Filters (with icons) -->
-        <div id="filters" class="flex flex-wrap gap-2 items-center">
-          <!-- Topic Filter with Icon -->
+      <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+        <!-- Tabs (left) -->
+        <div class="flex space-x-5">
+          <button
+            id="tab-topic"
+            class="flex items-center gap-3 px-8 py-4 text-2xl font-extrabold rounded-3xl shadow-lg transition
+                   bg-[#624B78] text-white hover:bg-[#45375a] hover:scale-105 active:scale-100 focus:outline-none"
+          >
+            <i class="fas fa-tags text-3xl"></i>
+            Topic
+          </button>
+          <button
+            id="tab-audience"
+            class="flex items-center gap-3 px-8 py-4 text-2xl font-extrabold rounded-3xl shadow-lg transition
+                   bg-white text-[#624B78] border-4 border-[#624B78] hover:bg-[#f3eff9] hover:scale-105 active:scale-100 focus:outline-none"
+          >
+            <i class="fas fa-users text-3xl"></i>
+            Audience
+          </button>
+        </div>
+        <!-- Filters (right) -->
+        <div id="filters" class="flex flex-wrap gap-3 items-center ml-auto">
           <div class="flex items-center">
-            <i class="fas fa-list-alt mr-1 text-[#624B78] text-sm"></i>
+            <i class="fas fa-list-alt mr-2 text-[#624B78] text-lg"></i>
             <select
               id="filter-topic"
-              class="rounded-xl py-1 px-2 border border-[#AC95C1] text-sm"
+              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[160px]"
             >
               <option value="">All Topics</option>
             </select>
           </div>
-          <!-- Audience Filter with Icon -->
           <div class="flex items-center">
-            <i class="fas fa-users mr-1 text-[#624B78] text-sm"></i>
+            <i class="fas fa-users mr-2 text-[#624B78] text-lg"></i>
             <select
               id="filter-audience"
-              class="rounded-xl py-1 px-2 border border-[#AC95C1] text-sm"
+              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[160px]"
             >
               <option value="">All Audiences</option>
             </select>
@@ -68,28 +65,32 @@
             id="search-input"
             type="search"
             placeholder="Search..."
-            class="rounded-xl py-1 px-2 border border-[#AC95C1] text-sm min-w-[120px]"
+            class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[160px]"
           />
           <button
             id="clear-filters"
-            class="px-2 py-1 bg-[#AC95C1] text-white rounded-xl text-sm hover:bg-[#8f7ca5] transition"
+            class="px-4 py-2 bg-[#AC95C1] text-white rounded-xl text-base hover:bg-[#8f7ca5] transition h-12"
           >
             Clear
           </button>
         </div>
       </div>
 
-      <!-- Category Cards -->
-      <div
-        id="card-grid"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
-      ></div>
+      <!-- Category Cards in padded container -->
+      <div class="px-2 md:px-8">
+        <div
+          id="card-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6"
+        ></div>
+      </div>
 
-      <!-- Resource Cards -->
-      <div
-        id="resource-grid"
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
-      ></div>
+      <!-- Resource Cards in padded container -->
+      <div class="px-2 md:px-8">
+        <div
+          id="resource-grid"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
+        ></div>
+      </div>
     </div>
 
     <!-- JavaScript -->
@@ -232,11 +233,11 @@
           const items = activeTab === "topic" ? topics : audiences;
           items.forEach((item) => {
             const el = document.createElement("div");
-            el.className = "bg-white rounded-2xl p-6 shadow-lg cursor-pointer hover:shadow-2xl";
+            el.className = "bg-white rounded-2xl p-8 shadow-lg cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition transform";
             el.innerHTML = `
               <div class="flex flex-col items-center text-center">
-                <div class="text-4xl mb-3 text-[#624B78]">${item.icon}</div>
-                <h3 class="text-lg font-semibold mb-1 text-[#624B78]">${item.name}</h3>
+                <div class="text-5xl mb-3 text-[#624B78]">${item.icon}</div>
+                <h3 class="text-xl font-semibold mb-1 text-[#624B78]">${item.name}</h3>
               </div>
             `;
             el.addEventListener("click", () => selectCategory(item));
