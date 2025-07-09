@@ -184,7 +184,7 @@
     "Resource Name": "Teen Dating Violence Safety Plan",
     "Icon": "🛡️",
     "Audience": "Educators, Youth",
-    "Topics": "Safety Planning, Prevention & Youth",
+    "Topics": "Safety Planning, Prevention, Youth",
     "Short Description": "Youth-friendly safety planning tool.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPADHBR4FL4K2UVCKPVNXTBWM7RRU"
@@ -194,7 +194,7 @@
     "Resource Name": "Dating Bill of Rights (Palm Card EN)",
     "Icon": "🧒",
     "Audience": "Educators, Youth",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Pocket card listing key relationship rights.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAGPYFT2R24ES5BJBAMOXFABBOFP"
@@ -204,7 +204,7 @@
     "Resource Name": "Declaración de Derechos (ES)",
     "Icon": "🧒",
     "Audience": "Youth",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Spanish \"Dating Bill of Rights\" card.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAH7AQVK4Q7WN5EIPMNYVGDUN544"
@@ -214,7 +214,7 @@
     "Resource Name": "Know the Difference Bookmark (EN)",
     "Icon": "🧒",
     "Audience": "Educators, Youth",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Healthy vs. unhealthy relationship traits for youth.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAC2MHTYJULMKZEKRFRCL4LORZWM"
@@ -224,7 +224,7 @@
     "Resource Name": "Conozca la Diferencia (ES)",
     "Icon": "🧒",
     "Audience": "Youth",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Spanish healthy vs. unhealthy bookmark.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAFSVP4HKYFOL5DIUXDIMD3VXKXI"
@@ -234,7 +234,7 @@
     "Resource Name": "Young Hearts Matter Infographic",
     "Icon": "📊",
     "Audience": "General Public, Youth",
-    "Topics": "Prevention & Youth, Data & Reporting",
+    "Topics": "Prevention, Youth, Data Reporting",
     "Short Description": "Teen DV prevalence stats (U.S. & TX).",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAHRK55SIVCZ5BBZRSTEDYOB27YG"
@@ -254,7 +254,7 @@
     "Resource Name": "Campus-Based Advocacy Toolkit 2.0",
     "Icon": "🗣️",
     "Audience": "Educators, Youth",
-    "Topics": "Advocacy Skills, Prevention & Youth",
+    "Topics": "Advocacy Skills, Prevention, Youth",
     "Short Description": "Logic model & evaluation strategies for campus programs.",
     "Date": "2024",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAG73LE2PFYTDVEKW6FD6Q7W5QSZ"
@@ -264,7 +264,7 @@
     "Resource Name": "Wellness in the Movement Tip Sheet",
     "Icon": "🌱",
     "Audience": "Advocates",
-    "Topics": "Wellness & Self-Care",
+    "Topics": "Wellness Self-Care",
     "Short Description": "Summary of self-care & organizational wellness webinars.",
     "Date": "2023",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAFM3RGHJTVTMFDZOGK2YXQLNLZX"
@@ -404,7 +404,7 @@
     "Resource Name": "Advocate Mental Health & Wellness Guide",
     "Icon": "🌱",
     "Audience": "Advocates",
-    "Topics": "Wellness & Self-Care",
+    "Topics": "Wellness Self-Care",
     "Short Description": "Self-care exercises & trauma impact info for advocates.",
     "Date": "2022",
     "Full Link": "https://tcfv.org/wp-content/uploads/.../01H62CNHD56EXXSPYPVVG3WU46W7AQHESK"
@@ -414,7 +414,7 @@
     "Resource Name": "Guía de Bienestar del Intercesor (ES)",
     "Icon": "🌱",
     "Audience": "Advocates",
-    "Topics": "Wellness & Self-Care",
+    "Topics": "Wellness Self-Care",
     "Short Description": "Spanish version of the advocate wellness guide.",
     "Date": "2022",
     "Full Link": "https://tcfv.org/wp-content/uploads/.../01H62CNHEXWDV73GU2KVBZFESRX6EGJEEN"
@@ -444,7 +444,7 @@
     "Resource Name": "Nuts & Bolts of Bookkeeping Toolkit",
     "Icon": "💰",
     "Audience": "Executive Directors, Finance Professionals",
-    "Topics": "Finance & Budgeting",
+    "Topics": "Finance Budgeting",
     "Short Description": "Core financial management: bookkeeping, grants, controls.",
     "Date": "2018 (rev 2021)",
     "Full Link": "https://tcfv.org/wp-content/uploads/.../Nuts-and-Bolts-of-Bookkeeping-A-Toolkit_Complete_v3.pdf"
@@ -454,7 +454,7 @@
     "Resource Name": "Federal Funding Sources Flowchart",
     "Icon": "💰",
     "Audience": "Finance Professionals, Grants Professionals",
-    "Topics": "Finance & Budgeting",
+    "Topics": "Finance Budgeting",
     "Short Description": "Visual of FVPSA, VOCA, VAWA, etc. funding flows to programs.",
     "Date": "2021",
     "Full Link": "https://tcfv.org/tcfv_federal_funding_sources_flowchart_2021/"
@@ -464,7 +464,7 @@
     "Resource Name": "2020 Compensation Report",
     "Icon": "💰",
     "Audience": "Executive Directors, Finance Professionals",
-    "Topics": "Finance & Budgeting",
+    "Topics": "Finance Budgeting",
     "Short Description": "Biennial salary & benefits benchmarks for DV agencies.",
     "Date": "2020",
     "Full Link": "https://tcfv.org/wp-content/uploads/2020-TCFV-Compensation-Report-FINAL.pdf"
@@ -474,7 +474,7 @@
     "Resource Name": "2022 Compensation Report",
     "Icon": "💰",
     "Audience": "Executive Directors, Finance Professionals",
-    "Topics": "Finance & Budgeting",
+    "Topics": "Finance Budgeting",
     "Short Description": "Updated salary & benefit trends for FV service providers.",
     "Date": "2022",
     "Full Link": "https://tcfv.org/wp-content/uploads/2022-TCFV-Compensation-Report-FINAL.pdf"
@@ -484,7 +484,7 @@
     "Resource Name": "2024 Compensation Report",
     "Icon": "💰",
     "Audience": "Executive Directors, Finance Professionals",
-    "Topics": "Finance & Budgeting",
+    "Topics": "Finance Budgeting",
     "Short Description": "Latest statewide compensation survey data & analysis.",
     "Date": "2024",
     "Full Link": "https://tcfv.org/wp-content/uploads/2024-TCFV-Compensation-Report-FINAL.pdf"
@@ -494,7 +494,7 @@
     "Resource Name": "Statewide Service Directory 2024",
     "Icon": "📊",
     "Audience": "Advocates, System Partners",
-    "Topics": "Data & Reporting",
+    "Topics": "Data Reporting",
     "Short Description": "Directory of TX FV programs, BIPPs, and community partners.",
     "Date": "2024",
     "Full Link": "https://tcfv.org/wp-content/uploads/2024-TCFV-Service-Directory_web-pages.pdf"
@@ -503,7 +503,7 @@
     "#": 51,
     "Resource Name": "Tech for Social Impact  Nonprofit Offers",
     "Icon": "💻",
-    "Audience": "IT & Operations Staff",
+    "Audience": "IT Operations Staff",
     "Topics": "Technology Safety",
     "Short Description": "Microsoft grants & discounts summary for nonprofits.",
     "Date": "2021",
@@ -514,7 +514,7 @@
     "Resource Name": "DVAM External Toolkit  2022",
     "Icon": "🧒",
     "Audience": "Educators, Outreach Teams, Prevention Educators",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Graphics, posters, templates for DV Awareness Month outreach.",
     "Date": "2022",
     "Full Link": "https://tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
@@ -524,7 +524,7 @@
     "Resource Name": "DVAM External Toolkit  2024",
     "Icon": "🧒",
     "Audience": "Educators, Outreach Teams, Prevention Educators",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Updated materials for DVAM campaigns & social media assets.",
     "Date": "2024",
     "Full Link": "https://tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
@@ -534,7 +534,7 @@
     "Resource Name": "Prevention Educators Resource List",
     "Icon": "🧒",
     "Audience": "Educators, Prevention Educators, Youth Allies",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Directory of trainings, curricula, webinars, publications.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01W5A36WUCW3RJUNLY35HIPL7JY25YS7PF"
@@ -544,7 +544,7 @@
     "Resource Name": "Young Hearts Matter Resources",
     "Icon": "🧒",
     "Audience": "Educators, Prevention Educators, Youth Allies",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Online modules & podcast series for teen DV prevention.",
     "Date": "2024",
     "Full Link": "https://tcfv.org/program-resources/youth-and-adult-allies/"
@@ -554,7 +554,7 @@
     "Resource Name": "Youth Activism Guide",
     "Icon": "🧒",
     "Audience": "Educators, Youth, Youth Allies",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Engaging teens in preventing dating violence year-round.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01L3KXPAHWCMHP22OTSFBKLNAXHKL5OLS5"
@@ -564,7 +564,7 @@
     "Resource Name": "Our Hearts Matter Social & Event Toolkit",
     "Icon": "🧒",
     "Audience": "Educators, Prevention Educators, Youth Allies",
-    "Topics": "Prevention & Youth",
+    "Topics": "Prevention, Youth",
     "Short Description": "Week-by-week Teen DV Month campaign ideas & prompts.",
     "Date": "2020",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01AMQHF3AXJSHSJAWBNVGZ4RCOW3RYKXX3"
@@ -584,7 +584,7 @@
     "Resource Name": "89th Bills of Note  Summary",
     "Icon": "🗳️",
     "Audience": "Advocates, Policy Professionals",
-    "Topics": "Elections & Voting",
+    "Topics": "Elections Voting",
     "Short Description": "Key 2025 bills impacting survivors, with TCFV commentary.",
     "Date": "2025",
     "Full Link": "https://tcfv.org/wp-content/uploads/TCFV-Bills-of-Note-89th-Session.pdf"
@@ -594,7 +594,7 @@
     "Resource Name": "89th Priority One-Pagers Packet",
     "Icon": "🗳️",
     "Audience": "Legislators, Policy Professionals",
-    "Topics": "Elections & Voting",
+    "Topics": "Elections Voting",
     "Short Description": "One-page briefs on each policy priority (e.g. HB 1332).",
     "Date": "2025",
     "Full Link": "https://tcfv.org/wp-content/uploads/89th-Lege-Priorities-One-Pagers-ALL-4.pdf"
@@ -604,7 +604,7 @@
     "Resource Name": "89th FV Services Funding Fact Sheet",
     "Icon": "💰",
     "Audience": "Legislators, Policy Professionals",
-    "Topics": "Finance & Budgeting, Elections & Voting",
+    "Topics": "Finance Budgeting, Elections Voting",
     "Short Description": "Data-driven ask for $25 M increase in family violence funding.",
     "Date": "2025",
     "Full Link": "https://tcfv.org/wp-content/uploads/Family-Violence-Services-Funding-Fact-Sheet-SB1-HB-1.pdf"
@@ -614,7 +614,7 @@
     "Resource Name": "89th BIPP Funding Fact Sheet",
     "Icon": "🚫",
     "Audience": "Legislators, Policy Professionals",
-    "Topics": "BIPP, Elections & Voting",
+    "Topics": "BIPP, Elections Voting",
     "Short Description": "Cost-efficiency & impact data supporting $925k funding boost.",
     "Date": "2025",
     "Full Link": "https://tcfv.org/wp-content/uploads/BIPP-Funding-Fact-Sheet-SB1-HB-1.pdf"
@@ -624,7 +624,7 @@
     "Resource Name": "88th Legislative Update (2023)",
     "Icon": "🗳️",
     "Audience": "Advocates, Policy Professionals",
-    "Topics": "Elections & Voting",
+    "Topics": "Elections Voting",
     "Short Description": "Recap of TCFV's 2023 session wins, funding, and policy changes.",
     "Date": "2023",
     "Full Link": "https://tcfv.org/wp-content/uploads/88th-Legislative-Session-Update.pdf"
@@ -654,7 +654,7 @@
     "Resource Name": "Osnium Database Upgrade Toolkit",
     "Icon": "📊",
     "Audience": "Data Administrators, Program Managers",
-    "Topics": "Data & Reporting",
+    "Topics": "Data Reporting",
     "Short Description": "Step-by-step tasks & training for FY22 Osnium rollout.",
     "Date": "21-Aug",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01AB47KBC5FM3F4JXYX5H22B3C6USNC72D"
@@ -664,7 +664,7 @@
     "Resource Name": "Legislative Advocacy Toolkit",
     "Icon": "🗳️",
     "Audience": "Advocates, Policy Professionals",
-    "Topics": "Elections & Voting",
+    "Topics": "Elections Voting",
     "Short Description": "Survivor-centered guide to engaging in the TX Legislature.",
     "Date": "25-Jan",
     "Full Link": "https://graph.microsoft.com/v1.0/drives/.../01W5A36WTYN7YUKNSARRGL2ZO6YUJCBH7R"
