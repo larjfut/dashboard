@@ -21,7 +21,7 @@
       <p class="text-lg text-[#45375a] mb-6">Browse resources by topic or audience</p>
 
       <!-- Tabs + Filters Container -->
-      <div class="flex flex-wrap justify-between items-center mb-8 gap-4">
+      <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8 gap-4">
         <!-- Tabs (left) -->
         <div class="flex space-x-5">
           <button
@@ -41,13 +41,15 @@
             Audience
           </button>
         </div>
-        <!-- Filters (right) -->
-        <div id="filters" class="flex flex-wrap gap-3 items-center ml-auto">
+        <!-- Filters (right, visually grouped) -->
+        <div id="filters"
+          class="flex flex-wrap md:flex-nowrap gap-2 md:gap-3 items-center bg-white/90 shadow rounded-2xl px-4 py-2 mt-2 md:mt-0"
+        >
           <div class="flex items-center">
             <i class="fas fa-list-alt mr-2 text-[#624B78] text-lg"></i>
             <select
               id="filter-topic"
-              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[160px]"
+              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[120px] md:min-w-[160px]"
             >
               <option value="">All Topics</option>
             </select>
@@ -56,7 +58,7 @@
             <i class="fas fa-users mr-2 text-[#624B78] text-lg"></i>
             <select
               id="filter-audience"
-              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[160px]"
+              class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[120px] md:min-w-[160px]"
             >
               <option value="">All Audiences</option>
             </select>
@@ -65,7 +67,7 @@
             id="search-input"
             type="search"
             placeholder="Search..."
-            class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[160px]"
+            class="rounded-xl py-2 px-3 border border-[#AC95C1] text-base h-12 min-w-[120px] md:min-w-[160px]"
           />
           <button
             id="clear-filters"
@@ -77,7 +79,7 @@
       </div>
 
       <!-- Category Cards in padded container -->
-      <div class="px-2 md:px-8">
+      <div class="px-4 md:px-12">
         <div
           id="card-grid"
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6"
@@ -85,7 +87,7 @@
       </div>
 
       <!-- Resource Cards in padded container -->
-      <div class="px-2 md:px-8">
+      <div class="px-4 md:px-12">
         <div
           id="resource-grid"
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"
