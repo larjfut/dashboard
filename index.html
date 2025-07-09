@@ -202,8 +202,14 @@
             <div class="text-2xl mr-3">${r.icon}</div>
             <h3 class="text-lg font-semibold">${r.name}</h3>
           </div>
-          <p class="text-sm text-[#45375a] mb-2"><strong>Topics:</strong> ${r.topics.map(id => topics.find(t => t.id === id).name).join(', ')}</p>
-          <p class="text-sm text-[#45375a] mb-4"><strong>Audience:</strong> ${r.audiences.map(id => audiences.find(a => a.id === id).name).join(', ')}</p>
+          <p class="text-sm text-[#45375a] mb-2"><strong>Topics:</strong> ${r.topics.map(id => {
+            const t = topics.find(x => x.id === id)
+            return t ? t.name : id
+          }).join(', ')}</p>
+          <p class="text-sm text-[#45375a] mb-4"><strong>Audience:</strong> ${r.audiences.map(id => {
+            const a = audiences.find(x => x.id === id)
+            return a ? a.name : id
+          }).join(', ')}</p>
           <a href="${r.link}" target="_blank" class="text-blue-600 underline">Open Resource</a>
         `;
         resGrid.appendChild(card);
