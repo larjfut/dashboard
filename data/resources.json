@@ -225,24 +225,6 @@
     "Full Link": "SharePoint link"
   },
   {
-    "Resource Name": "Campus-Based Advocacy Toolkit 2.0",
-    "Icon": "🏫📘",
-    "Audience": "Educators, Youth, Campus Advocates, Program Managers",
-    "Topics": "Advocacy Skills, Prevention & Youth, Data & Reporting",
-    "Short Description": "Logic model & evaluation strategies for campus programs.",
-    "Date": "2024",
-    "Full Link": "SharePoint link"
-  },
-  {
-    "Resource Name": "Wellness in the Movement Tip Sheet",
-    "Icon": "🌱",
-    "Audience": "Advocates, Program Managers, Executive Directors",
-    "Topics": "Wellness & Self-Care",
-    "Short Description": "Summary of self-care & organizational wellness webinars.",
-    "Date": "2023",
-    "Full Link": "[SharePoint link]( in the Movement Tip Sheet Final.pdf)"
-  },
-  {
     "Resource Name": "Tips for Advocates – Mobile Advocacy",
     "Icon": "📲",
     "Audience": "Advocates, Outreach Teams",
@@ -477,13 +459,13 @@
     "Full Link": "tcfv.org/wp-content/uploads/DVAM-External-Toolkit-TCFV-PNG.zip"
   },
   {
-    "Resource Name": "Prevention Educators Resource List",
+    "Resource Name": "Prevention Educators Resources",
     "Icon": "🗂️",
     "Audience": "Educators, Prevention Educators, Youth Allies, Advocates",
     "Topics": "Prevention & Youth",
-    "Short Description": "Directory of trainings, curricula, webinars, publications.",
+    "Short Description": "TAs, trainings, consultations, and online resources.",
     "Date": "2020",
-    "Full Link": "[SharePoint link]( Educators Resources.pdf)"
+    "Full Link": "https://tcfv.org/program-resources/prevention-educators/"
   },
   {
     "Resource Name": "Young Hearts Matter Resources",
@@ -504,7 +486,7 @@
     "Full Link": "[SharePoint link]( Activism Guide_v2.pdf)"
   },
   {
-    "Resource Name": "“Our Hearts Matter” Social & Event Toolkit",
+    "Resource Name": "Our Hearts Matter Social & Event Toolkit",
     "Icon": "🎉🧒",
     "Audience": "Educators, Prevention Educators, Youth Allies, Outreach Teams",
     "Topics": "Prevention & Youth",
@@ -572,7 +554,7 @@
     "Audience": "Grants Professionals, System Partners, Advocates, Program Managers",
     "Topics": "Advocacy Skills",
     "Short Description": "Orientation & sample tools for launching local DVHRT.",
-    "Date": "23-Nov",
+    "Date": "2023",
     "Full Link": "tcfv.org/wp-content/uploads/DVHRT-Welcome-Kit.pdf"
   },
   {
@@ -581,17 +563,17 @@
     "Audience": "Child Welfare Partners, System Partners, Advocates, Program Managers",
     "Topics": "Child Welfare",
     "Short Description": "Collated webinars & QIC resources for DV–Child Welfare sites.",
-    "Date": "FY 2022",
+    "Date": "2022",
     "Full Link": "tcfv.org/wp-content/uploads/Safer-Families-Welcome-Kit.pdf"
   },
   {
-    "Resource Name": "Osnium Database Upgrade Toolkit",
+    "Resource Name": "Osnium Software Support",
     "Icon": "🗄️🔄",
     "Audience": "Data Administrators, Program Managers, IT & Operations Staff",
     "Topics": "Data & Reporting",
-    "Short Description": "Step-by-step tasks & training for FY22 Osnium rollout.",
-    "Date": "21-Aug",
-    "Full Link": "[SharePoint link]( Documents/.../Upgrade Toolkit.Final 8.24.pdf)"
+    "Short Description": "Osnium is a reporting software designed to meet the data collection and reporting requirements of family violence programs.",
+    "Date": "2021",
+    "Full Link": "https://tcfv.org/program-resources/data-funder-reporting/"
   },
   {
     "Resource Name": "Legislative Advocacy Toolkit",
@@ -599,7 +581,7 @@
     "Audience": "Advocates, Policy Professionals, Outreach Teams",
     "Topics": "Elections & Voting",
     "Short Description": "Survivor-centered guide to engaging in the TX Legislature.",
-    "Date": "25-Jan",
-    "Full Link": "[SharePoint link]( TCFV Legislative Advocacy Toolkit.pdf)"
+    "Date": "2025",
+    "Full Link": "https://tcfv.org/wp-content/uploads/TCFV-Legislative-Advocacy-Toolkit.pdf"
   }
 ]
